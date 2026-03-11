@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Macroeconomic Theory — Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swapfamily=Raleway:wght@300;400;500;600https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swapfamily=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}], throwOnError:false});"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-wrapper">
+
+<header>
+  <div>
+    <h1>Macro<span>economic</span> Theory</h1>
+  </div>
+  <div style="text-align:right;">
+    <div style="font-size:0.7rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;">Topics 1–11</div>
+    <div style="font-size:0.75rem;color:var(--accent);font-family:var(--font-mono);margin-top:2px;">Study Guide</div>
+  </div>
+</header>
+
+<div class="mode-bar">
+  <button class="mode-btn active" onclick="setMode('overview')">Overview</button>
+  <button class="mode-btn" onclick="setMode('notes')">Study Notes</button>
+  <button class="mode-btn" onclick="setMode('proofs')">Proofs</button>
+  <button class="mode-btn" onclick="setMode('flashcards')">Flashcards</button>
+  <button class="mode-btn" onclick="setMode('quiz')">Quiz</button>
+</div>
+
+<div class="topic-strip" id="topic-strip" style="display:none;">
+  <button class="topic-chip active" onclick="setTopic('all')">All Topics</button>
+  <button class="topic-chip" onclick="setTopic(1)">T1 · GDP</button>
+  <button class="topic-chip" onclick="setTopic(2)">T2 · Inflation</button>
+  <button class="topic-chip" onclick="setTopic(3)">T3 · Growth Rates</button>
+  <button class="topic-chip" onclick="setTopic(4)">T4 · Models</button>
+  <button class="topic-chip" onclick="setTopic(5)">T5 · Production</button>
+  <button class="topic-chip" onclick="setTopic(6)">T6 · Solow</button>
+  <button class="topic-chip" onclick="setTopic(7)">T7 · Solow + Growth</button>
+  <button class="topic-chip" onclick="setTopic(8)">T8 · Labor Market</button>
+  <button class="topic-chip" onclick="setTopic(9)">T9 · Short Run</button>
+  <button class="topic-chip" onclick="setTopic(10)">T10 · Money</button>
+  <button class="topic-chip" onclick="setTopic(11)">T11 · IS Curve</button>
+</div>
+
+<!-- ===== OVERVIEW ===== -->
+<div id="overview-view">
+<main>
+  <div class="section-title">Topics at a Glance</div>
+  <div class="section-subtitle">Click any card to jump to study notes</div>
+  <div class="overview-grid">
+    <div class="topic-card" data-t="1" onclick="jumpToNotes(1)">
+      <div class="topic-num">Topic 1</div>
+      <div class="topic-name">Measuring GDP</div>
+      <ul class="topic-bullets">
+        <li>Y = C + I + G + NX</li>
+        <li>3 approaches: expenditure, income, production</li>
+        <li>Nominal vs Real GDP</li>
+        <li>Laspeyres, Paasche, Fisher indexes</li>
+        <li>Chain weighting & PPP</li>
+      </ul>
+    </div>
+    <div class="topic-card" data-t="2" onclick="jumpToNotes(2)">
+      <div class="topic-num">Topic 2</div>
+      <div class="topic-name">Price Indexes & Inflation</div>
+      <ul class="topic-bullets">
+        <li>Price level & inflation rate</li>
+        <li>GDP deflator vs CPI</li>
+        <li>Hyperinflation (&gt;500%/yr)</li>
+        <li>Real prices: adjust by CPI ratio</li>
+      </ul>
+    </div>
+    <div class="topic-card" data-t="3" onclick="jumpToNotes(3)">
+      <div class="topic-num">Topic 3</div>
+      <div class="topic-name">Growth Rates</div>
+      <ul class="topic-bullets">
+        <li>Constant growth: $y_t = y_0(1+g)^t$</li>
+        <li>Rule of 70: doubling time ≈ 70/(100g)</li>
+        <li>Log/ratio scale: constant growth = straight line</li>
+        <li>Growth rate algebra (log rules)</li>
+        <li>Long run vs trend</li>
+      </ul>
+    </div>
+    <div class="topic-card" data-t="4" onclick="jumpToNotes(4)">
+      <div class="topic-num">Topic 4</div>
+      <div class="topic-name">Economic Models</div>
+      <ul class="topic-bullets">
+        <li>Endogenous vs exogenous variables</li>
+        <li>Equilibrium = solve endogenous given exogenous</li>
+        <li>Labor market S&D example</li>
+        <li>Model limitations</li>
+      </ul>
+    </div>
+    <div class="topic-card" data-t="5" onclick="jumpToNotes(5)">
+      <div class="topic-num">Topic 5</div>
+      <div class="topic-name">Aggregate Production</div>
+      <ul class="topic-bullets">
+        <li>$Y = AK^{1/3}L^{2/3}$</li>
+        <li>MPK = r, MPL = w</li>
+        <li>Labor share 2/3, capital share 1/3</li>
+        <li>Per capita: $y = Ak^{1/3}$</li>
+        <li>TFP explains 2/3 of income gaps</li>
+      </ul>
+    </div>
+    <div class="topic-card" data-t="6" onclick="jumpToNotes(6)">
+      <div class="topic-num">Topic 6</div>
+      <div class="topic-name">Solow Growth Model</div>
+      <ul class="topic-bullets">
+        <li>$\Delta k_{t+1} = s\bar{y}_t - dk_t$</li>
+        <li>Solow diagram: investment vs depreciation</li>
+        <li>$k^* = (\bar{s}\bar{A}/\bar{d})^{3/2}$</li>
+        <li>Transition dynamics</li>
+        <li>No sustained growth without tech</li>
+      </ul>
+    </div>
+    <div class="topic-card" data-t="7" onclick="jumpToNotes(7)">
+      <div class="topic-num">Topic 7</div>
+      <div class="topic-name">Solow + Productivity Growth</div>
+      <ul class="topic-bullets">
+        <li>Add $\Delta A/A = g_A$, $\Delta L/L = n$</li>
+        <li>Balanced growth path (BGP)</li>
+        <li>$g_y^* = \tfrac{3}{2}g_A$</li>
+        <li>$y_t^* = A_t^{3/2}(s/(\tfrac{3}{2}g_A+d+n))^{1/2}$</li>
+      </ul>
+    </div>
+    <div class="topic-card" data-t="8" onclick="jumpToNotes(8)">
+      <div class="topic-num">Topic 8</div>
+      <div class="topic-name">Labor Market</div>
+      <ul class="topic-bullets">
+        <li>Cyclical + structural + frictional = actual</li>
+        <li>Bathtub model: $\Delta u_{t+1} = \lambda_s(1-u_t) - \lambda_f u_t$</li>
+        <li>Natural rate: $u^* = \lambda_s/(\lambda_s+\lambda_f)$</li>
+        <li>Policy effects on job finding/separation</li>
+      </ul>
+    </div>
+    <div class="topic-card" data-t="9" onclick="jumpToNotes(9)">
+      <div class="topic-num">Topic 9</div>
+      <div class="topic-name">Short Run</div>
+      <ul class="topic-bullets">
+        <li>Output gap: $\tilde{Y}_t = (Y_t - \bar{Y}_t)/\bar{Y}_t$</li>
+        <li>Recession: $\tilde{Y}_t &lt; 0$</li>
+        <li>Okun's Law: $u_t - u_t^* \approx -\tfrac{1}{2}\tilde{Y}_t$</li>
+      </ul>
+    </div>
+    <div class="topic-card" data-t="10" onclick="jumpToNotes(10)">
+      <div class="topic-num">Topic 10</div>
+      <div class="topic-name">Money & Central Banks</div>
+      <ul class="topic-bullets">
+        <li>MB, M1, M2 definitions</li>
+        <li>Federal Funds Rate, IOR, discount rate</li>
+        <li>Open market operations</li>
+        <li>Ample vs scarce reserves</li>
+        <li>Fisher equation: $R_t = i_t - \pi_t$</li>
+      </ul>
+    </div>
+    <div class="topic-card" data-t="11" onclick="jumpToNotes(11)">
+      <div class="topic-num">Topic 11</div>
+      <div class="topic-name">The IS Curve</div>
+      <ul class="topic-bullets">
+        <li>$\tilde{Y}_t = \bar{a}_t - \bar{b}(R_t - \bar{r})$</li>
+        <li>Investment equation & Fisher equation</li>
+        <li>Aggregate demand shocks (shift IS)</li>
+        <li>Multiplier effects: $\frac{1}{1-\bar{x}}$</li>
+        <li>PIH, Life-cycle model, fiscal policy</li>
+      </ul>
+    </div>
+  </div>
+</main>
+</div>
+
+<!-- ===== NOTES VIEW ===== -->
+<div id="notes-view" style="display:none;">
+
+<!-- T1 -->
+<div class="notes-container" id="notes-1">
+<main>
+<div class="section-title">Topic 1 · Measuring & Defining GDP</div>
+<div class="section-subtitle">Definition · Three Approaches · Expenditure Components · Real vs Nominal · Indexes · PPP</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Definition</span>
+  <h3>Gross Domestic Product</h3>
+  <p><strong>GDP:</strong> The market value of the final goods and services produced in an economy over a certain period.</p>
+  <ul>
+    <li><strong>Final good:</strong> a good that is NOT transformed into a different good in the production process (i.e., not an intermediate good).</li>
+    <li><strong>Intermediate good:</strong> transformed or combined with other goods to create a new good, or consumed as part of a service. E.g., steel → car (steel is intermediate).</li>
+    <li><strong>Capital good:</strong> used to produce other goods but NOT directly transformed — it's NOT an intermediate good. E.g., the machines in a car factory. Capital goods are counted in GDP (as investment).</li>
+    <li>The same physical good can be intermediate or final depending on use — fruit at a restaurant vs. fruit you buy to eat at home.</li>
+  </ul>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Formula</span>
+  <h3>Three Equivalent Approaches to GDP</h3>
+  <p>All three give the same number:</p>
+  <div class="formula-box">
+    Expenditure approach: Y = C + I + G + NX<br>
+    Income approach: Y = wages + rent + profits (= all income earned)<br>
+    Production approach: Y = sum of all value added at each stage
+  </div>
+  <p><strong>Why Expenditure = Income:</strong> For any good $i$: $\text{Income}_i = \text{Revenue}_i - \text{Cost}_i$. Intermediate goods cancel (one firm's cost = another's revenue). Only final good sales create net income. So $\sum \text{Revenue}_{\text{final}} = \sum \text{Income}$.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Exam Focus</span>
+  <h3>Expenditure Components: C, I, G, NX</h3>
+  <ul>
+    <li><strong>Consumption (C):</strong> Every other purchase of final goods/services by domestic residents. Motor vehicles, food, housing services, medical care. ≈ 68% of US GDP.</li>
+    <li><strong>Investment (I):</strong> Purchases of capital goods plus inventory adjustments by domestic residents.
+      <ul style="margin-top:6px;font-size:0.82rem;">
+        <li>Business fixed investment (non-residential): plants, machinery, equipment, intellectual property.</li>
+        <li>Residential investment: new homes and apartment buildings.</li>
+        <li>Inventory investment: change in unsold goods = value of unsold goods this period minus last period.</li>
+      </ul>
+    </li>
+    <li><strong>Government purchases (G):</strong> Government purchases of final goods/services (schools, highways, defense). Excludes transfer payments (Social Security, Medicare) — these don't represent production.</li>
+    <li><strong>Net Exports (NX = EX - IM):</strong> Exports are domestically produced goods sold to non-residents; imports are foreign-produced goods bought by residents. Imports are subtracted because they are included in C, I, or G first.</li>
+  </ul>
+  <div class="formula-box">
+    I = Capital Good Purchases + Inventory Adjustments<br>
+    Inventory Adj = Unsold goods (end of period) - Unsold goods (start of period)<br>
+    NX = EX - IM  ;  GDP = C + I + G + NX
+  </div>
+</div>
+
+<div class="concept-block example-block">
+  <span class="tag tag-exam">Worked Example</span>
+  <h3>Investment Calculation</h3>
+  <p>&#36;900B in capital goods sold in 2023. Final goods unsold in 2022: &#36;200B; intermediate unsold: &#36;50B. End of 2023: &#36;300B final unsold, &#36;100B intermediate unsold.</p>
+  <div class="formula-box">
+    Inventory Adj = (300 + 100) - (200 + 50) = 400 - 250 = &#36;150B<br>
+    I = &#36;900B + &#36;150B = &#36;1,050B
+  </div>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Formula</span>
+  <h3>Nominal vs Real GDP</h3>
+  <div class="formula-box">
+    Nominal GDP (year t): $Y_t^{nom} = \sum_i P_{i,t} Q_{i,t}$ (current year prices)<br>
+    Real GDP (year t, base year r): $Y_t^{real} = \sum_i P_{i,r} Q_{i,t}$ (base year prices)<br><br>
+    Real GDP = Nominal GDP / Price Level
+    Nominal GDP = Price Level × Real GDP
+  </div>
+  <p>If quantities don't change but prices do: nominal GDP changes, real GDP does NOT.</p>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag" style="background:rgba(167,139,250,0.15);color:#a78bfa;border:1px solid rgba(167,139,250,0.3);">Method</span>
+  <h3>Laspeyres, Paasche, and Fisher Quantity Indexes</h3>
+  <div class="formula-box">
+    Laspeyres Index (LI): uses base period "l" prices to compute both periods<br>
+    $LI_{j,l} = \dfrac{\text{Real GDP in period j using period l prices}}{\text{Real GDP in period l using period l prices}}$<br><br>
+    Paasche Index (PI): uses current period "j" prices for both<br>
+    $PI_{j,l} = \dfrac{\text{Real GDP in period j using period j prices}}{\text{Real GDP in period l using period j prices}}$<br><br>
+    Fisher Index: $FI_{j,l} = \sqrt{LI_{j,l} \times PI_{j,l}}$ (geometric average)<br><br>
+    Chain-weighted Real GDP (t > b): $= FI_{t,t-1} \times FI_{t-1,t-2} \times \cdots \times FI_{b+1,b} \times \text{Nominal GDP}_b$
+  </div>
+  <p>Chain weighting benefit: growth rates do NOT depend on choice of base year.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Concept</span>
+  <h3>Comparing GDP Across Countries (PPP)</h3>
+  <p>To compare, convert to common currency then adjust for price levels:</p>
+  <div class="formula-box">
+    Step 1: Convert using exchange rate → China GDP in USD<br>
+    Step 2: PPP adjust: Real GDP$_{\text{China}} = \dfrac{P_{\text{US}}}{P_{\text{China}}} \times$ Nominal GDP$_{\text{China in USD}}$
+  </div>
+  <p>PPP tells how much more (or less) the same basket of goods costs. If China is cheaper than US, China has more purchasing power than exchange rate alone suggests.</p>
+</div>
+
+<div class="concept-block graph-block">
+  <span class="tag" style="background:rgba(52,211,153,0.1);color:var(--accent4);border:1px solid rgba(52,211,153,0.3);">Interactive Chart</span>
+  <h3>Nominal vs Real GDP</h3>
+  <p>Adjust the inflation rate to see how nominal GDP diverges from real GDP over time. Real GDP uses base-year prices (constant).</p>
+  <div class="graph-canvas-wrap"><canvas id="chart-gdp" height="230"></canvas></div>
+  <div class="graph-controls">
+    <div class="graph-ctrl"><label>Annual inflation (%)</label><input type="range" id="gdp-inf" min="0" max="10" step="0.5" value="3" oninput="updateGDP()"><span class="val" id="gdp-inf-val">3%</span></div>
+    <div class="graph-ctrl"><label>Real growth rate (%)</label><input type="range" id="gdp-gr" min="0" max="5" step="0.25" value="2" oninput="updateGDP()"><span class="val" id="gdp-gr-val">2%</span></div>
+  </div>
+  <div style="margin-top:10px;">
+    <span class="graph-stat">Nominal GDP after 20yr: <span id="gdp-nom-20">--</span></span>
+    <span class="graph-stat">Real GDP after 20yr: <span id="gdp-real-20">--</span></span>
+    <span class="graph-stat">Price level after 20yr: <span id="gdp-price-20">--</span></span>
+  </div>
+</div>
+</main>
+</div>
+
+<!-- T2 -->
+<div class="notes-container" id="notes-2">
+<main>
+<div class="section-title">Topic 2 · Price Indexes & Measuring Inflation</div>
+<div class="section-subtitle">Price Level · Inflation · CPI · GDP Deflator · Real Prices</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Definitions</span>
+  <h3>Price Level and Inflation</h3>
+  <ul>
+    <li><strong>Price level ($P_t$):</strong> A theoretical measure of the average price of goods and services in the economy.</li>
+    <li><strong>Inflation:</strong> The rate of change in the price level (reported as a percentage).</li>
+    <li><strong>Hyperinflation:</strong> An episode of extremely high inflation, typically &gt;500% per year.</li>
+  </ul>
+  <div class="formula-box">
+    $\pi_t = \dfrac{P_{t+1} - P_t}{P_t} \times 100$ (percent)
+  </div>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Concept</span>
+  <h3>Price Indexes</h3>
+  <ul>
+    <li><strong>GDP Deflator:</strong> Price index for all final goods/services in the economy. Calculated as $100 \times (\text{Nominal GDP} / \text{Real GDP})$. Includes everything produced in the economy.</li>
+    <li><strong>Consumer Price Index (CPI):</strong> Price index for a fixed bundle of consumer goods/services. Most commonly used for measuring inflation that consumers experience.</li>
+    <li>Can use CPI (or other indexes) to compute "real prices" — the value of a good in today's dollars.</li>
+  </ul>
+  <div class="formula-box">
+    Real price (in year T dollars) = Nominal price in year t × $\dfrac{CPI_T}{CPI_t}$
+  </div>
+</div>
+
+<div class="concept-block example-block">
+  <span class="tag tag-exam">Worked Example</span>
+  <h3>Real Price Calculation</h3>
+  <p>Gas was &#36;0.27/gallon in 1950. CPI in 1950 = 8.23, CPI in 2022 = 100.</p>
+  <div class="formula-box">
+    Real price (2022 dollars) = &#36;0.27 × (100 / 8.23) = &#36;3.28<br>
+    Actual 2022 price was ≈ &#36;3.95 — so gas is slightly more expensive in real terms.
+  </div>
+  <p>Coffee example: &#36;0.10/lb in 1900 (CPI = 4) vs &#36;1.50/lb in 2015 (CPI = 100).</p>
+  <div class="formula-box">
+    1900 price in 2015 dollars = &#36;0.10 × (100/4) = &#36;2.50<br>
+    Since &#36;1.50 &lt; &#36;2.50, coffee was LESS expensive in 2015 than in 1900 in real terms.
+  </div>
+</div>
+</main>
+</div>
+
+<!-- T3 -->
+<div class="notes-container" id="notes-3">
+<main>
+<div class="section-title">Topic 3 · Details on Growth Rates</div>
+<div class="section-subtitle">Constant Growth Rule · Rule of 70 · Log Scale · Growth Rate Algebra · Long Run</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Formula</span>
+  <h3>Growth Rates and the Constant Growth Rule</h3>
+  <div class="formula-box">
+    Net growth rate: $g_y = \dfrac{y_{t+1} - y_t}{y_t}$  so  $y_{t+1} = y_t(1 + g_y)$<br><br>
+    Constant growth rule: if $g$ is constant every period,<br>
+    $$y_t = y_0 (1 + g)^t$$<br>
+    Gross growth rate = $1 + g$ (the ratio $y_{t+1}/y_t$)
+  </div>
+  <p>A 1% annual difference in growth rate looks small but produces enormous long-run differences — over 100 years, 1% vs 0.25% growth leads to dramatically different GDP levels.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Rule</span>
+  <h3>Rule of 70</h3>
+  <p>If $y$ grows at net rate $g$ per year, the number of years to double is approximately:</p>
+  <div class="formula-box">$$\text{Doubling time} \approx \frac{70}{100 \times g}$$</div>
+  <ul>
+    <li>Does NOT depend on the initial value — only on the growth rate.</li>
+    <li>Example: 2% growth → doubles in 35 years. 7% growth → doubles in 10 years.</li>
+    <li>Key insight: small differences in growth rates compound dramatically over time.</li>
+  </ul>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Concept</span>
+  <h3>Log / Ratio Scale</h3>
+  <p>A log scale has equally spaced tick marks labeled with numbers of constant ratio (e.g., 1, 2, 4, 8 for ratio=2).</p>
+  <ul>
+    <li>A variable that grows at a constant rate plots as a <strong>straight line</strong> on a log scale.</li>
+    <li>Steeper slope → higher growth rate.</li>
+    <li>The distance between two points depends on their <em>ratio</em>, not their specific values.</li>
+  </ul>
+  <div class="formula-box">
+    If $y_t = y_0(1+g)^t$, take logs:<br>
+    $\log y_t = \log y_0 + t \cdot \log(1+g)$   ← linear in $t$<br>
+    Intercept: $\log y_0$,  Slope: $\log(1+g)$
+  </div>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Formula</span>
+  <h3>Geometric Average Growth Rate</h3>
+  <div class="formula-box">
+    If series starts at $y_0$ and ends at $y_t$ after $t$ periods:<br>
+    $$\bar{g} = \left(\frac{y_t}{y_0}\right)^{1/t} - 1$$
+  </div>
+  <p>This gives the constant growth rate that would have taken the series from $y_0$ to $y_t$.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-exam">Exam Focus</span>
+  <h3>Growth Rate Algebra (Log Approximation Rules)</h3>
+  <p>If $g_x$, $g_y$ are small growth rates:</p>
+  <div class="formula-box">
+    If $z = x/y$: $g_z \approx g_x - g_y$<br>
+    If $z = x \times y$: $g_z \approx g_x + g_y$<br>
+    If $z = x^a$: $g_z \approx a \cdot g_x$<br><br>
+    Basis: $\log(x_{t+1}/x_t) \approx x_{t+1}/x_t - 1 = g_x$ for small $g_x$
+  </div>
+  <p><strong>Examples:</strong> If $y = Ak^{1/3}$, then $g_y \approx g_A + \tfrac{1}{3}g_k$. If $y = Y/L$, then $g_y \approx g_Y - g_L$.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Concept</span>
+  <h3>Long Run, Long-Run Value, and Trend</h3>
+  <ul>
+    <li><strong>Long run:</strong> Conceptual period where all temporary effects have subsided. The economy is never actually "in" the long run.</li>
+    <li><strong>Long-run value / trend:</strong> What a variable would be if all temporary fluctuations were removed.</li>
+    <li>Practically estimated by averaging over long periods, or by statistical detrending techniques.</li>
+  </ul>
+</div>
+
+<div class="concept-block graph-block">
+  <span class="tag" style="background:rgba(52,211,153,0.1);color:var(--accent4);border:1px solid rgba(52,211,153,0.3);">Interactive Chart</span>
+  <h3>Compound Growth & Rule of 70</h3>
+  <p>Observe how small differences in growth rates compound dramatically. Log scale shows constant growth as a straight line.</p>
+  <div class="graph-canvas-wrap"><canvas id="chart-growth" height="230"></canvas></div>
+  <div class="graph-controls">
+    <div class="graph-ctrl"><label>Country A growth (%)</label><input type="range" id="gr-a" min="0.5" max="5" step="0.25" value="2" oninput="updateGrowth()"><span class="val" id="gr-a-val">2%</span></div>
+    <div class="graph-ctrl"><label>Country B growth (%)</label><input type="range" id="gr-b" min="0.5" max="5" step="0.25" value="1" oninput="updateGrowth()"><span class="val" id="gr-b-val">1%</span></div>
+    <div class="graph-ctrl"><label>Horizon (years)</label><input type="range" id="gr-t" min="20" max="100" step="10" value="50" oninput="updateGrowth()"><span class="val" id="gr-t-val">50</span></div>
+  </div>
+  <div style="margin-top:10px;">
+    <span class="graph-stat">A doubling time: <span id="gr-a-double">--</span> yrs</span>
+    <span class="graph-stat">B doubling time: <span id="gr-b-double">--</span> yrs</span>
+    <span class="graph-stat">Ratio A/B at end: <span id="gr-ratio">--</span></span>
+  </div>
+</div>
+</main>
+</div>
+
+<!-- T4 -->
+<div class="notes-container" id="notes-4">
+<main>
+<div class="section-title">Topic 4 · Brief Introduction to Economic Models</div>
+<div class="section-subtitle">Endogenous vs Exogenous · Equilibrium · Labor Market Example</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Concept</span>
+  <h3>What is an Economic Model?</h3>
+  <ul>
+    <li>A system of equations describing relationships between economic variables, plus a classification of variables as <strong>endogenous</strong> or <strong>exogenous</strong>.</li>
+    <li><strong>Endogenous variables:</strong> Determined inside the model (what we solve for).</li>
+    <li><strong>Exogenous variables / parameters:</strong> Given from outside the model (the inputs).</li>
+    <li><strong>Equilibrium:</strong> The solution to the model — endogenous variables expressed as functions of exogenous variables, assuming all model equations hold simultaneously.</li>
+    <li><strong>Comparative statics:</strong> Analyze how the equilibrium changes when an exogenous variable changes.</li>
+    <li>Key limitation: a model only tells you what happens to endogenous variables when exogenous variables change. It says nothing about what causes exogenous variables to change.</li>
+  </ul>
+</div>
+
+<div class="concept-block example-block">
+  <span class="tag tag-exam">Example</span>
+  <h3>Labor Market Supply-Demand Model</h3>
+  <p><strong>Endogenous:</strong> $L_s$ (labor supply), $L_d$ (labor demand), $w$ (wage)<br>
+  <strong>Exogenous/parameters:</strong> $\bar{a}$, $\bar{l}$, $\bar{f}$</p>
+  <div class="formula-box">
+    Supply curve: $L_s = \bar{a}w + \bar{l}$<br>
+    Demand curve: $L_d = \bar{f} - w$<br>
+    Equilibrium: set $L_s = L_d$ and solve for $w^*$, $L^*$
+  </div>
+  <ul>
+    <li>Many workers retire → $\bar{l}$ falls → supply shifts left → equilibrium wage rises, employment falls.</li>
+    <li>Technology reduces need for workers → $\bar{f}$ falls → demand shifts left → equilibrium wage falls, employment falls.</li>
+    <li><strong>McDonald's kiosks example:</strong> Initially predicted kiosks would reduce labor demand ($\bar{f}$ falls). But higher sales from kiosks increased demand for cooking staff — $\bar{f}$ actually rose. The model was right; the assumption about the exogenous variable was wrong.</li>
+  </ul>
+</div>
+</main>
+</div>
+
+<!-- T5 -->
+<div class="notes-container" id="notes-5">
+<main>
+<div class="section-title">Topic 5 · Aggregate Production</div>
+<div class="section-subtitle">Production Function · Cobb-Douglas · MPK & MPL · Factor Shares · TFP · Development Accounting</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Formula</span>
+  <h3>The Cobb-Douglas Production Function</h3>
+  <div class="formula-box">
+    $$Y = F(K, L) = \bar{A} K^{1/3} L^{2/3}$$
+    $Y$ = output,  $K$ = capital,  $L$ = labor,  $\bar{A}$ = TFP (exogenous)
+  </div>
+  <p><strong>Four assumptions this satisfies:</strong></p>
+  <ol style="font-size:0.84rem;padding-left:18px;line-height:2.2;">
+    <li>$F(0,0) = 0$ — no inputs, no output.</li>
+    <li>$\partial F/\partial K > 0$ and $\partial F/\partial L > 0$ — more inputs → more output.</li>
+    <li>$\partial^2 F/\partial K^2 < 0$ and $\partial^2 F/\partial L^2 < 0$ — diminishing marginal products.</li>
+    <li>$F(\beta K, \beta L) = \beta F(K,L)$ — constant returns to scale (CRS). Justified by "replication argument."</li>
+  </ol>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Formula</span>
+  <h3>Marginal Products</h3>
+  <div class="formula-box">
+    $MPK = \dfrac{\partial F}{\partial K} = \dfrac{1}{3} \cdot \bar{A} \left(\dfrac{L}{K}\right)^{2/3} = \dfrac{1}{3} \cdot \dfrac{Y}{K}$<br><br>
+    $MPL = \dfrac{\partial F}{\partial L} = \dfrac{2}{3} \cdot \bar{A} \left(\dfrac{K}{L}\right)^{1/3} = \dfrac{2}{3} \cdot \dfrac{Y}{L}$
+  </div>
+  <p>Diminishing: as $K$ increases holding $L$ fixed, MPK falls. As $L$ increases holding $K$ fixed, MPL falls.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Formula</span>
+  <h3>Profit Maximization and Factor Shares</h3>
+  <p>A firm maximizes $\pi = F(K,L) - rK - wL$. FOCs:</p>
+  <div class="formula-box">
+    Hire capital until: MPK = r, so $r^* = \dfrac{1}{3}\dfrac{Y}{K}$<br>
+    Hire labor until: MPL = w, so $w^* = \dfrac{2}{3}\dfrac{Y}{L}$<br><br>
+    Labor income share: $\dfrac{w^* L}{Y} = \dfrac{2}{3}$ ← matches US data<br>
+    Capital income share: $\dfrac{r^* K}{Y} = \dfrac{1}{3}$ ← matches US data<br><br>
+    This is why $\alpha = 1/3$ in $Y = AK^\alpha L^{1-\alpha}$
+  </div>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Formula</span>
+  <h3>Per Capita Production Function</h3>
+  <p>Using CRS: $F(K/L, 1) = F(K,L)/L$. Let lowercase = per capita:</p>
+  <div class="formula-box">
+    $$y = f(k) = \bar{A} k^{1/3}$$
+    where $y \equiv Y/L$ (output per person), $k \equiv K/L$ (capital per person)
+  </div>
+  <p>Used for "development accounting" — comparing GDP per capita across countries.</p>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag" style="background:rgba(167,139,250,0.15);color:#a78bfa;border:1px solid rgba(167,139,250,0.3);">Derivation</span>
+  <h3>Total Factor Productivity (TFP)</h3>
+  <div class="formula-box">
+    From $y = \bar{A} k^{1/3}$:<br>
+    $$\bar{A} = \frac{y}{k^{1/3}}$$
+    TFP is a "residual" — calculated from observable data on $y$ and $k$.
+  </div>
+  <p>Relative TFP (normalized to US = 1):</p>
+  <div class="formula-box">
+    $\dfrac{y_c}{y_{US}} = \dfrac{A_c}{A_{US}} \cdot \left(\dfrac{k_c}{k_{US}}\right)^{1/3}$
+  </div>
+  <p><strong>Key finding:</strong> Differences in $k$ explain about <strong>1/3</strong> of income gaps between rich and poor countries. TFP differences explain the remaining <strong>2/3</strong>. Rich countries are richer because they have more capital AND use it more efficiently.</p>
+  <p><strong>Sources of TFP differences:</strong> Human capital (education, training), better technology, institutions (property rights, rule of law, contract enforcement), and misallocation of resources.</p>
+</div>
+
+<div class="concept-block example-block">
+  <span class="tag tag-exam">Worked Example</span>
+  <h3>Finding Implied TFP</h3>
+  <p>India has $y_{India}/y_{US} = 0.074$ and $k_{India}/k_{US} = 0.035$.</p>
+  <div class="formula-box">
+    $\dfrac{A_{India}}{A_{US}} = \dfrac{y_{India}/y_{US}}{(k_{India}/k_{US})^{1/3}} = \dfrac{0.074}{(0.035)^{1/3}} = \dfrac{0.074}{0.327} \approx 0.23$
+  </div>
+  <p>India's TFP is about 23% of US TFP. Capital per person is very low (3.5% of US), which by itself would predict $y_{India}/y_{US} = 0.327$. But actual per capita income is only 7.4% — TFP explains the large remaining gap.</p>
+</div>
+
+<div class="concept-block graph-block">
+  <span class="tag" style="background:rgba(52,211,153,0.1);color:var(--accent4);border:1px solid rgba(52,211,153,0.3);">Interactive Chart</span>
+  <h3>Diminishing Returns: Output vs Capital</h3>
+  <p>Observe how output per person increases with capital per person, but at a diminishing rate. Adjust TFP to shift the curve.</p>
+  <div class="graph-canvas-wrap"><canvas id="chart-prod" height="230"></canvas></div>
+  <div class="graph-controls">
+    <div class="graph-ctrl"><label>TFP ($\bar{A}$)</label><input type="range" id="prod-a" min="0.5" max="3" step="0.1" value="1.5" oninput="updateProd()"><span class="val" id="prod-a-val">1.5</span></div>
+    <div class="graph-ctrl"><label>Capital $k$</label><input type="range" id="prod-k" min="1" max="100" step="1" value="27" oninput="updateProd()"><span class="val" id="prod-k-val">27</span></div>
+  </div>
+  <div style="margin-top:10px;">
+    <span class="graph-stat">Output per person: <span id="prod-y">--</span></span>
+    <span class="graph-stat">MPK at k: <span id="prod-mpk">--</span></span>
+    <span class="graph-stat">TFP residual: <span id="prod-tfp">--</span></span>
+  </div>
+</div>
+</main>
+</div>
+
+<!-- T6 -->
+<div class="notes-container" id="notes-6">
+<main>
+<div class="section-title">Topic 6 · The Solow Growth Model</div>
+<div class="section-subtitle">Capital Accumulation · Solow Diagram · Steady State · Transition Dynamics · Experiments</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Model Setup</span>
+  <h3>Solow Model Equations</h3>
+  <div class="formula-box">
+    Production function:    $Y_t = \bar{A} K_t^{1/3} L_t^{2/3}$<br>
+    Capital accumulation:   $\Delta K_{t+1} = I_t - \bar{d}K_t$<br>
+    Investment allocation:  $I_t = \bar{s} Y_t$<br>
+    Labor (exogenous):      $L_t = \bar{L}$<br><br>
+    Endogenous: $Y_t, K_t, I_t$ (and $L_t$ for all $t \geq 0$, $K_t$ for $t>0$)<br>
+    Exogenous: $\bar{s}$ (savings rate), $\bar{d}$ (depreciation rate), $\bar{A}$ (TFP), $\bar{L}$, $K_0$
+  </div>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Formula</span>
+  <h3>Per Capita Capital Accumulation</h3>
+  <p>Divide capital accumulation by $L$:</p>
+  <div class="formula-box">
+    $$\Delta k_{t+1} = \bar{s} y_t - \bar{d} k_t = \bar{s}\bar{A}k_t^{1/3} - \bar{d}k_t$$
+    Growth of capital = investment per person - depreciation per person
+  </div>
+  <ul>
+    <li>Investment curve: $\bar{s}\bar{A}k^{1/3}$ — concave, due to diminishing returns.</li>
+    <li>Depreciation line: $\bar{d}k$ — linear through origin.</li>
+    <li>When investment &gt; depreciation: $\Delta k > 0$, capital grows.</li>
+    <li>When investment &lt; depreciation: $\Delta k < 0$, capital shrinks.</li>
+  </ul>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag" style="background:rgba(167,139,250,0.15);color:#a78bfa;border:1px solid rgba(167,139,250,0.3);">Derivation</span>
+  <h3>Steady State: Mathematical Solution</h3>
+  <p>At steady state ($\Delta k = 0$): investment = depreciation</p>
+  <div class="formula-box">
+    $\bar{s}\bar{A}(k^*)^{1/3} = \bar{d}k^*$<br><br>
+    Solve for $k^*$:<br>
+    $\bar{s}\bar{A} = \bar{d}(k^*)^{2/3}$<br>
+    $(k^*)^{2/3} = \bar{s}\bar{A}/\bar{d}$<br>
+    $$k^* = \left(\frac{\bar{s}\bar{A}}{\bar{d}}\right)^{3/2}$$<br><br>
+    Plug into production function:<br>
+    $$y^* = \bar{A}(k^*)^{1/3} = \bar{A}^{3/2}\left(\frac{\bar{s}}{\bar{d}}\right)^{1/2}$$
+  </div>
+  <ul>
+    <li>$k^*$ and $y^*$ increase with $\bar{s}$ (savings rate) and $\bar{A}$ (productivity).</li>
+    <li>$k^*$ and $y^*$ decrease with $\bar{d}$ (depreciation rate).</li>
+    <li>No sustained growth in steady state: output per person is constant.</li>
+  </ul>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-exam">Exam Focus</span>
+  <h3>Transition Dynamics and Experiments</h3>
+  <p><strong>Principle of Transition Dynamics:</strong> The farther an economy is below its steady state (as a %), the faster it grows. The closer to steady state, the slower.</p>
+  <ul>
+    <li><strong>Increase in $\bar{s}$:</strong> Investment curve rotates up → higher $k^*$ and $y^*$. Economy transitions upward to new steady state. Temporary growth boost, not permanent.</li>
+    <li><strong>Increase in $\bar{d}$:</strong> Depreciation line rotates up → lower $k^*$ and $y^*$. Economy transitions downward.</li>
+    <li><strong>Increase in $\bar{A}$:</strong> Investment curve shifts up → higher $k^*$ and $y^*$.</li>
+    <li><strong>Key insight:</strong> Capital accumulation cannot sustain long-run growth. Saving helps in the short run but not permanently — due to diminishing returns. Only technology ($\bar{A}$) determines long-run differences between countries.</li>
+  </ul>
+</div>
+
+<div class="concept-block graph-block">
+  <span class="tag" style="background:rgba(52,211,153,0.1);color:var(--accent4);border:1px solid rgba(52,211,153,0.3);">Interactive Chart</span>
+  <h3>Solow Diagram</h3>
+  <p>Adjust parameters to find the steady state graphically. Investment curve crosses depreciation line at $k^*$.</p>
+  <div class="graph-canvas-wrap"><canvas id="chart-solow" height="230"></canvas></div>
+  <div class="graph-controls">
+    <div class="graph-ctrl"><label>Savings rate $\bar{s}$</label><input type="range" id="sl-s" min="0.1" max="0.5" step="0.01" value="0.3" oninput="updateSolow()"><span class="val" id="sl-s-val">0.30</span></div>
+    <div class="graph-ctrl"><label>Depreciation $\bar{d}$</label><input type="range" id="sl-d" min="0.02" max="0.15" step="0.01" value="0.08" oninput="updateSolow()"><span class="val" id="sl-d-val">0.08</span></div>
+    <div class="graph-ctrl"><label>TFP $\bar{A}$</label><input type="range" id="sl-a" min="0.5" max="3" step="0.1" value="1.5" oninput="updateSolow()"><span class="val" id="sl-a-val">1.50</span></div>
+  </div>
+  <div style="margin-top:10px;">
+    <span class="graph-stat">$k^*$: <span id="sl-kstar">--</span></span>
+    <span class="graph-stat">$y^*$: <span id="sl-ystar">--</span></span>
+  </div>
+</div>
+</main>
+</div>
+
+<!-- T7 -->
+<div class="notes-container" id="notes-7">
+<main>
+<div class="section-title">Topic 7 · Solow Model with Productivity Growth</div>
+<div class="section-subtitle">Extended Model · Balanced Growth Path · BGP Solutions</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Model Setup</span>
+  <h3>Adding Population and Productivity Growth</h3>
+  <div class="formula-box">
+    Production: $Y_t = A_t K_t^{1/3} L_t^{2/3}$<br>
+    Capital accumulation: $\Delta K_{t+1} = I_t - \bar{d}K_t$<br>
+    Population growth: $\Delta L_{t+1}/L_t = \bar{n}$<br>
+    Productivity growth: $\Delta A_{t+1}/A_t = \bar{g}_A$<br>
+    Investment: $I_t = \bar{s}Y_t$<br><br>
+    Exogenous: $\bar{g}_A, \bar{s}, \bar{d}, \bar{n}, K_0, L_0, A_0$
+  </div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag" style="background:rgba(167,139,250,0.15);color:#a78bfa;border:1px solid rgba(167,139,250,0.3);">Derivation</span>
+  <h3>Capital Accumulation in Per-Capita Form</h3>
+  <p>Dividing capital accumulation by $K_t$ and using $g_k = g_K - g_L = g_K - \bar{n}$:</p>
+  <div class="formula-box">
+    $g_k = \bar{s}\dfrac{y_t}{k_t} - \bar{d} - \bar{n}$<br><br>
+    Growth of output per person (using $y_t = A_t k_t^{1/3}$, log rules):<br>
+    $g_y = \bar{g}_A + \dfrac{1}{3}g_k$
+  </div>
+  <p>Both $g_k$ and $g_y$ depend on the ratio $y_t/k_t$.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Concept</span>
+  <h3>Balanced Growth Path (BGP)</h3>
+  <ul>
+    <li>A <strong>balanced growth path</strong> is a situation where each endogenous variable grows at a constant rate (given no changes in exogenous variables).</li>
+    <li>The Solow model with productivity growth trends toward a BGP — this is the "long run" for this model.</li>
+    <li>Generalizes the steady state: on a steady state, all variables are constant (growth rate = 0). On a BGP, they grow at constant rates.</li>
+  </ul>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag" style="background:rgba(167,139,250,0.15);color:#a78bfa;border:1px solid rgba(167,139,250,0.3);">Derivation</span>
+  <h3>Solving for the BGP Growth Rates</h3>
+  <p>On the BGP: $g_y^* = g_k^*$. Using $g_y = g_A + \tfrac{1}{3}g_k$ with $g_y = g_k$:</p>
+  <div class="formula-box">
+    $g_y^* = g_A + \dfrac{1}{3}g_y^*$<br>
+    $\dfrac{2}{3}g_y^* = \bar{g}_A$<br>
+    $$\boxed{g_y^* = \dfrac{3}{2}\bar{g}_A}$$<br><br>
+    Growth of total capital: $g_K^* = g_k^* + \bar{n} = \dfrac{3}{2}\bar{g}_A + \bar{n}$<br>
+    Growth of total GDP: $g_Y^* = g_y^* + \bar{n} = \dfrac{3}{2}\bar{g}_A + \bar{n}$
+  </div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag" style="background:rgba(167,139,250,0.15);color:#a78bfa;border:1px solid rgba(167,139,250,0.3);">Derivation</span>
+  <h3>Steady-State Level on the BGP</h3>
+  <p>From capital accumulation on BGP ($g_k = g_y = g_y^*$):</p>
+  <div class="formula-box">
+    $g_y^* = \bar{s}\dfrac{y_t^*}{k_t^*} - \bar{d} - \bar{n}$<br><br>
+    $\Rightarrow \dfrac{y_t^*}{k_t^*} = \dfrac{g_y^* + \bar{d} + \bar{n}}{\bar{s}} = \dfrac{\tfrac{3}{2}\bar{g}_A + \bar{d} + \bar{n}}{\bar{s}}$<br><br>
+    Combining with $y_t^* = A_t(k_t^*)^{1/3}$:<br>
+    $$\boxed{y_t^* = A_t^{3/2} \cdot \left(\frac{\bar{s}}{\tfrac{3}{2}\bar{g}_A + \bar{d} + \bar{n}}\right)^{1/2}}$$<br><br>
+    Note: $A_t$ grows over time, so $y_t^*$ grows at rate $g_A^* \cdot (3/2) = g_y^*$. ✓
+  </div>
+</div>
+</main>
+</div>
+
+<!-- T8 -->
+<div class="notes-container" id="notes-8">
+<main>
+<div class="section-title">Topic 8 · Labor Market & Natural Rate of Unemployment</div>
+<div class="section-subtitle">Definitions · Types of Unemployment · Bathtub Model · Natural Rate</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Definitions</span>
+  <h3>Labor Force Concepts</h3>
+  <div class="formula-box">
+    Unemployment rate = (Unemployed / Labor Force) × 100<br>
+    Labor force = Employed + Unemployed<br>
+    Employment-population ratio = Employed / Civilian population (age 16+)
+  </div>
+  <p>A person is <strong>unemployed</strong> if: (1) no wage/salary job, (2) actively looked in last 4 weeks, (3) available to work.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Concept</span>
+  <h3>Types of Unemployment</h3>
+  <ul>
+    <li><strong>Cyclical:</strong> Due to short-run fluctuations in output. Removed when calculating the natural rate.</li>
+    <li><strong>Structural:</strong> Due to long-lasting/permanent labor market changes or policies (e.g., technology replacing entire job categories).</li>
+    <li><strong>Frictional:</strong> Workers between jobs in the dynamic economy — search frictions, time to find new work.</li>
+  </ul>
+  <div class="formula-box">
+    Actual unemployment = Frictional + Structural + Cyclical<br>
+    Natural rate = Frictional + Structural  (no cyclical component)
+  </div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag" style="background:rgba(167,139,250,0.15);color:#a78bfa;border:1px solid rgba(167,139,250,0.3);">Model</span>
+  <h3>The Bathtub Model</h3>
+  <p><strong>Key variables:</strong> $E_t$ (employed), $U_t$ (unemployed), $L_t = E_t + U_t$ (labor force, fixed).<br>
+  $\lambda_s$ = job separation rate (inflow to unemployment); $\lambda_f$ = job finding rate (outflow).</p>
+  <div class="formula-box">
+    Flow equation: $\Delta U_{t+1} = \lambda_s E_t - \lambda_f U_t$<br><br>
+    Divide by $L_t$, using $E_t/L_t = 1 - u_t$:<br>
+    $\Delta u_{t+1} = \lambda_s(1 - u_t) - \lambda_f u_t$
+  </div>
+  <p>Regardless of where $u_0$ starts, the economy trends toward the steady-state unemployment rate $u^*$.</p>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag" style="background:rgba(167,139,250,0.15);color:#a78bfa;border:1px solid rgba(167,139,250,0.3);">Derivation</span>
+  <h3>Deriving the Natural Rate of Unemployment</h3>
+  <p>Set $\Delta u_{t+1} = 0$:</p>
+  <div class="formula-box">
+    $0 = \lambda_s(1 - u^*) - \lambda_f u^*$<br>
+    $\lambda_f u^* = \lambda_s - \lambda_s u^*$<br>
+    $(\lambda_s + \lambda_f) u^* = \lambda_s$<br>
+    $$\boxed{u^* = \dfrac{\lambda_s}{\lambda_s + \lambda_f}}$$
+  </div>
+  <ul>
+    <li>Higher $\lambda_f$ (job finding rate) → lower $u^*$.</li>
+    <li>Higher $\lambda_s$ (separation rate) → higher $u^*$.</li>
+    <li><strong>Unemployment insurance</strong> → reduces urgency of job search → lowers $\lambda_f$ → higher $u^*$.</li>
+    <li><strong>Harder to fire workers</strong> → lowers $\lambda_s$ BUT also lowers $\lambda_f$ (firms hire more cautiously) — net effect ambiguous.</li>
+  </ul>
+</div>
+
+<div class="concept-block example-block">
+  <span class="tag tag-exam">Practice Problem</span>
+  <h3>Natural Rate Calculation</h3>
+  <p>21% of unemployed find jobs per period; 0.9% of employed lose jobs; labor force fixed.</p>
+  <div class="formula-box">
+    $\lambda_f = 0.21$,  $\lambda_s = 0.009$<br>
+    $u^* = 0.009 / (0.009 + 0.21) = 0.009 / 0.219 \approx 0.041 = 4.1\%$
+  </div>
+</div>
+
+<div class="concept-block graph-block">
+  <span class="tag" style="background:rgba(52,211,153,0.1);color:var(--accent4);border:1px solid rgba(52,211,153,0.3);">Interactive Chart</span>
+  <h3>Bathtub Model — Convergence to Natural Rate</h3>
+  <p>Start from any initial unemployment rate. The economy converges to $u^* = \lambda_s/(\lambda_s+\lambda_f)$.</p>
+  <div class="graph-canvas-wrap"><canvas id="chart-bathtub" height="230"></canvas></div>
+  <div class="graph-controls">
+    <div class="graph-ctrl"><label>Job separation $\lambda_s$</label><input type="range" id="bt-sep" min="0.005" max="0.03" step="0.001" value="0.01" oninput="updateBathtub()"><span class="val" id="bt-sep-val">0.010</span></div>
+    <div class="graph-ctrl"><label>Job finding $\lambda_f$</label><input type="range" id="bt-find" min="0.1" max="0.4" step="0.01" value="0.2" oninput="updateBathtub()"><span class="val" id="bt-find-val">0.20</span></div>
+    <div class="graph-ctrl"><label>Initial $u_0$ (%)</label><input type="range" id="bt-u0" min="1" max="20" step="1" value="12" oninput="updateBathtub()"><span class="val" id="bt-u0-val">12%</span></div>
+  </div>
+  <div style="margin-top:10px;">
+    <span class="graph-stat">Natural rate $u^*$: <span id="bt-ustar">--</span></span>
+  </div>
+</div>
+</main>
+</div>
+
+<!-- T9 -->
+<div class="notes-container" id="notes-9">
+<main>
+<div class="section-title">Topic 9 · Introduction to the Short Run</div>
+<div class="section-subtitle">Output Gap · Potential Output · Recessions · Okun's Law</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Concept</span>
+  <h3>Short-Run vs Long-Run Output</h3>
+  <ul>
+    <li>Long-run models describe where the economy is <em>trending</em>. Actual output deviates due to temporary "shocks."</li>
+    <li><strong>Potential output $\bar{Y}_t$:</strong> Where the economy would be with no temporary fluctuations. Exogenous in short-run model. Estimated using trends from Solow/BGP model.</li>
+    <li>In short-run model: current output $Y_t$ and current inflation are endogenous.</li>
+  </ul>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Formula</span>
+  <h3>The Output Gap</h3>
+  <div class="formula-box">
+    $$\tilde{Y}_t \equiv \frac{Y_t - \bar{Y}_t}{\bar{Y}_t}$$
+    $Y_t = \bar{Y}_t(1 + \tilde{Y}_t)$<br><br>
+    Also called: "detrended output," "short-run output"<br><br>
+    Recession: $\tilde{Y}_t < 0$ (actual output below potential)<br>
+    Boom: $\tilde{Y}_t > 0$ (actual output above potential)
+  </div>
+  <p>A recession ends when short-run output starts rising (becomes less negative), not necessarily when it turns positive.</p>
+  <p>Typical recession: output below potential for ~2 years, ≈&#36;3,000 loss per person, 1.5-3 million jobs lost.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Formula</span>
+  <h3>Okun's Law</h3>
+  <p>Connects short-run output fluctuations to cyclical unemployment:</p>
+  <div class="formula-box">
+    $$u_t - u_t^* \approx -\frac{1}{2}\tilde{Y}_t$$
+    $u_t$ = actual unemployment rate<br>
+    $u_t^*$ = natural rate of unemployment<br>
+    $\tilde{Y}_t$ = output gap (as decimal, not percent)
+  </div>
+  <p>If output is 4% below potential ($\tilde{Y}_t = -0.04$), cyclical unemployment is about $+2\%$.</p>
+  <p>Practice: Natural rate = 5%, cyclical unemployment = 2% → $2 = -\tfrac{1}{2}\tilde{Y}$ → $\tilde{Y} = -4\%$.</p>
+</div>
+
+<div class="concept-block example-block">
+  <span class="tag tag-exam">Worked Example</span>
+  <h3>Okun's Law Application</h3>
+  <p>Natural rate of unemployment = 5%. Output gap = -6%.</p>
+  <div class="formula-box">
+    Cyclical unemployment = $-\dfrac{1}{2}(-0.06) = +0.03 = 3\%$<br>
+    Actual unemployment = 5% + 3% = 8%
+  </div>
+  <p>Conversely, if cyclical unemployment = 2% and natural rate = 5%: output gap = $-2 \times 2\% = -4\%$.</p>
+</div>
+</main>
+</div>
+
+<!-- T10 -->
+<div class="notes-container" id="notes-10">
+<main>
+<div class="section-title">Topic 10 · Money, Overnight Interest Rates & Central Banks</div>
+<div class="section-subtitle">Monetary Aggregates · Fed Funds Rate · Open Market Operations · IOR · Fisher Equation</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Definitions</span>
+  <h3>Measures of Money</h3>
+  <ul>
+    <li><strong>Currency:</strong> Physical bills and coins in circulation.</li>
+    <li><strong>Monetary Base (MB):</strong> Currency + bank reserves held at the Fed. Directly controlled by government.</li>
+    <li><strong>M1:</strong> Currency + demand deposits (checking accounts). Most liquid form of money for transactions.</li>
+    <li><strong>M2:</strong> M1 + savings deposits, money market funds, CDs. Broader measure.</li>
+    <li><strong>Reserves:</strong> Currency deposited by banks at the central bank. Available to withdraw; shown as "MB - Currency."</li>
+    <li>Government can print money → increases MB by &#36;1 for every dollar printed. Cannot directly control M1/M2 (but can influence them).</li>
+  </ul>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Concept</span>
+  <h3>The Federal Reserve and Interest Rates</h3>
+  <ul>
+    <li><strong>Federal Funds Rate:</strong> The average overnight rate that banks charge each other for loans. The primary target of US monetary policy.</li>
+    <li><strong>Interest on Reserves (IOR/IORB):</strong> The rate the Fed pays banks on their reserve balances. Acts as a floor for the Fed funds rate.</li>
+    <li><strong>Discount Rate (Primary Credit Rate):</strong> The rate the Fed charges banks for overnight loans via the "discount window." Acts as a ceiling for the Fed funds rate — banks won't pay more than this to borrow from each other.</li>
+    <li><strong>Lender of Last Resort:</strong> The Fed will always lend to banks that can't borrow elsewhere, at the discount rate.</li>
+  </ul>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag" style="background:rgba(167,139,250,0.15);color:#a78bfa;border:1px solid rgba(167,139,250,0.3);">Model</span>
+  <h3>Reserves Supply-Demand Model</h3>
+  <ul>
+    <li><strong>Supply ($M^S$):</strong> Vertical line — the Fed sets the quantity of reserves (or the monetary base) directly.</li>
+    <li><strong>Demand ($M^D$):</strong> Downward sloping below the discount rate (banks prefer fewer reserves when they can earn more by lending); flat at IOR (no bank will accept less than IOR for holding reserves).</li>
+  </ul>
+  <div class="formula-box">
+    Equilibrium: Fed funds rate $i^* = $ intersection of supply and demand<br><br>
+    Ample reserves: $M^S$ is on the flat (IOR) portion of demand<br>
+    Scarce reserves: $M^S$ is on the downward-sloping portion of demand
+  </div>
+  <p><strong>Open market operations:</strong> Fed buys bonds → increases $M^S$ (easing → lower rates). Fed sells bonds → decreases $M^S$ (tightening → higher rates).</p>
+  <p><strong>Modern policy (ample reserves):</strong> Changing IOR directly shifts the equilibrium rate, without needing large changes in $M^S$. The Fed lowered IOR from 5.15% to 4.9% in September 2024 to cut the effective funds rate.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Formula</span>
+  <h3>Real vs Nominal Interest Rates — Fisher Equation</h3>
+  <div class="formula-box">
+    Nominal interest rate $i_t$: percent increase in nominal savings<br>
+    Real interest rate $R_t$: percent increase in purchasing power of savings<br><br>
+    Fisher Equation (approximation):<br>
+    $$R_t = i_t - \pi_t$$
+    where $\pi_t$ is the inflation rate
+  </div>
+  <ul>
+    <li>What matters for economic decisions (investment, borrowing) is the <strong>real</strong> interest rate — the cost of borrowing after accounting for inflation.</li>
+    <li>The overnight Fed funds rate is nominal; the Fed influences the real rate by changing the nominal rate relative to expected inflation.</li>
+  </ul>
+</div>
+
+<div class="concept-block example-block">
+  <span class="tag tag-exam">Policy Example</span>
+  <h3>June 2004 Fed Tightening (Scarce Reserves)</h3>
+  <p>Fed announced: raise Fed funds rate target by 25 basis points to 1.25%; raise discount rate to 2.25%.</p>
+  <div class="formula-box">
+    Mechanism (scarce reserves): <br>
+    1. Raise discount rate (d-rate rises) → ceiling rises slightly<br>
+    2. Sell government bonds → $M^S$ shifts left<br>
+    3. With downward-sloping demand, lower $M^S$ → higher equilibrium $i^*$<br>
+    4. Fed funds rate rises to new target
+  </div>
+</div>
+
+<div class="concept-block graph-block">
+  <span class="tag" style="background:rgba(52,211,153,0.1);color:var(--accent4);border:1px solid rgba(52,211,153,0.3);">Interactive Chart</span>
+  <h3>Reserves Market Supply-Demand</h3>
+  <p>Visualize how changing the money supply or IOR affects the federal funds rate equilibrium.</p>
+  <div class="graph-canvas-wrap"><canvas id="chart-money" height="230"></canvas></div>
+  <div class="graph-controls">
+    <div class="graph-ctrl"><label>Reserves supply ($M^S$)</label><input type="range" id="mn-ms" min="20" max="100" step="5" value="50" oninput="updateMoney()"><span class="val" id="mn-ms-val">50</span></div>
+    <div class="graph-ctrl"><label>IOR (%)</label><input type="range" id="mn-ior" min="0" max="6" step="0.25" value="3" oninput="updateMoney()"><span class="val" id="mn-ior-val">3%</span></div>
+    <div class="graph-ctrl"><label>Discount rate (%)</label><input type="range" id="mn-dr" min="1" max="8" step="0.25" value="4.5" oninput="updateMoney()"><span class="val" id="mn-dr-val">4.5%</span></div>
+  </div>
+  <div style="margin-top:10px;">
+    <span class="graph-stat">Equilibrium Fed funds rate: <span id="mn-rate">--</span></span>
+    <span class="graph-stat">Regime: <span id="mn-regime">--</span></span>
+  </div>
+</div>
+</main>
+</div>
+
+<!-- T11 -->
+<div class="notes-container" id="notes-11">
+<main>
+<div class="section-title">Topic 11 · The IS Curve</div>
+<div class="section-subtitle">Short-Run Model · Investment Equation · IS Derivation · Demand Shocks · Multiplier Effects · Consumption Theory</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Concept</span>
+  <h3>The Big Picture: Fed, Interest Rates, and Output</h3>
+  <p>The Federal Reserve can influence short-run economic activity by altering real interest rates. The basic mechanism:</p>
+  <div class="formula-box">
+    ↑ real interest rate &nbsp;⟹&nbsp; ↓ investment &nbsp;⟹&nbsp; ↓ short-run output ($\tilde{Y}_t$)
+  </div>
+  <p>The IS curve illustrates this relationship between real interest rates and short-run output, as implied by the model's equations for expenditures.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Formula</span>
+  <h3>The IS Curve Equation</h3>
+  <div class="formula-box">
+    $$\tilde{Y}_t = \bar{a}_t - \bar{b}(R_t - \bar{r})$$
+    $\tilde{Y}_t$ = short-run output (output gap)<br>
+    $\bar{a}_t$ = aggregate demand shock (intercept; = 0 in the long run)<br>
+    $\bar{b}$ = sensitivity of output to the interest rate gap ($\bar{b} > 0$)<br>
+    $R_t$ = real interest rate<br>
+    $\bar{r}$ = long-run / trend real interest rate
+  </div>
+  <ul>
+    <li><strong>Downward sloping:</strong> Higher $R_t$ → lower $\tilde{Y}_t$.</li>
+    <li><strong>Intercept:</strong> When $R_t = \bar{r}$, we get $\tilde{Y}_t = \bar{a}_t$. So the IS curve crosses the x-axis at $\bar{a}_t$.</li>
+    <li><strong>Long-run:</strong> When $\tilde{Y}_t = 0$ and $R_t = \bar{r}$, then $\bar{a}_t = 0$.</li>
+  </ul>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Model Setup</span>
+  <h3>Short-Run Model: Six Equations</h3>
+  <p>Start from the national income accounting identity divided by potential output $\bar{Y}_t$:</p>
+  <div class="formula-box">
+    $\frac{Y_t}{\bar{Y}_t} = \frac{C_t}{\bar{Y}_t} + \frac{I_t}{\bar{Y}_t} + \frac{G_t}{\bar{Y}_t} + \frac{EX_t}{\bar{Y}_t} - \frac{IM_t}{\bar{Y}_t}$<br><br>
+    Five additional equations (each share as fraction of potential output):<br>
+    $C_t/\bar{Y}_t = \bar{a}_{c,t}$&nbsp;&nbsp;&nbsp;&nbsp;(consumption share)<br>
+    $G_t/\bar{Y}_t = \bar{a}_{g,t}$&nbsp;&nbsp;&nbsp;&nbsp;(government share)<br>
+    $EX_t/\bar{Y}_t = \bar{a}_{ex,t}$&nbsp;&nbsp;&nbsp;&nbsp;(exports share)<br>
+    $IM_t/\bar{Y}_t = \bar{a}_{im,t}$&nbsp;&nbsp;&nbsp;&nbsp;(imports share)<br>
+    $I_t/\bar{Y}_t = \bar{a}_{i,t} - \bar{b}(R_t - \bar{r})$&nbsp;&nbsp;&nbsp;&nbsp;(investment equation)
+  </div>
+  <p>Each variable with a "bar" is exogenous. Each has a time subscript $t$. The key endogenous variable is $\tilde{Y}_t = Y_t/\bar{Y}_t - 1$.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Formula</span>
+  <h3>The Investment Equation</h3>
+  <div class="formula-box">
+    $$\frac{I_t}{\bar{Y}_t} = \bar{a}_{i,t} - \bar{b}(R_t - \bar{r})$$
+    $R_t$ = current real interest rate<br>
+    $\bar{r}$ = long-run / trend real interest rate<br>
+    $\bar{b}$ = sensitivity to interest rate deviations ($\bar{b} > 0$)<br>
+    $\bar{a}_{i,t}$ = investment share not explained by interest rates
+  </div>
+  <p>Lower interest rates relative to their trend means cheaper financing → more investment. The gap $(R_t - \bar{r})$ is what drives fluctuations — not the level of $R_t$ alone.</p>
+</div>
+
+<div class="concept-block example-block">
+  <span class="tag tag-exam">Key Distinction</span>
+  <h3>Move Along vs. Shift the IS Curve</h3>
+  <ul>
+    <li><strong>Movement along IS:</strong> A change in the real interest rate $R_t$. Higher $R_t$ → lower $\tilde{Y}_t$.</li>
+    <li><strong>Shift of IS:</strong> A change in $\bar{a}_t$ (demand shock), $\bar{b}$ (sensitivity), or $\bar{r}$ (trend rate). These shift the entire curve left or right.</li>
+  </ul>
+  <p>Example: If $\bar{a}_t$ rises (positive demand shock, e.g., consumer optimism), the IS curve shifts <em>right</em> — at any given interest rate, output is higher.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Concept</span>
+  <h3>Aggregate Demand Shocks</h3>
+  <p>The variable $\bar{a}_t \equiv \bar{a}_{c,t} + \bar{a}_{i,t} + \bar{a}_{g,t} + \bar{a}_{ex,t} - \bar{a}_{im,t} - 1$ captures all expenditure-side deviations from long-run trend.</p>
+  <ul>
+    <li><strong>Positive demand shock ($\bar{a}_t > 0$):</strong> IS shifts right. At $R_t = \bar{r}$, output is above potential.</li>
+    <li><strong>Negative demand shock ($\bar{a}_t < 0$):</strong> IS shifts left. At $R_t = \bar{r}$, output is below potential.</li>
+    <li>Any component (C, I, G, NX) can cause the shift. Example: consumer optimism raises $\bar{a}_{c,t}$ → raises $\bar{a}_t$ → IS shifts right.</li>
+    <li>When $\bar{a}_t = 0$ and $R_t = \bar{r}$: $\tilde{Y}_t = 0$ (economy is at potential). This is the long-run equilibrium.</li>
+  </ul>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Sensitivity</span>
+  <h3>Interest-Rate Sensitivity $\bar{b}$</h3>
+  <p>The parameter $\bar{b}$ determines how steep (or flat) the IS curve is:</p>
+  <ul>
+    <li>Higher $\bar{b}$: IS curve is <strong>flatter</strong>. A small change in the interest rate leads to a larger change in output.</li>
+    <li>Lower $\bar{b}$: IS curve is <strong>steeper</strong>. Interest rates have less effect on output.</li>
+  </ul>
+  <p>The slope of the IS curve (when $R$ is on the vertical axis) is $-1/\bar{b}$. As $\bar{b}$ increases, $-1/\bar{b}$ approaches 0, making the curve flatter.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Multiplier Effects</span>
+  <h3>The Keynesian Multiplier</h3>
+  <p>If consumption also depends on current income (MPC = $\bar{x}$, where $0 < \bar{x} < 1$):</p>
+  <div class="formula-box">
+    Modified consumption equation: $C_t/\bar{Y}_t = \bar{a}_{c,t} + \bar{x}\tilde{Y}_t$<br><br>
+    New IS curve:
+    $$\tilde{Y}_t = \frac{1}{1-\bar{x}}\left[\bar{a}_t - \bar{b}(R_t - \bar{r})\right]$$
+    Multiplier = $\dfrac{1}{1-\bar{x}}$
+  </div>
+  <p>Since $0 < \bar{x} < 1$, the multiplier is greater than 1. An initial shock to $\bar{a}_t$ gets amplified because higher income induces higher consumption, which further raises income.</p>
+  <p>Example: $\bar{x} = 0.5$ → multiplier $= 2$. A $1\%$ demand shock produces a $2\%$ change in output.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Consumption Theory</span>
+  <h3>Permanent Income Hypothesis (PIH)</h3>
+  <p>People prefer to <strong>smooth consumption</strong> over time. The PIH predicts that people base consumption on their <em>average income over time</em> (permanent income), not just current income.</p>
+  <ul>
+    <li>Temporary income shocks → small change in consumption (most saved).</li>
+    <li>Permanent income shocks → large change in consumption.</li>
+  </ul>
+  <p><strong>Hsieh (2003) — Alaska evidence:</strong> Annual payments from Alaska's Permanent Fund (large, predictable) showed little effect on consumption (consistent with PIH). But federal tax refunds (smaller, less predictable) showed significant spending — consumers spent ≈$0.30 per $1 of refund. Hsieh concludes PIH applies well to large, anticipated income changes.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Consumption Theory</span>
+  <h3>Life-Cycle Model of Consumption</h3>
+  <p>Consumption is based on average <em>lifetime</em> income rather than income at any given age.</p>
+  <ul>
+    <li>Early in life (ages ~0–30): borrow / receive transfers to fund consumption.</li>
+    <li>Peak earning years (~30–60): save (income > consumption).</li>
+    <li>Retirement (~60+): dissave (draw down savings).</li>
+  </ul>
+  <p>Together, the Life-Cycle / Permanent Income (LC/PI) framework predicts that consumption responds mostly to <em>permanent</em> changes in income and is relatively insensitive to temporary fluctuations.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Fiscal Policy</span>
+  <h3>Government Purchases and the IS Curve</h3>
+  <ul>
+    <li>Government purchases ≈ 20% of U.S. GDP (recent years). They are an important source of aggregate demand.</li>
+    <li>An increase in $G_t$ (above trend) raises $\bar{a}_{g,t}$ → raises $\bar{a}_t$ → IS shifts right → higher $\tilde{Y}_t$.</li>
+    <li><strong>Discretionary fiscal policy:</strong> New spending programs (e.g., ARRA 2009) or tax changes used to stabilize the economy. Timing is critical — legislation takes time.</li>
+    <li><strong>Automatic stabilizers:</strong> Pre-approved programs (e.g., unemployment insurance) that automatically expand during downturns, cushioning falls in consumption without new legislation.</li>
+  </ul>
+  <p>The size of the fiscal multiplier is debated. Estimates vary widely, which is why projections for programs like ARRA differed substantially.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Net Exports</span>
+  <h3>IS Curve and Net Exports</h3>
+  <ul>
+    <li>↑ Rest-of-world demand for U.S. goods → $\bar{a}_{ex,t}$ rises → IS shifts right → ↑ short-run output.</li>
+    <li>↑ U.S. demand for imports → $\bar{a}_{im,t}$ rises → IS shifts left → ↓ short-run output.</li>
+  </ul>
+</div>
+
+<div class="concept-block graph-block">
+  <span class="tag" style="background:rgba(52,211,153,0.1);color:var(--accent4);border:1px solid rgba(52,211,153,0.3);">Interactive Chart</span>
+  <h3>IS Curve Explorer</h3>
+  <p>Adjust parameters to see how the IS curve shifts and steepens. The dot marks the equilibrium when $R_t = \bar{r}$.</p>
+  <div class="graph-canvas-wrap"><canvas id="chart-is" height="230"></canvas></div>
+  <div class="graph-controls">
+    <div class="graph-ctrl"><label>Demand shock $\bar{a}_t$</label><input type="range" id="is-a" min="-0.05" max="0.05" step="0.005" value="0" oninput="updateIS()"><span class="val" id="is-a-val">0.00</span></div>
+    <div class="graph-ctrl"><label>Sensitivity $\bar{b}$</label><input type="range" id="is-b" min="0.5" max="4" step="0.1" value="1.5" oninput="updateIS()"><span class="val" id="is-b-val">1.50</span></div>
+    <div class="graph-ctrl"><label>Trend rate $\bar{r}$ (%)</label><input type="range" id="is-r" min="0" max="6" step="0.25" value="2" oninput="updateIS()"><span class="val" id="is-r-val">2.00%</span></div>
+  </div>
+  <div style="margin-top:10px;">
+    <span class="graph-stat">Output at $R=\bar{r}$: $\tilde{Y} = $ <span id="is-eq">0.00%</span></span>
+    <span class="graph-stat">Slope $(−1/\bar{b})$: <span id="is-slope">--</span></span>
+  </div>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Change in Potential Output</span>
+  <h3>What Doesn't Shift IS?</h3>
+  <p>A change in <em>potential output $\bar{Y}_t$</em> alone does not shift the IS curve. Because $\tilde{Y}_t = Y_t/\bar{Y}_t - 1$, if both $Y_t$ and $\bar{Y}_t$ increase by the same proportion, the ratio is unchanged and $\tilde{Y}_t$ stays the same. Potential output shocks affect the long-run level, not the IS relationship.</p>
+</div>
+
+</main>
+</div>
+
+</div><!-- end notes-view -->
+
+<!-- ===== PROOFS VIEW ===== -->
+<div id="proofs-view" style="display:none;">
+<main>
+<div class="section-title">Step-by-Step Proofs</div>
+<div class="section-subtitle">Every major derivation in the course — fully worked</div>
+
+<!-- PROOF 1 -->
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T1 · GDP</span>
+  <h3>Proof: Expenditure = Income</h3>
+  <p>We want to show that total expenditure on final goods equals total income earned in the economy.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">For any good or service $i$, define income as revenue minus cost of intermediate inputs:
+      $$\text{Income}_i = \text{Revenue}_i - \text{Cost}_i$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">Sum across all $N$ goods and services in the economy:
+      $$\sum_{i=1}^{N}\text{Income}_i = \sum_{i=1}^{N}\text{Revenue}_i - \sum_{i=1}^{N}\text{Cost}_i$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">Every intermediate good purchase is simultaneously a cost for the buyer and revenue for the seller. Therefore intermediate goods cancel in $\sum \text{Revenue} - \sum \text{Cost}$, leaving only final good revenues:
+      $$\sum_{i=1}^{N}\text{Revenue}_i - \sum_{i=1}^{N}\text{Cost}_i = \sum_{\text{final } i}\text{Revenue}_i$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">But $\sum_{\text{final}} \text{Revenue}_i$ is exactly expenditure on final goods. Therefore:
+      $$\sum_{i=1}^{N}\text{Income}_i = \text{Expenditure on final goods} = \text{GDP}$$</div>
+  </div>
+  <div class="qed">∎ Expenditure = Income = GDP</div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T1 · GDP</span>
+  <h3>Proof: Chain-Weighted Growth Rate is Base-Year Independent</h3>
+  <p>Show that the percentage change in chain-weighted real GDP does not depend on the choice of base year $b$.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">Chain-weighted real GDP in year $t$ (with $t > b$) is defined as:
+      $$\text{Real GDP}_t = FI_{t,t-1} \times FI_{t-1,t-2} \times \cdots \times FI_{b+1,b} \times \text{Nominal GDP}_b$$
+      where each $FI_{j,j-1}$ is the Fisher Index measuring the gross change in real output from period $j-1$ to $j$.</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">Compute the gross growth rate of chain-weighted real GDP from $t-1$ to $t$ by taking the ratio:
+      $$\frac{\text{Real GDP}_t}{\text{Real GDP}_{t-1}} = \frac{FI_{t,t-1} \times FI_{t-1,t-2} \times \cdots \times \text{Nominal GDP}_b}{FI_{t-1,t-2} \times \cdots \times \text{Nominal GDP}_b}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">All terms except $FI_{t,t-1}$ cancel:
+      $$\frac{\text{Real GDP}_t}{\text{Real GDP}_{t-1}} = FI_{t,t-1}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">$FI_{t,t-1}$ depends only on prices and quantities in periods $t$ and $t-1$ — it does not involve the base year $b$ at all. Therefore the growth rate:
+      $$\% \Delta \text{Real GDP}_t = 100 \times (FI_{t,t-1} - 1)$$
+      is entirely independent of $b$.</div>
+  </div>
+  <div class="qed">∎ This is the key advantage of chain weighting over fixed-base-year methods.</div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T2 · Inflation</span>
+  <h3>Proof: GDP Deflator Measures the Price Level</h3>
+  <p>Show that $\text{GDP Deflator} = 100 \times P_t$, where $P_t$ is the economy-wide price level.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">Recall the definitions of nominal and real GDP in year $t$ with base year $r$:
+      $$\text{Nominal GDP}_t = \sum_i P_{i,t} Q_{i,t}, \qquad \text{Real GDP}_t = \sum_i P_{i,r} Q_{i,t}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">Define the price level as the ratio of nominal to real GDP (normalized so that $P_r = 1$ in the base year):
+      $$P_t \equiv \frac{\text{Nominal GDP}_t}{\text{Real GDP}_t} = \frac{\sum_i P_{i,t} Q_{i,t}}{\sum_i P_{i,r} Q_{i,t}}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">When $t = r$ (base year), numerator = denominator, so $P_r = 1$ as required. For any $t \neq r$, $P_t$ rises with prices and is unchanged by quantities alone (if all $Q_{i,t}$ scale equally, the ratio is unchanged).</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">The GDP Deflator simply multiplies by 100 for display:
+      $$\boxed{\text{GDP Deflator}_t = 100 \times \frac{\text{Nominal GDP}_t}{\text{Real GDP}_t}}$$
+      It equals 100 in the base year and rises with the overall price level.</div>
+  </div>
+  <div class="qed">∎ The deflator extracts the pure price change by keeping quantities fixed at their actual values each year.</div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T3 · Growth Rates</span>
+  <h3>Proof: Constant Growth Rule</h3>
+  <p>Show that if a variable grows at constant rate $g$ each period, then $y_t = y_0(1+g)^t$.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">By definition of net growth rate $g$:
+      $$y_{t+1} = y_t(1+g) \quad \text{for every period } t$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">Apply recursively: since the rule holds at every $t$,
+      $$y_1 = y_0(1+g)$$
+      $$y_2 = y_1(1+g) = y_0(1+g)^2$$
+      $$y_3 = y_2(1+g) = y_0(1+g)^3$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">By induction, the pattern holds for all $t \geq 0$:
+      $$\boxed{y_t = y_0(1+g)^t}$$</div>
+  </div>
+  <div class="qed">∎</div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T3 · Growth Rates</span>
+  <h3>Proof: Rule of 70</h3>
+  <p>Show that if $y$ grows at rate $g$ per year, the doubling time is approximately $70/(100g)$.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">We want the time $T$ such that $y_T = 2y_0$. Using the constant growth rule:
+      $$y_0(1+g)^T = 2y_0 \implies (1+g)^T = 2$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">Take natural logs of both sides:
+      $$T \cdot \ln(1+g) = \ln 2$$
+      $$T = \frac{\ln 2}{\ln(1+g)}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">For small $g$, use the approximation $\ln(1+g) \approx g$. Also $\ln 2 \approx 0.693$:
+      $$T \approx \frac{0.693}{g} = \frac{69.3}{100g} \approx \frac{70}{100g}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">The approximation is exact when $g$ is expressed as a decimal. Since we typically quote $g$ as a percentage (e.g., $g = 2\%$), the formula becomes:
+      $$\boxed{T \approx \frac{70}{g_{\%}}}$$
+      where $g_\%$ is the growth rate in percent.</div>
+  </div>
+  <div class="qed">∎</div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T3 · Growth Rates</span>
+  <h3>Proof: Growth Rate Algebra (Log Rules)</h3>
+  <p>Show the rules $g_{x/y} \approx g_x - g_y$, $g_{xy} \approx g_x + g_y$, $g_{x^a} \approx ag_x$.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">Key approximation: for small $\epsilon$, $\ln(1+\epsilon) \approx \epsilon$. Therefore:
+      $$g_x = \frac{x_{t+1}-x_t}{x_t} = \frac{x_{t+1}}{x_t} - 1 \approx \ln\!\left(\frac{x_{t+1}}{x_t}\right) = \ln x_{t+1} - \ln x_t \equiv \Delta \ln x_t$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body"><strong>Product rule:</strong> If $z = xy$, then $\ln z = \ln x + \ln y$. Taking differences:
+      $$\Delta \ln z = \Delta \ln x + \Delta \ln y \implies \boxed{g_z \approx g_x + g_y}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body"><strong>Ratio rule:</strong> If $z = x/y$, then $\ln z = \ln x - \ln y$. Taking differences:
+      $$\Delta \ln z = \Delta \ln x - \Delta \ln y \implies \boxed{g_z \approx g_x - g_y}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body"><strong>Power rule:</strong> If $z = x^a$, then $\ln z = a\ln x$. Taking differences:
+      $$\Delta \ln z = a\,\Delta \ln x \implies \boxed{g_z \approx a\, g_x}$$</div>
+  </div>
+  <div class="qed">∎</div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T4 · Models</span>
+  <h3>Proof: Labor Market Equilibrium Wage and Employment</h3>
+  <p>Solve the linear labor supply-demand model for $w^*$ and $L^*$.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">The model has two equations and two unknowns ($w$, $L$):
+      $$L_s = \bar{a}w + \bar{l} \quad \text{(supply)}$$
+      $$L_d = \bar{f} - w \quad \text{(demand)}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">At equilibrium, supply equals demand: $L_s = L_d$. Set the two expressions equal:
+      $$\bar{a}w + \bar{l} = \bar{f} - w$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">Collect terms in $w$ on the left side:
+      $$\bar{a}w + w = \bar{f} - \bar{l}$$
+      $$w(\bar{a} + 1) = \bar{f} - \bar{l}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">Divide by $(\bar{a}+1)$:
+      $$\boxed{w^* = \frac{\bar{f} - \bar{l}}{\bar{a} + 1}}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 5</div>
+    <div class="proof-step-body">Substitute $w^*$ back into either curve to find equilibrium employment:
+      $$L^* = \bar{f} - w^* = \bar{f} - \frac{\bar{f}-\bar{l}}{\bar{a}+1} = \frac{\bar{f}(\bar{a}+1) - \bar{f} + \bar{l}}{\bar{a}+1} = \frac{\bar{f}\bar{a} + \bar{l}}{\bar{a}+1}$$
+      $$\boxed{L^* = \frac{\bar{a}\bar{f} + \bar{l}}{\bar{a}+1}}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 6</div>
+    <div class="proof-step-body"><strong>Comparative statics:</strong> If $\bar{l}$ falls (workers retire), $w^*$ rises (↑ numerator gone, but $\bar{f}-\bar{l}$ increases so $w^*$ rises) and $L^*$ falls. If $\bar{f}$ falls (lower labour demand), $w^*$ falls and $L^*$ falls. ✓</div>
+  </div>
+  <div class="qed">∎ Equilibrium is the unique wage where the quantity of labor supplied equals the quantity demanded.</div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T5 · Production</span>
+  <h3>Proof: Cobb-Douglas Has Constant Returns to Scale</h3>
+  <p>Show that $F(\beta K, \beta L) = \beta F(K,L)$ for any $\beta > 0$.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">Start with the Cobb-Douglas function:
+      $$F(K,L) = \bar{A}K^{1/3}L^{2/3}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">Scale both inputs by $\beta$:
+      $$F(\beta K, \beta L) = \bar{A}(\beta K)^{1/3}(\beta L)^{2/3}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">Factor out powers of $\beta$:
+      $$= \bar{A}\,\beta^{1/3}K^{1/3}\cdot\beta^{2/3}L^{2/3} = \bar{A}\,\beta^{1/3+2/3}K^{1/3}L^{2/3}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">Since $1/3 + 2/3 = 1$:
+      $$= \beta^1 \cdot \bar{A}K^{1/3}L^{2/3} = \beta\, F(K,L)$$</div>
+  </div>
+  <div class="qed">∎ CRS holds because the exponents sum to 1.</div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T5 · Production</span>
+  <h3>Proof: Labor Earns 2/3, Capital Earns 1/3 of GDP</h3>
+  <p>Derive the factor income shares from the firm's profit maximization problem.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">The firm maximizes profit:
+      $$\max_{K,L} \; \bar{A}K^{1/3}L^{2/3} - rK - wL$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">First-order condition for $K$ (set $\partial \pi / \partial K = 0$):
+      $$\frac{1}{3}\bar{A}K^{-2/3}L^{2/3} = r \implies r = \frac{1}{3}\frac{Y}{K}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">First-order condition for $L$ (set $\partial \pi / \partial L = 0$):
+      $$\frac{2}{3}\bar{A}K^{1/3}L^{-1/3} = w \implies w = \frac{2}{3}\frac{Y}{L}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">Compute total factor payments as a share of $Y$:
+      $$\frac{wL}{Y} = \frac{\tfrac{2}{3}(Y/L)\cdot L}{Y} = \frac{2}{3}$$
+      $$\frac{rK}{Y} = \frac{\tfrac{1}{3}(Y/K)\cdot K}{Y} = \frac{1}{3}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 5</div>
+    <div class="proof-step-body">Verify that shares sum to 1 (no pure profits under CRS):
+      $$wL + rK = \frac{2}{3}Y + \frac{1}{3}Y = Y \quad \checkmark$$</div>
+  </div>
+  <div class="qed">∎ Labor share = 2/3, Capital share = 1/3. This is why $\alpha = 1/3$ in the Cobb-Douglas exponent.</div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T5 · Production</span>
+  <h3>Proof: Per Capita Production Function</h3>
+  <p>Derive $y = \bar{A}k^{1/3}$ from the aggregate production function using CRS.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">Start with $Y = \bar{A}K^{1/3}L^{2/3}$ and the CRS property $F(\beta K, \beta L) = \beta F(K,L)$. Set $\beta = 1/L$:
+      $$F\!\left(\frac{K}{L}, 1\right) = \frac{1}{L}F(K,L) = \frac{Y}{L}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">Define per-capita variables $y \equiv Y/L$ and $k \equiv K/L$. Then:
+      $$y = F(k, 1)$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">Evaluate with the Cobb-Douglas functional form:
+      $$y = \bar{A}k^{1/3} \cdot 1^{2/3} = \bar{A}k^{1/3}$$</div>
+  </div>
+  <div class="qed">∎ $y = \bar{A}k^{1/3}$</div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T5 · Production</span>
+  <h3>Proof: TFP as a Residual — Relative Productivity Formula</h3>
+  <p>Derive the formula for country TFP relative to the US.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">The per-capita production function for any country $c$ is:
+      $$y_c = A_c \, k_c^{1/3}$$
+      and for the US:
+      $$y_{US} = A_{US} \, k_{US}^{1/3}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">Divide the two equations:
+      $$\frac{y_c}{y_{US}} = \frac{A_c \, k_c^{1/3}}{A_{US} \, k_{US}^{1/3}} = \frac{A_c}{A_{US}} \cdot \left(\frac{k_c}{k_{US}}\right)^{1/3}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">Solve for the relative TFP:
+      $$\boxed{\frac{A_c}{A_{US}} = \frac{y_c/y_{US}}{(k_c/k_{US})^{1/3}}}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body"><strong>Worked example — India:</strong> $y_c/y_{US} = 0.074$, $k_c/k_{US} = 0.035$.
+      $$\frac{A_{India}}{A_{US}} = \frac{0.074}{(0.035)^{1/3}} = \frac{0.074}{0.327} \approx 0.23$$
+      India's TFP is only 23% of US TFP. Capital alone predicts $y/y_{US} = 0.327$, far above the actual 0.074 — TFP accounts for the remaining gap.</div>
+  </div>
+  <div class="qed">∎ TFP is a "residual" because it is computed from data, not measured directly. It captures everything (technology, institutions, human capital, allocation efficiency) not captured by $k$.</div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T6 · Solow</span>
+  <h3>Proof: Solow Steady State $k^*$ and $y^*$</h3>
+  <p>Derive the steady-state capital and output per person analytically.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">The per-capita capital accumulation equation is:
+      $$\Delta k_{t+1} = \bar{s}\bar{A}k_t^{1/3} - \bar{d}k_t$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">At steady state, capital stops changing: $\Delta k = 0$. So investment equals depreciation:
+      $$\bar{s}\bar{A}(k^*)^{1/3} = \bar{d}k^*$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">Divide both sides by $(k^*)^{1/3}$:
+      $$\bar{s}\bar{A} = \bar{d}(k^*)^{2/3}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">Raise both sides to the power $3/2$:
+      $$\boxed{k^* = \left(\frac{\bar{s}\bar{A}}{\bar{d}}\right)^{3/2}}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 5</div>
+    <div class="proof-step-body">Plug $k^*$ into the production function $y^* = \bar{A}(k^*)^{1/3}$:
+      $$y^* = \bar{A}\left(\frac{\bar{s}\bar{A}}{\bar{d}}\right)^{1/2} = \bar{A}\cdot\frac{(\bar{s}\bar{A})^{1/2}}{\bar{d}^{1/2}} = \frac{\bar{A}^{3/2}\bar{s}^{1/2}}{\bar{d}^{1/2}}$$
+      $$\boxed{y^* = \bar{A}^{3/2}\!\left(\frac{\bar{s}}{\bar{d}}\right)^{1/2}}$$</div>
+  </div>
+  <div class="qed">∎ Both $k^*$ and $y^*$ increase with savings rate and TFP; decrease with depreciation rate.</div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T6 · Solow</span>
+  <h3>Proof: No Sustained Growth Without Productivity Growth</h3>
+  <p>Show that in the basic Solow model, $g_y \to 0$ as $k \to k^*$.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">The economy's growth rate of capital per person satisfies:
+      $$g_k = \frac{\Delta k_{t+1}}{k_t} = \frac{\bar{s}\bar{A}k_t^{1/3} - \bar{d}k_t}{k_t} = \bar{s}\bar{A}k_t^{-2/3} - \bar{d}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">As $k_t \to k^*$, the term $k_t^{-2/3}$ converges to $(k^*)^{-2/3}$. At $k^*$, investment equals depreciation:
+      $$\bar{s}\bar{A}(k^*)^{1/3} = \bar{d}k^* \implies \bar{s}\bar{A}(k^*)^{-2/3} = \bar{d}$$
+      so $g_k \to \bar{d} - \bar{d} = 0$.</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">Since $y_t = \bar{A}k_t^{1/3}$ and $\bar{A}$ is constant, the growth rate of output per person is:
+      $$g_y = \frac{1}{3}g_k \xrightarrow{k\to k^*} \frac{1}{3}\cdot 0 = 0$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body"><strong>Why?</strong> Diminishing returns: as $k$ rises, each additional unit of capital produces less output ($MPK = \frac{1}{3}\bar{A}k^{-2/3}$ falls). Investment is a constant fraction of output, so investment per unit of capital falls. Eventually it can only cover depreciation — net investment hits zero.
+      $$\boxed{g_y^* = 0 \text{ in the basic Solow model (no productivity growth)}}$$</div>
+  </div>
+  <div class="qed">∎ Only a permanent rise in $\bar{A}$ (TFP) shifts the investment curve up, establishing a new, higher steady state. Capital accumulation alone cannot sustain growth.</div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T7 · Solow + Growth</span>
+  <h3>Proof: BGP Growth Rate $g_y^* = \tfrac{3}{2}g_A$</h3>
+  <p>Derive the balanced growth path growth rate of output per person.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">From the per-capita production function $y_t = A_t k_t^{1/3}$, apply the growth rate power and product rules:
+      $$g_y = g_A + \frac{1}{3}g_k$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">Definition of a balanced growth path: every endogenous variable grows at a constant rate. In particular, $g_y^* = g_k^*$ (output per person and capital per person grow at the same rate).</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">Substitute $g_k^* = g_y^*$ into the equation from Step 1:
+      $$g_y^* = g_A + \frac{1}{3}g_y^*$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">Rearrange and solve:
+      $$g_y^* - \frac{1}{3}g_y^* = g_A \implies \frac{2}{3}g_y^* = \bar{g}_A$$
+      $$\boxed{g_y^* = \frac{3}{2}\bar{g}_A}$$</div>
+  </div>
+  <div class="qed">∎ Long-run growth in output per person is entirely determined by productivity growth — amplified by a factor of 3/2.</div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T7 · Solow + Growth</span>
+  <h3>Proof: BGP Level of Output per Person</h3>
+  <p>Derive $y_t^* = A_t^{3/2}\!\left(\dfrac{\bar{s}}{\tfrac{3}{2}\bar{g}_A + \bar{d} + \bar{n}}\right)^{1/2}$.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">From the capital accumulation equation (dividing by $K_t$ and subtracting population growth):
+      $$g_k = \bar{s}\frac{y_t}{k_t} - \bar{d} - \bar{n}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">On the BGP, $g_k^* = g_y^* = \tfrac{3}{2}\bar{g}_A$. Substitute and solve for the BGP ratio $y_t^*/k_t^*$:
+      $$\frac{3}{2}\bar{g}_A = \bar{s}\frac{y_t^*}{k_t^*} - \bar{d} - \bar{n}$$
+      $$\frac{y_t^*}{k_t^*} = \frac{\tfrac{3}{2}\bar{g}_A + \bar{d} + \bar{n}}{\bar{s}}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">From the production function $y_t^* = A_t(k_t^*)^{1/3}$, so $k_t^* = (y_t^*/A_t)^3$. Substitute into the ratio:
+      $$\frac{y_t^*}{(y_t^*/A_t)^3} = \frac{\tfrac{3}{2}\bar{g}_A + \bar{d} + \bar{n}}{\bar{s}}$$
+      $$\frac{A_t^3}{(y_t^*)^2} = \frac{\tfrac{3}{2}\bar{g}_A + \bar{d} + \bar{n}}{\bar{s}}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">Solve for $y_t^*$:
+      $$(y_t^*)^2 = \bar{s}\cdot\frac{A_t^3}{\tfrac{3}{2}\bar{g}_A + \bar{d} + \bar{n}}$$
+      $$\boxed{y_t^* = A_t^{3/2}\left(\frac{\bar{s}}{\tfrac{3}{2}\bar{g}_A + \bar{d} + \bar{n}}\right)^{1/2}}$$</div>
+  </div>
+  <div class="qed">∎ The level grows at rate $\tfrac{3}{2}\bar{g}_A$ because $A_t$ itself grows at $\bar{g}_A$ and is raised to the power $3/2$. ✓</div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T8 · Labor Market</span>
+  <h3>Proof: Natural Rate of Unemployment $u^* = \lambda_s/(\lambda_s + \lambda_f)$</h3>
+  <p>Derive the steady-state (flow-consistent) unemployment rate from the bathtub model.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">The flow equation for the number unemployed is:
+      $$\Delta U_{t+1} = \lambda_s E_t - \lambda_f U_t$$
+      Inflows: $\lambda_s E_t$ (employed workers who lose jobs). Outflows: $\lambda_f U_t$ (unemployed who find jobs).</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">Divide through by labor force size $L_t$ and use $E_t/L_t = 1 - u_t$, $U_t/L_t = u_t$:
+      $$\Delta u_{t+1} = \lambda_s(1-u_t) - \lambda_f u_t$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">At the steady state (flow-consistent rate), $\Delta u_{t+1} = 0$:
+      $$0 = \lambda_s(1 - u^*) - \lambda_f u^*$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">Expand and collect terms in $u^*$:
+      $$\lambda_s = \lambda_s u^* + \lambda_f u^* = (\lambda_s + \lambda_f)u^*$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 5</div>
+    <div class="proof-step-body">Divide both sides by $(\lambda_s + \lambda_f)$:
+      $$\boxed{u^* = \frac{\lambda_s}{\lambda_s + \lambda_f}}$$</div>
+  </div>
+  <div class="qed">∎ At $u^*$: inflows $\lambda_s(1-u^*)$ exactly equal outflows $\lambda_f u^*$ — unemployment is in "flow equilibrium."</div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T8 · Labor Market</span>
+  <h3>Proof: Higher Separation Rate Raises $u^*$</h3>
+  <p>Show formally that $\partial u^*/\partial \lambda_s > 0$.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">Write $u^* = \lambda_s(\lambda_s + \lambda_f)^{-1}$ and differentiate with respect to $\lambda_s$ using the product rule:
+      $$\frac{\partial u^*}{\partial \lambda_s} = (\lambda_s + \lambda_f)^{-1} + \lambda_s \cdot (-1)(\lambda_s + \lambda_f)^{-2}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">Factor out $(\lambda_s + \lambda_f)^{-2}$:
+      $$= \frac{1}{(\lambda_s+\lambda_f)^2}\left[(\lambda_s+\lambda_f) - \lambda_s\right] = \frac{\lambda_f}{(\lambda_s+\lambda_f)^2}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">Since $\lambda_f > 0$ and $(\lambda_s + \lambda_f)^2 > 0$:
+      $$\frac{\partial u^*}{\partial \lambda_s} = \frac{\lambda_f}{(\lambda_s+\lambda_f)^2} > 0$$</div>
+  </div>
+  <div class="qed">∎ A higher job separation rate unambiguously raises the natural rate of unemployment.</div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T8 · Labor Market</span>
+  <h3>Proof: Bathtub Model Converges to $u^*$ from Any Starting Point</h3>
+  <p>Show that $|u_t - u^*|$ shrinks each period so $u_t \to u^*$.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">Define the deviation from the natural rate: $\varepsilon_t \equiv u_t - u^*$. We want to show $|\varepsilon_{t+1}| < |\varepsilon_t|$.</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">From the flow equation $\Delta u_{t+1} = \lambda_s(1-u_t) - \lambda_f u_t$, write $u_{t+1}$:
+      $$u_{t+1} = u_t + \lambda_s(1-u_t) - \lambda_f u_t = u_t(1 - \lambda_s - \lambda_f) + \lambda_s$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">Subtract $u^* = \lambda_s/(\lambda_s + \lambda_f)$ from both sides. Note that $\lambda_s = u^*(\lambda_s + \lambda_f)$:
+      $$\varepsilon_{t+1} = \varepsilon_t(1 - \lambda_s - \lambda_f)$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">Therefore:
+      $$\varepsilon_t = (1 - \lambda_s - \lambda_f)^t \, \varepsilon_0$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 5</div>
+    <div class="proof-step-body">Since $\lambda_s, \lambda_f \in (0,1)$ and $\lambda_s + \lambda_f < 1$ in practice:
+      $$0 < 1 - \lambda_s - \lambda_f < 1 \implies |1 - \lambda_s - \lambda_f|^t \to 0$$
+      $$\boxed{u_t = u^* + (1 - \lambda_s - \lambda_f)^t(u_0 - u^*) \longrightarrow u^*}$$</div>
+  </div>
+  <div class="qed">∎ Convergence is geometric at rate $(1-\lambda_s - \lambda_f)$ per period. Higher $\lambda_s + \lambda_f$ means faster convergence — a more dynamic labor market returns to its natural rate more quickly.</div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T9 · Short Run</span>
+  <h3>Proof: Decomposing Actual Output into Trend and Gap</h3>
+  <p>Derive $Y_t = \bar{Y}_t(1 + \tilde{Y}_t)$ from the definition of the output gap.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">Define the output gap (short-run output) as the percentage deviation of actual from potential:
+      $$\tilde{Y}_t \equiv \frac{Y_t - \bar{Y}_t}{\bar{Y}_t}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">Multiply both sides by $\bar{Y}_t$:
+      $$\tilde{Y}_t \cdot \bar{Y}_t = Y_t - \bar{Y}_t$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">Add $\bar{Y}_t$ to both sides:
+      $$Y_t = \bar{Y}_t + \tilde{Y}_t \cdot \bar{Y}_t = \bar{Y}_t(1 + \tilde{Y}_t)$$
+      $$\boxed{Y_t = \bar{Y}_t(1 + \tilde{Y}_t)}$$</div>
+  </div>
+  <div class="qed">∎ Actual output equals potential output scaled up or down by $(1 + \tilde{Y}_t)$. A recession means $\tilde{Y}_t < 0$, so $Y_t < \bar{Y}_t$.</div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T10 · Money</span>
+  <h3>Proof: Fisher Equation $R_t \approx i_t - \pi_t$</h3>
+  <p>Derive the relationship between real and nominal interest rates.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">If you save $\$S_t$ at nominal rate $i_t$, your nominal savings next period are:
+      $$S_{t+1}^{\text{nom}} = (1+i_t)S_t$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">The real value of savings (purchasing power) adjusts for inflation $\pi_t$. Prices rise by factor $(1+\pi_t)$, so:
+      $$S_{t+1}^{\text{real}} = \frac{(1+i_t)}{(1+\pi_t)}S_t$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">The real interest rate is the net growth in real savings:
+      $$1 + R_t = \frac{1+i_t}{1+\pi_t}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">This is the exact Fisher equation. For small $i_t$ and $\pi_t$, expand the denominator using $(1+\pi_t)^{-1} \approx 1 - \pi_t$:
+      $$1 + R_t \approx (1+i_t)(1-\pi_t) = 1 + i_t - \pi_t - i_t\pi_t \approx 1 + i_t - \pi_t$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 5</div>
+    <div class="proof-step-body">Subtract 1 from both sides:
+      $$\boxed{R_t \approx i_t - \pi_t}$$
+      (The cross-term $i_t\pi_t$ is negligible when both rates are small.)</div>
+  </div>
+  <div class="qed">∎ The real rate equals the nominal rate minus inflation. With $i_t = 5\%$ and $\pi_t = 3\%$, the real return is only $\approx 2\%$.</div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T11 · IS Curve</span>
+  <h3>Proof: Deriving the IS Curve from the Short-Run Model</h3>
+  <p>Derive $\tilde{Y}_t = \bar{a}_t - \bar{b}(R_t - \bar{r})$ from the national income identity and model equations for each expenditure component.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">Start with the national income accounting identity, dividing both sides by potential output $\bar{Y}_t$:
+      $$\frac{Y_t}{\bar{Y}_t} = \frac{C_t}{\bar{Y}_t} + \frac{I_t}{\bar{Y}_t} + \frac{G_t}{\bar{Y}_t} + \frac{EX_t}{\bar{Y}_t} - \frac{IM_t}{\bar{Y}_t}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">Substitute the five model equations for each expenditure share:
+      $$\frac{Y_t}{\bar{Y}_t} = \bar{a}_{c,t} + \left[\bar{a}_{i,t} - \bar{b}(R_t - \bar{r})\right] + \bar{a}_{g,t} + \bar{a}_{ex,t} - \bar{a}_{im,t}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">Subtract 1 from both sides, using $\tilde{Y}_t \equiv Y_t/\bar{Y}_t - 1$:
+      $$\tilde{Y}_t = \bar{a}_{c,t} + \bar{a}_{i,t} + \bar{a}_{g,t} + \bar{a}_{ex,t} - \bar{a}_{im,t} - 1 - \bar{b}(R_t - \bar{r})$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">Define the aggregate demand shock as the sum of all exogenous expenditure components relative to potential:
+      $$\bar{a}_t \equiv \bar{a}_{c,t} + \bar{a}_{i,t} + \bar{a}_{g,t} + \bar{a}_{ex,t} - \bar{a}_{im,t} - 1$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 5</div>
+    <div class="proof-step-body">Substitute to obtain the IS curve:
+      $$\boxed{\tilde{Y}_t = \bar{a}_t - \bar{b}(R_t - \bar{r})}$$</div>
+  </div>
+  <div class="qed">∎ The IS curve is downward-sloping in $(R_t, \tilde{Y}_t)$ space. When $R_t = \bar{r}$ (interest rate at trend), output equals the demand shock: $\tilde{Y}_t = \bar{a}_t$. In the long run, $\bar{a}_t = 0$ so $\tilde{Y}_t = 0$.</div>
+</div>
+
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T11 · IS Curve</span>
+  <h3>Proof: Multiplier Effect on the IS Curve</h3>
+  <p>Derive the multiplied IS curve when consumption also depends on current income ($\tilde{Y}_t$) with MPC $\bar{x} \in (0,1)$.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">Modified consumption equation:
+      $$\frac{C_t}{\bar{Y}_t} = \bar{a}_{c,t} + \bar{x}\tilde{Y}_t$$
+      where $\bar{x}$ (the MPC) $\in (0,1)$ captures the fraction of extra income spent on consumption.</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">Substitute into the income identity (as in the baseline derivation), now with the additional $\bar{x}\tilde{Y}_t$ term on the right:
+      $$\tilde{Y}_t = \bar{a}_t + \bar{x}\tilde{Y}_t - \bar{b}(R_t - \bar{r})$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">Move the $\bar{x}\tilde{Y}_t$ term to the left side:
+      $$(1 - \bar{x})\tilde{Y}_t = \bar{a}_t - \bar{b}(R_t - \bar{r})$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">Divide both sides by $(1 - \bar{x}) > 0$:
+      $$\boxed{\tilde{Y}_t = \frac{1}{1-\bar{x}}\left[\bar{a}_t - \bar{b}(R_t - \bar{r})\right]}$$
+      The multiplier $\frac{1}{1-\bar{x}} > 1$ amplifies any initial shock.</div>
+  </div>
+  <div class="qed">∎ Because $0 < \bar{x} < 1$, the multiplier exceeds 1. A $1\%$ demand shock produces more than $1\%$ output change — each round of higher income induces further consumption, which raises income again, and so on.</div>
+</div>
+
+</main>
+</div><!-- end proofs-view -->
+
+<!-- ===== FLASHCARDS ===== -->
+<div id="flashcard-view" style="display:none;">
+  <div class="section-title">Flashcards</div>
+  <div class="section-subtitle">Click the card to reveal the answer</div>
+  <div class="fc-progress" id="fc-progress">Card 1 of --</div>
+  <div class="fc-wrap">
+    <div class="fc-inner" id="fc-inner" onclick="flipCard()">
+      <div class="fc-front">
+        <div class="fc-label">Question</div>
+        <div class="fc-text" id="fc-q"></div>
+      </div>
+      <div class="fc-back">
+        <div class="fc-label">Answer</div>
+        <div class="fc-text" id="fc-a"></div>
+      </div>
+    </div>
+  </div>
+  <div class="fc-controls">
+    <button class="fc-btn" onclick="prevCard()">← Prev</button>
+    <button class="fc-btn primary" onclick="flipCard()">Flip</button>
+    <button class="fc-btn" onclick="nextCard()">Next →</button>
+  </div>
+  <p class="fc-hint">Click card or press Flip to reveal · Navigate with Prev/Next</p>
+</div>
+
+<!-- ===== QUIZ ===== -->
+<div id="quiz-view" style="display:none;">
+  <div class="section-title">Quiz</div>
+  <div class="section-subtitle">Test yourself on Topics 1–11 · Answers revealed after selection</div>
+  <div class="quiz-score" id="quiz-score">Score: 0 / 0</div>
+  <div id="quiz-container"></div>
+</div>
+
+</div><!-- end app-wrapper -->
+<script src="app.js"></script>
+</body>
+</html>
