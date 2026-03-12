@@ -31,6 +31,7 @@
   <button class="mode-btn" onclick="setMode('proofs')">Proofs</button>
   <button class="mode-btn" onclick="setMode('flashcards')">Flashcards</button>
   <button class="mode-btn" onclick="setMode('quiz')">Quiz</button>
+  <button class="mode-btn" onclick="setMode('homework')" style="color:#a78bfa;">Homework</button>
 </div>
 
 <div class="topic-strip" id="topic-strip" style="display:none;">
@@ -1832,6 +1833,870 @@
 </div>
 
 </div><!-- end app-wrapper -->
+
+<!-- ===== HOMEWORK VIEW ===== -->
+<div id="homework-view" style="display:none;">
+<div id="hw-main" style="padding:24px 28px;">
+
+<div style="font-family:var(--font-head);font-size:1.75rem;font-weight:700;color:var(--text);margin-bottom:4px;">Homework</div>
+<div style="font-size:0.8rem;color:var(--muted);letter-spacing:0.04em;margin-bottom:6px;">ECO 320L · Spring 2026 · Dr. Trenton Herriford</div>
+<div style="font-size:0.78rem;color:#a78bfa;font-family:var(--font-mono);margin-bottom:18px;">Click any problem to reveal full worked answer ▸</div>
+
+<div class="hw-ps-tabs">
+  <button class="hw-ps-tab" onclick="switchPS(1,this)">PS 1</button>
+  <button class="hw-ps-tab" onclick="switchPS(2,this)">PS 2</button>
+  <button class="hw-ps-tab active" onclick="switchPS(3,this)">PS 3</button>
+</div>
+
+<!-- ===== PS1 ===== -->
+<div class="hw-ps-pane" id="hw-ps1">
+<div class="hw-part">
+<div class="hw-part-title">Part 1 · GDP Transactions</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.1a</span>
+    <span class="hw-prob-q">A computer company buys $2M in parts, assembles them, and sells computers for $5M. How much does GDP rise? Which component?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Solution</div>
+    <p>GDP rises by <strong>$5 million</strong> — the final sale price of the computers. The $2M in parts are intermediate goods and are excluded to avoid double-counting.</p>
+    <p>As for the component: there is not enough information to say definitively. The computers could be C (household consumption), I (capital investment), G (government purchase), or NX (exports). An exam would specify the buyer.</p>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.1b</span>
+    <span class="hw-prob-q">A real estate agent sells a house for $300,000 (bought 10 yrs ago for $150,000) and earns an $11,000 commission. GDP impact?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Solution</div>
+    <p>GDP rises by <strong>$11,000</strong> (the commission only). The house itself was already counted in GDP when it was built 10 years ago — reselling existing goods does not count again. The commission represents a current-period service. It counts as consumption (C).</p>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.1c</span>
+    <span class="hw-prob-q">During a recession, the government raises unemployment benefits by $200M. GDP impact?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Solution</div>
+    <p><strong>No impact on GDP.</strong> Unemployment benefits are a transfer payment — the government is not purchasing a good or service in exchange. Transfer payments redistribute income but do not represent production. Only government purchases of goods/services count in G.</p>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.1d</span>
+    <span class="hw-prob-q">A new U.S. airline imports $70M worth of Airbus planes from Europe. GDP impact?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Solution</div>
+    <p><strong>No impact on GDP.</strong> Using the expenditure approach: Investment (I) rises by $70M (capital purchase), but Imports (IM) also rise by $70M, so NX falls by $70M. The two effects cancel exactly. Equivalently: these planes were not produced in the U.S., so they add nothing to U.S. GDP.</p>
+    <div class="hw-final">$\Delta \text{GDP} = \Delta I + \Delta NX = +70 - 70 = 0$</div>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.1e</span>
+    <span class="hw-prob-q">A new European airline buys $40M of Boeing planes (made in the U.S.). GDP impact?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Solution</div>
+    <p><strong>GDP rises by $40 million.</strong> This is a U.S. export — produced in the U.S. and purchased by a foreign entity. Exports raise NX (and thus GDP) by $40M. Component: NX (net exports).</p>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.1f</span>
+    <span class="hw-prob-q">A store buys $110K of Belgian chocolate and sells it to U.S. consumers for $130K. GDP impact?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Step 1</div><div class="hw-step-body">Imports (IM) rise by $110K → NX falls by $110K</div></div>
+    <div class="hw-step"><div class="hw-step-num">Step 2</div><div class="hw-step-body">Consumer purchases rise by $130K → C rises by $130K</div></div>
+    <div class="hw-step"><div class="hw-step-num">Net</div><div class="hw-step-body">$\Delta \text{GDP} = +130{,}000 - 110{,}000 = +\$20{,}000$</div></div>
+    <p>The store added $20K of value through its domestic resale service. Only U.S. value-added counts in U.S. GDP.</p>
+  </div>
+</div>
+</div>
+
+<div class="hw-part">
+<div class="hw-part-title">Part 1 (cont.) · PPP &amp; Real GDP Comparisons</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.2a</span>
+    <span class="hw-prob-q">India GDP = 152T rupees, U.S. GDP = $17.7T, exchange rate = 65.1 rupees/$. What is India's GDP as a share of U.S. GDP using exchange rates only?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Step 1</div><div class="hw-step-body">Convert India GDP to USD: $\dfrac{152 \text{ trillion rupees}}{65.1 \text{ rupees/\$}} \approx \$2.34 \text{ trillion}$</div></div>
+    <div class="hw-step"><div class="hw-step-num">Step 2</div><div class="hw-step-body">Ratio to U.S.: $\dfrac{2.34}{17.7} \approx 13.2\%$</div></div>
+    <div class="hw-final">Using exchange rates only, India's economy is about $\boxed{13.2\%}$ the size of the U.S. economy.</div>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.2b</span>
+    <span class="hw-prob-q">India's price level / U.S. price level = 0.277. What is India's GDP as a share of U.S. GDP in common (PPP-adjusted) prices?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Step 1</div><div class="hw-step-body">U.S. prices are higher by a factor of $1/0.277 \approx 3.61$.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Step 2</div><div class="hw-step-body">PPP-adjusted India GDP: $\$2.34\text{T} \times 3.61 \approx \$8.44 \text{ trillion}$</div></div>
+    <div class="hw-step"><div class="hw-step-num">Step 3</div><div class="hw-step-body">Ratio: $\dfrac{8.44}{17.7} \approx 47.7\%$</div></div>
+    <div class="hw-final">In PPP-adjusted common prices, India's economy is about $\boxed{47\%}$ of the U.S. economy — far larger than the 13.2% exchange-rate estimate.</div>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.2c</span>
+    <span class="hw-prob-q">Why are the two numbers (13.2% vs 47%) so different?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Explanation</div>
+    <p>Many goods and services — food, haircuts, medical visits — are priced much lower in India than in the U.S. (in dollar terms). This reflects lower wages, rents, and costs of production in poorer countries. The raw exchange-rate comparison treats a dollar of Indian output as worth the same as a dollar of U.S. output, but a dollar buys much more in India. PPP adjustment corrects for this by asking: how much would the same basket of goods cost at U.S. prices? That gives a much larger real economy.</p>
+  </div>
+</div>
+</div>
+
+<div class="hw-part">
+<div class="hw-part-title">Part 1 (cont.) · Nominal vs Real GDP &amp; Chain-Weighting</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.3</span>
+    <span class="hw-prob-q">Economy: oranges &amp; boomerangs. Fill in nominal GDP, real GDP (2025 prices), real GDP (2026 prices), chained real GDP, and all % changes.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Nominal GDP</div><div class="hw-step-body">
+      $2025: \$1\times100 + \$3\times20 = \$160$<br>
+      $2026: \$1.10\times105 + \$3.10\times22 = \$115.50 + \$68.20 = \$183.70$<br>
+      $\%\Delta = \dfrac{183.70-160}{160}\times100 \approx 14.81\%$
+    </div></div>
+    <div class="hw-step"><div class="hw-step-num">Real GDP (2025 prices)</div><div class="hw-step-body">
+      $2025: \$1\times100 + \$3\times20 = \$160$<br>
+      $2026: \$1\times105 + \$3\times22 = \$105 + \$66 = \$171$<br>
+      $\%\Delta \approx 6.88\%$
+    </div></div>
+    <div class="hw-step"><div class="hw-step-num">Real GDP (2026 prices)</div><div class="hw-step-body">
+      $2025: \$1.10\times100 + \$3.10\times20 = \$110 + \$62 = \$172$<br>
+      $2026: \$183.70$ (same as nominal in benchmark year)<br>
+      $\%\Delta \approx 6.80\%$
+    </div></div>
+    <div class="hw-step"><div class="hw-step-num">Fisher Index</div><div class="hw-step-body">
+      $$FI = \sqrt{\frac{172}{183.70}\times\frac{160}{171}} \approx \sqrt{0.9363\times0.9357} \approx 0.9360$$
+    </div></div>
+    <div class="hw-step"><div class="hw-step-num">Chained Real GDP (2026 base)</div><div class="hw-step-body">
+      $2025: \$183.70 \times 0.9360 \approx \$171.94$<br>
+      $2026: \$183.70$<br>
+      $\%\Delta \approx 6.84\%$
+    </div></div>
+    <div class="hw-final">
+      % Changes: Qty oranges +5%, Qty boomerangs +10%, Price oranges +10%, Price boomerangs +3.33%<br>
+      Nominal GDP +14.81% · Real (2025 prices) +6.88% · Real (2026 prices) +6.80% · Chained +6.84%
+    </div>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.4</span>
+    <span class="hw-prob-q">Calculate the inflation rate 2025–2026 using the chain-weighted GDP deflator.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Formula</div><div class="hw-step-body">$$\text{GDP Deflator} = 100 \times \frac{\text{Nominal GDP}}{\text{Real GDP (chained)}}$$</div></div>
+    <div class="hw-step"><div class="hw-step-num">Calculate</div><div class="hw-step-body">
+      $\text{Deflator}_{2025} = 100 \times \dfrac{160}{171.94} \approx 93.06$<br>
+      $\text{Deflator}_{2026} = 100 \times \dfrac{183.70}{183.70} = 100$
+    </div></div>
+    <div class="hw-step"><div class="hw-step-num">Inflation</div><div class="hw-step-body">$$\pi = \frac{100 - 93.06}{93.06}\times100 \approx \boxed{7.46\%}$$</div></div>
+  </div>
+</div>
+</div>
+
+<div class="hw-part">
+<div class="hw-part-title">Part 2 · Inflation &amp; CPI</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">2.1</span>
+    <span class="hw-prob-q">Using the CPI table (2023=100), convert (a) Babe Ruth's 1932 salary of $80,000 and (b) a 1940s nickel Coke to 2023 dollars.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p>Formula: $\text{Real value} = \text{Nominal value} \times \dfrac{\text{CPI}_{2023}}{\text{CPI}_{\text{year}}}$</p>
+    <div class="formula-box" style="margin:10px 0;">
+      (a) Babe Ruth (1932 ≈ 1930 CPI = 5.48):<br>
+      $\$80{,}000 \times \dfrac{100}{5.48} \approx \mathbf{\$1{,}459{,}854}$<br><br>
+      (b) Nickel Coke (1940s ≈ 1950 CPI = 7.90):<br>
+      $\$0.05 \times \dfrac{100}{7.90} \approx \mathbf{\$0.63}$
+    </div>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">2.2</span>
+    <span class="hw-prob-q">Compute average annual inflation: (a) 1980–2010 and (b) 1970–1980. Compare.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Formula</div><div class="hw-step-body">$$\bar{g} = \left(\frac{\text{CPI}_\text{end}}{\text{CPI}_\text{start}}\right)^{1/(t_\text{end}-t_\text{start})} - 1$$</div></div>
+    <div class="formula-box" style="margin:10px 0;">
+      (a) 1980–2010: $\left(\dfrac{71.56}{27.04}\right)^{1/30} - 1 \approx \mathbf{3.30\%}$ per year<br><br>
+      (b) 1970–1980: $\left(\dfrac{27.04}{12.75}\right)^{1/10} - 1 \approx \mathbf{7.81\%}$ per year
+    </div>
+    <p>The 1970s had far higher inflation than the subsequent three decades. The period 1966–1979 is known as the "Great Inflation." The Fed's tightening under Paul Volcker in the early 1980s broke the inflationary spiral, leading to the much lower rates seen in 1980–2010.</p>
+  </div>
+</div>
+</div>
+
+<div class="hw-part">
+<div class="hw-part-title">Part 3 · Growth Rates &amp; Rule of 70</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">3.1</span>
+    <span class="hw-prob-q">Ethiopia per capita income in 2017 = $1,900. Project to 2050 at (a) 1%/yr and (b) 2.5%/yr.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Formula</div><div class="hw-step-body">$y_{2050} = \$1{,}900 \times (1+\bar{g})^{33}$ &nbsp; (2050 − 2017 = 33 years)</div></div>
+    <div class="formula-box">
+      (a) $g=1\%$: $\$1{,}900\times(1.01)^{33} \approx \mathbf{\$2{,}639}$<br>
+      (b) $g=2.5\%$: $\$1{,}900\times(1.025)^{33} \approx \mathbf{\$4{,}292}$
+    </div>
+    <p>The difference illustrates the power of compounding — 1.5 extra percentage points of growth over 33 years nearly doubles income.</p>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">3.2</span>
+    <span class="hw-prob-q">Compute average annual per capita GDP growth 1980–2019 for the U.S., Canada, and China (in 2017 USD).</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Formula</div><div class="hw-step-body">$\bar{g} = \left(\dfrac{y_{2019}}{y_{1980}}\right)^{1/39} - 1$</div></div>
+    <div class="formula-box">
+      U.S.: $\left(\dfrac{63{,}393}{30{,}788}\right)^{1/39} - 1 \approx \mathbf{1.87\%}$/yr<br>
+      Canada: $\left(\dfrac{49{,}359}{27{,}694}\right)^{1/39} - 1 \approx \mathbf{1.49\%}$/yr<br>
+      China: $\left(\dfrac{13{,}988}{1{,}680}\right)^{1/39} - 1 \approx \mathbf{5.58\%}$/yr
+    </div>
+    <p>China's growth rate is roughly 3× that of the U.S. — consistent with a country far below its steady state (transition dynamics in the Solow model). At 5.58%/yr, incomes double every ~12.5 years.</p>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">3.3 (a–c)</span>
+    <span class="hw-prob-q">Use the Rule of 70 to describe log-scale GDP paths: (a) 5%/yr for 70 yrs, (b) piecewise 2%→7%→5%, (c) 7% for 50 yrs then 1% for 140 yrs.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p><strong>Rule of 70:</strong> Doubling time $\approx 70/(\text{growth rate in \%})$ years. Start: $y_0 = \$10{,}000$.</p>
+    <div class="hw-sub"><div class="hw-sub-label">(a) Constant 5%/yr, 2025–2095 (70 yrs)</div></div>
+    <p>Doubles every 14 yrs. 70 yrs ÷ 14 = <strong>5 doublings</strong>. $\$10K \to \$320K$. Straight line on log scale.</p>
+    <div class="hw-sub"><div class="hw-sub-label">(b) 2% (70 yrs) → 7% (20 yrs) → 5% (28 yrs)</div></div>
+    <p>2%: doubles every 35 yrs → 2 doublings ($10K→40K$) by 2095.<br>
+    7%: doubles every 10 yrs → 2 doublings ($40K→160K$) by 2115.<br>
+    5%: doubles every 14 yrs → 2 doublings ($160K→640K$) by 2143.<br>
+    Total 6 doublings. Piecewise linear on log scale — slope increases in middle segment, then decreases.</p>
+    <div class="hw-sub"><div class="hw-sub-label">(c) 7% (50 yrs) → 1% (140 yrs)</div></div>
+    <p>7%: doubles every 10 yrs → 5 doublings ($10K→320K$) by 2075.<br>
+    1%: doubles every 70 yrs → 2 doublings ($320K→1.28M$) by 2215.<br>
+    Total 7 doublings. Steep line 2025–2075, then very shallow line 2075–2215.</p>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">3.4</span>
+    <span class="hw-prob-q">Minimum livable income = $350. U.S. per capita income in 2017 = $61,000. (a) How long could 2% growth have lasted? (b) What would 3% growth imply for per capita income in 1800?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-sub"><div class="hw-sub-label">(a) Max years of 2% growth</div></div>
+    <div class="hw-step"><div class="hw-step-num">Setup</div><div class="hw-step-body">$\$61{,}000 = \$350 \times (1.02)^n \;\Rightarrow\; n = \dfrac{\ln(61{,}000/350)}{\ln(1.02)}$</div></div>
+    <div class="hw-final">$n = \dfrac{\ln(174.3)}{\ln(1.02)} \approx \dfrac{5.160}{0.0198} \approx \boxed{260 \text{ years}}$</div>
+    <div class="hw-sub" style="margin-top:14px;"><div class="hw-sub-label">(b) Implied per capita income in 1800 if true growth was 3%</div></div>
+    <div class="hw-step"><div class="hw-step-num">Setup</div><div class="hw-step-body">$\$61{,}000 = y_{1800} \times (1.03)^{217} \;\Rightarrow\; y_{1800} = \dfrac{\$61{,}000}{(1.03)^{217}}$</div></div>
+    <div class="hw-final">$y_{1800} \approx \dfrac{\$61{,}000}{611} \approx \boxed{\$99.92}$ — implausibly low, below subsistence. This suggests true historical growth was slower than 3%, or that growth accelerated markedly in the modern era.</div>
+  </div>
+</div>
+</div>
+</div><!-- end hw-ps1 -->
+
+<!-- ===== PS2 ===== -->
+<div class="hw-ps-pane" id="hw-ps2">
+
+<div class="hw-part">
+<div class="hw-part-title">Part 1 · Production Function &amp; TFP</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.1a–b</span>
+    <span class="hw-prob-q">For the U.S., Canada, China, Mexico, Ethiopia: compute capital per person and per capita GDP relative to the U.S. (columns 3 &amp; 4).</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p>Divide each country's value by the U.S. value to express as a ratio (U.S. = 1).</p>
+    <div class="formula-box">
+      <strong>Capital per person (col 3):</strong><br>
+      Canada: $233{,}116/209{,}865 \approx 1.111$ · China: $70{,}823/209{,}865 \approx 0.338$<br>
+      Mexico: $85{,}703/209{,}865 \approx 0.408$ · Ethiopia: $5{,}788/209{,}865 \approx 0.028$<br><br>
+      <strong>Per capita GDP (col 4):</strong><br>
+      Canada: $49{,}359/63{,}393 \approx 0.779$ · China: $13{,}988/63{,}393 \approx 0.221$<br>
+      Mexico: $19{,}308/63{,}393 \approx 0.305$ · Ethiopia: $2{,}552/63{,}393 \approx 0.040$
+    </div>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.1c</span>
+    <span class="hw-prob-q">Using $y = \bar{A} k^{1/3}$ with no TFP differences, compute predicted per capita GDP relative to U.S. (column 5).</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p>With equal TFP ($\bar{A}$ same everywhere), relative predicted output is:
+    $$y^*_\text{country} = \left(\frac{k_\text{country}}{k_\text{U.S.}}\right)^{1/3}$$</p>
+    <div class="formula-box">
+      Canada: $(1.111)^{1/3} \approx 1.036$ · China: $(0.338)^{1/3} \approx 0.696$<br>
+      Mexico: $(0.408)^{1/3} \approx 0.742$ · Ethiopia: $(0.028)^{1/3} \approx 0.302$
+    </div>
+    <p>These predict how rich each country <em>would be</em> if all differences in income came solely from differences in capital per person.</p>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.1d–e</span>
+    <span class="hw-prob-q">Compute implied TFP (column 6) for each country. Which has highest? Lowest?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p>Relative TFP = (actual relative output) ÷ (predicted relative output):
+    $$\frac{\bar{A}_\text{country}}{\bar{A}_\text{U.S.}} = \frac{y_\text{country}/y_\text{U.S.}}{(k_\text{country}/k_\text{U.S.})^{1/3}}$$</p>
+    <div class="formula-box">
+      Canada: $0.779/1.036 \approx 0.752$ · China: $0.221/0.696 \approx 0.317$<br>
+      Mexico: $0.305/0.742 \approx 0.411$ · Ethiopia: $0.040/0.302 \approx 0.133$
+    </div>
+    <p><strong>Highest TFP:</strong> United States (= 1 by construction).<br>
+    <strong>Lowest TFP:</strong> Ethiopia (0.133). Capital per person alone can't explain Ethiopia's low income — its productivity is only about 13% of U.S. levels.</p>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.2</span>
+    <span class="hw-prob-q">Using $y_t = \bar{A} k_t^{1/3}$, write the growth rate of per capita GDP as a function of the growth rate of capital per person ($\alpha = 1/3$).</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Apply rule</div><div class="hw-step-body">Growth rate of $y_t = \bar{A}k_t^{1/3}$: since $\bar{A}$ is constant, $g_y = g_{\bar{A}} + \frac{1}{3}g_k = 0 + \frac{1}{3}g_k$</div></div>
+    <div class="hw-final">$$g_y = \frac{1}{3}\,g_k$$
+    A 3% increase in capital per person → only a 1% increase in output per person. Diminishing returns to capital.</div>
+  </div>
+</div>
+</div>
+
+<div class="hw-part">
+<div class="hw-part-title">Part 2 · Solow Model</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">2.1</span>
+    <span class="hw-prob-q">China begins in Solow steady state; policies cause a one-time permanent increase in $\bar{A}$ in 1990. Analyze using (a) Solow diagram, (b) output time series, (c) growth rate time series.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-sub"><div class="hw-sub-label">(a) Solow Diagram</div></div>
+    <p>The depreciation curve $\bar{d}k$ is unchanged. The investment curve $\bar{s}\bar{A}k^{1/3}$ shifts <em>upward</em> — at every level of capital, higher productivity means more output and thus more investment. The intersection with depreciation moves right to a new, higher steady-state capital $k^{**}$.</p>
+    <p>Immediately after the shock, capital $k_0 = k^*$ (capital can't jump instantaneously). Over time $k$ gradually rises from $k^*$ toward $k^{**}$.</p>
+    <div class="hw-sub"><div class="hw-sub-label">(b) Output time series</div></div>
+    <p>Output <em>immediately jumps up</em> in 1990 (because $y_0 = \bar{A}_\text{new} \cdot (k^*)^{1/3} > \bar{A}_\text{old} \cdot (k^*)^{1/3} = y^*$), then continues rising toward $y^{**}$ at a decreasing rate (transition dynamics — growth slows as the economy approaches the new steady state).</p>
+    <div class="hw-sub"><div class="hw-sub-label">(c) Growth rate time series</div></div>
+    <p>At the moment of the shock, the growth rate immediately jumps above zero. It then gradually declines back toward zero as the economy converges to $k^{**}$. The growth rate graph is a humped shape starting at 0, jumping positive in 1990, then decaying back to 0 over time.</p>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">2.2a</span>
+    <span class="hw-prob-q">Economy starts below steady state ($K=\$200B$, $K^*=\$600B$) and receives a $150B capital gift. By what proportion does consumption per person initially rise? What about in steady state?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p>The gift shifts $k_{-1} = 200B/L$ to $k_0 = 350B/L$. No curves change, so steady state remains at $600B/L$. The economy continues rising to $k^*$ from the new, higher starting point.</p>
+    <div class="hw-step"><div class="hw-step-num">Initial consumption</div><div class="hw-step-body">Since $c \propto y = \bar{A}k^{1/3}$:
+    $$\frac{c_0/L}{c_{-1}/L} = \left(\frac{k_0}{k_{-1}}\right)^{1/3} = \left(\frac{350}{200}\right)^{1/3} \approx 1.2051$$</div></div>
+    <div class="hw-final">Consumption per person initially rises by about $\boxed{20.5\%}$.<br>
+    Steady-state consumption is <strong>unchanged</strong> — the steady state depends on $\bar{s}, \bar{d}, \bar{A}, \bar{L}$, none of which changed. The gift gives a temporary boost only.</div>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">2.2b</span>
+    <span class="hw-prob-q">Same as above but economy starts <em>at</em> steady state ($K=K^*=\$600B$). How does this change the analysis?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p>Now $k_{-1} = 600B/L$, gift → $k_0 = 750B/L$. Since $750B > k^*$, the economy is now <em>above</em> its steady state. Capital will gradually fall back to $k^*$.</p>
+    <div class="hw-step"><div class="hw-step-num">Initial consumption</div><div class="hw-step-body">$$\frac{c_0/L}{c_{-1}/L} = \left(\frac{750}{600}\right)^{1/3} \approx 1.0772$$</div></div>
+    <div class="hw-final">Consumption initially rises by only $\boxed{7.7\%}$ — less than in part (a). The country was already near its efficient capital level, so the extra capital adds less marginal output. Steady-state consumption is still unchanged.</div>
+    <p><strong>Lesson:</strong> Foreign aid in capital is temporarily beneficial but not permanently so. Its immediate effect is larger when the country is far below its steady state. The Solow model implies aid must be paired with improvements in $\bar{A}$, $\bar{s}$, or institutions to have lasting impact.</p>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">2.3</span>
+    <span class="hw-prob-q">Using $y^* = \bar{A}^{3/2}(\bar{s}/\bar{d})^{1/2}$, find the % change in steady-state per capita GDP after: (a) depreciation falls 20%, (b) productivity rises 5%, (c) earthquake destroys 25% of capital, (d) population triples.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p>Steady-state formula (with $\alpha = 1/3$): $y^* = \bar{A}^{3/2}\left(\dfrac{\bar{s}}{\bar{d}}\right)^{1/2}$</p>
+    <div class="formula-box">
+      (a) $\bar{d}' = 0.8\bar{d}$: $\;\dfrac{y^{**}}{y^*} = \left(\dfrac{\bar{d}}{\bar{d}'}\right)^{1/2} = \left(\dfrac{1}{0.8}\right)^{1/2} \approx \mathbf{+11.8\%}$<br><br>
+      (b) $\bar{A}' = 1.05\bar{A}$: $\;\dfrac{y^{**}}{y^*} = \left(\dfrac{1.05\bar{A}}{\bar{A}}\right)^{3/2} = (1.05)^{3/2} \approx \mathbf{+7.6\%}$<br><br>
+      (c) Earthquake destroys capital: $\;\dfrac{y^{**}}{y^*} = \mathbf{0\%}$ — parameters $\bar{A},\bar{s},\bar{d}$ unchanged, so steady state is identical. Economy just transitions back.<br><br>
+      (d) Population triples ($L' = 3L$): $\;\dfrac{y^{**}}{y^*} = \mathbf{0\%}$ — steady-state output per person is independent of $L$. (Total GDP triples, but per capita is unchanged.)
+    </div>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">2.4</span>
+    <span class="hw-prob-q">Redo 2.3(d) for <em>total</em> GDP (not per capita). Why is the answer different?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p>Total GDP: $Y^* = y^* \times L$. With $L' = 3L$ and $y^{**} = y^*$:</p>
+    <div class="hw-final">$$\frac{Y^{**}}{Y^*} = \frac{y^{**}\times 3L}{y^*\times L} = 3 \;\Rightarrow\; \text{Total GDP triples (+200\%)}$$</div>
+    <p>Per capita GDP is unchanged because steady-state capital <em>per person</em> $k^*$ doesn't depend on $L$. But there are now three times as many workers producing, so total output is three times larger. Constant returns to scale means doubling all inputs (K and L both scale up) doubles output.</p>
+  </div>
+</div>
+</div>
+
+<div class="hw-part">
+<div class="hw-part-title">Part 3 · Solow with Productivity Growth (BGP)</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">3.1</span>
+    <span class="hw-prob-q">Production function $Y_t = \bar{A}_t K_t^{1/4} L_t^{3/4}$. (a) Find BGP growth rate of output per person. (b) Find level of output per person on BGP.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-sub"><div class="hw-sub-label">(a) BGP growth rate</div></div>
+    <div class="hw-step"><div class="hw-step-num">Apply rule</div><div class="hw-step-body">$y_t = \bar{A}_t k_t^{1/4}$ implies $g_y = g_A + \frac{1}{4}g_k$. On BGP: $g_y^* = g_k^*$.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Solve</div><div class="hw-step-body">$g_y^* = g_A + \frac{1}{4}g_y^* \;\Rightarrow\; \frac{3}{4}g_y^* = g_A \;\Rightarrow\; g_y^* = \dfrac{4}{3}g_A$</div></div>
+    <div class="hw-sub"><div class="hw-sub-label">(b) BGP level</div></div>
+    <p>From capital accumulation: $g_k^* = \bar{s}(y^*/k^*) - \bar{d} - \bar{n} = \frac{4}{3}g_A$</p>
+    <p>Solving: $y_t^* = \bar{A}_t^{4/3}\left(\dfrac{\bar{s}}{\frac{4}{3}g_A + \bar{d} + \bar{n}}\right)^{1/3}$</p>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">3.2</span>
+    <span class="hw-prob-q">Population growth rate falls this year. Sketch old vs new BGP on a ratio (log) scale. How does the BGP shift and why?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p>From part 3.1(b): $y_t^* = \bar{A}_t^{4/3}\left(\dfrac{\bar{s}}{\frac{4}{3}g_A + \bar{d} + \bar{n}}\right)^{1/3}$</p>
+    <p>A fall in $\bar{n}$ <em>reduces</em> the denominator inside the bracket, which <strong>raises</strong> $y_t^*$ — the BGP level shifts up. However, the <em>slope</em> of the BGP (which equals the growth rate $\frac{4}{3}g_A$) is unaffected — only $g_A$ determines the long-run growth rate, not $\bar{n}$.</p>
+    <p>On the log-scale graph: the new BGP is a parallel line above the old BGP, with the same slope (growth rate). The economy gradually transitions to the higher line over time.</p>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">3.3</span>
+    <span class="hw-prob-q">Productivity growth falls from 2% to 1% ($\alpha = 1/3$). (a) Find new BGP growth rate. (b) By what factor does income rise in 100 years under old vs new growth rates?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-sub"><div class="hw-sub-label">(a) BGP growth rate</div></div>
+    <p>With $\alpha = 1/3$: $g_y^* = \dfrac{3}{2}g_A$</p>
+    <div class="formula-box">
+      Old ($g_A = 2\%$): $g_y^* = \frac{3}{2}(0.02) = \mathbf{3\%}$/yr<br>
+      New ($g_A = 1\%$): $g_y^* = \frac{3}{2}(0.01) = \mathbf{1.5\%}$/yr
+    </div>
+    <div class="hw-sub"><div class="hw-sub-label">(b) 100-year income factor</div></div>
+    <div class="formula-box">
+      Old (3%/yr): $(1.03)^{100} \approx 19.22$ → incomes rise by $\mathbf{+1{,}822\%}$<br>
+      New (1.5%/yr): $(1.015)^{100} \approx 4.43$ → incomes rise by $\mathbf{+343\%}$
+    </div>
+    <p>Halving productivity growth cuts the 100-year income multiple from 19× to 4× — a dramatic difference. By the Rule of 70: at 3%/yr, income doubles every ~23 yrs (4+ doublings in 100 yrs). At 1.5%/yr, it doubles every ~47 yrs (just over 2 doublings).</p>
+  </div>
+</div>
+</div>
+</div><!-- end hw-ps2 -->
+
+<!-- ===== PS3 ===== -->
+<div class="hw-ps-pane active" id="hw-ps3">
+
+<!-- ===== PART 1 ===== -->
+<div class="hw-part">
+<div class="hw-part-title">Part 1 · The Natural Rate of Unemployment &amp; Okun's Law</div>
+
+<!-- 1.1a -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.1a</span>
+    <span class="hw-prob-q">Calculate the current natural rate of unemployment using $\lambda_s \approx 1\%$ and $\lambda_f \approx 25\%$ per month.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Formula</div><div class="hw-step-body">$$u^* = \frac{\lambda_s}{\lambda_s + \lambda_f}$$</div></div>
+    <div class="hw-step"><div class="hw-step-num">Plug in</div><div class="hw-step-body">$$u^* = \frac{0.01}{0.01 + 0.25} = \frac{0.01}{0.26}$$</div></div>
+    <div class="hw-final">$$\boxed{u^* \approx 3.85\%}$$</div>
+  </div>
+</div>
+
+<!-- 1.1b -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.1b</span>
+    <span class="hw-prob-q">In the 1970s, $\lambda_s = 1.5\%$ and $\lambda_f = 20\%$. Calculate the change in $u^*$ from the 1970s to today.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Step 1</div><div class="hw-step-body">Calculate 1970s natural rate:
+      $$u^*_{1970s} = \frac{0.015}{0.015 + 0.20} = \frac{0.015}{0.215} \approx 6.98\%$$</div></div>
+    <div class="hw-step"><div class="hw-step-num">Step 2</div><div class="hw-step-body">Calculate the change (current minus 1970s):
+      $$\Delta u^* = 3.85\% - 6.98\% = -3.13 \text{ percentage points}$$</div></div>
+    <div class="hw-final">The natural rate fell by approximately $\boxed{3.13}$ percentage points from the 1970s to today.</div>
+  </div>
+</div>
+
+<!-- 1.1c -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.1c</span>
+    <span class="hw-prob-q">Compute two counterfactuals: (1) $\lambda_f$ unchanged, (2) $\lambda_s$ unchanged. Which change mattered more?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-sub"><div class="hw-sub-label">Counterfactual 1 — Job-finding rate held fixed at 1970s level (20%), only $\lambda_s$ changes to today's 1%:</div></div>
+    <div class="hw-step"><div class="hw-step-num">CF 1</div><div class="hw-step-body">$$u^*_{CF1} = \frac{0.01}{0.01 + 0.20} = \frac{0.01}{0.21} \approx 4.76\%$$
+      Change from 1970s: $4.76\% - 6.98\% = \mathbf{-2.22}$ pp (attributable to fall in separation rate)</div></div>
+    <div class="hw-sub"><div class="hw-sub-label">Counterfactual 2 — Job-separation rate held fixed at 1970s level (1.5%), only $\lambda_f$ changes to today's 25%:</div></div>
+    <div class="hw-step"><div class="hw-step-num">CF 2</div><div class="hw-step-body">$$u^*_{CF2} = \frac{0.015}{0.015 + 0.25} = \frac{0.015}{0.265} \approx 5.66\%$$
+      Change from 1970s: $5.66\% - 6.98\% = \mathbf{-1.32}$ pp (attributable to rise in finding rate)</div></div>
+    <div class="hw-final">CF1 (−2.22 pp) &gt; CF2 (−1.32 pp) in magnitude → the <strong>decline in the job-separation rate</strong> (fewer inflows into unemployment) was the more important factor in reducing $u^*$.</div>
+  </div>
+</div>
+
+<!-- 1.1d -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.1d</span>
+    <span class="hw-prob-q">Compare the sum of the two counterfactual changes to the total change from 1.1b. Are they different? Why?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Compare</div><div class="hw-step-body">Sum of counterfactuals: $-2.22 + (-1.32) = -3.54$ pp<br>
+    Actual total change: $-3.13$ pp<br>
+    Difference: $|-3.54 - (-3.13)| = 0.41$ pp</div></div>
+    <p><strong>They differ.</strong> The two counterfactuals are not additive because $u^* = \lambda_s/(\lambda_s + \lambda_f)$ is a nonlinear function of both rates. Each counterfactual isolates one channel while holding the other constant. But the actual total change involves both moving simultaneously, creating an <em>interaction effect</em> (a cross-term) that the two separate counterfactuals each double-count partially. The sum of the parts does not equal the whole when the underlying relationship is nonlinear.</p>
+  </div>
+</div>
+
+<!-- 1.2a -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.2a</span>
+    <span class="hw-prob-q">Employment protections cut $\lambda_s$ in half. By what proportion can $\lambda_f$ fall before the policy no longer reduces $u^*$?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Setup</div><div class="hw-step-body">Current: $\lambda_s = 0.01,\; \lambda_f = 0.25,\; u^* = 3.85\%$.<br>
+    After policy: $\lambda_s' = 0.005$. Let $\lambda_f'$ be the new finding rate. For desired effect: $u^{**} < u^*$.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Step 1</div><div class="hw-step-body">Set up the inequality:
+      $$\frac{0.005}{0.005 + \lambda_f'} < \frac{0.01}{0.26}$$</div></div>
+    <div class="hw-step"><div class="hw-step-num">Step 2</div><div class="hw-step-body">Cross-multiply (both denominators positive):
+      $$0.005 \times 0.26 < 0.01 \times (0.005 + \lambda_f')$$
+      $$0.0013 < 0.00005 + 0.01\,\lambda_f'$$
+      $$0.00125 < 0.01\,\lambda_f'$$
+      $$\lambda_f' > 0.125$$</div></div>
+    <div class="hw-step"><div class="hw-step-num">Step 3</div><div class="hw-step-body">The finding rate can fall from $0.25$ to as low as $0.125$. As a proportion of the current value:
+      $$\frac{0.25 - 0.125}{0.25} = 0.50 = 50\%$$</div></div>
+    <div class="hw-final">The job-finding rate can fall by at most $\boxed{50\%}$ (from 25% to 12.5%) before the policy fails to reduce $u^*$.</div>
+  </div>
+</div>
+
+<!-- 1.2b -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.2b</span>
+    <span class="hw-prob-q">Why might employment protections lower the job-finding rate?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Explanation</div>
+    <p>Employment protections make it legally costly or procedurally difficult for firms to fire workers (e.g., mandatory severance, lengthy dismissal processes). While this directly reduces the job-separation rate $\lambda_s$, it also creates a deterrent to <em>hiring</em>: firms anticipate that if they hire a worker who turns out to be a poor fit, they will struggle to let that worker go later.</p>
+    <p>This "hiring reluctance" effect means firms post fewer job openings and are more selective when hiring, which reduces the rate at which unemployed workers find new positions — i.e., $\lambda_f$ falls. This is the classic trade-off in employment protection legislation: lower separations, but also fewer new hires.</p>
+    <p>As shown in 1.2a, if $\lambda_f$ falls by more than 50%, the policy is counterproductive — the natural rate rises despite fewer separations.</p>
+  </div>
+</div>
+
+<!-- 1.3a -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.3a</span>
+    <span class="hw-prob-q">$u^* = 4\%$. Short-run output is $+1\%,\, 0\%,\, -1\%,\, -2\%$ over 4 years. Find expected unemployment each year via Okun's Law.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Formula</div><div class="hw-step-body">Okun's Law: $u_t - u^*_t \approx -\dfrac{1}{2}\tilde{Y}_t \quad\Rightarrow\quad u_t = u^* - \dfrac{1}{2}\tilde{Y}_t$</div></div>
+    <div class="formula-box" style="margin:10px 18px;">
+      Year 1: $\tilde{Y} = +1\%\;\Rightarrow\; u = 4\% - \frac{1}{2}(1\%) = \mathbf{3.5\%}$<br>
+      Year 2: $\tilde{Y} = 0\%\;\Rightarrow\; u = 4\% - 0 = \mathbf{4.0\%}$<br>
+      Year 3: $\tilde{Y} = -1\%\;\Rightarrow\; u = 4\% - \frac{1}{2}(-1\%) = \mathbf{4.5\%}$<br>
+      Year 4: $\tilde{Y} = -2\%\;\Rightarrow\; u = 4\% - \frac{1}{2}(-2\%) = \mathbf{5.0\%}$
+    </div>
+    <p>When output is above potential (boom), cyclical unemployment is negative → actual $u$ falls below $u^*$. When output is below potential (recession), actual $u$ rises above $u^*$.</p>
+  </div>
+</div>
+
+<!-- 1.3b -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.3b</span>
+    <span class="hw-prob-q">$u^* = 4\%$. Unemployment is 6%, 7%, 4% over 3 years. Find short-run output $\tilde{Y}$ each year.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Rearrange</div><div class="hw-step-body">$$\tilde{Y}_t = -2\,(u_t - u^*)$$</div></div>
+    <div class="formula-box" style="margin:10px 18px;">
+      Year 1: $u = 6\%\;\Rightarrow\;\tilde{Y} = -2(6\%-4\%) = -2(2\%) = \mathbf{-4\%}$<br>
+      Year 2: $u = 7\%\;\Rightarrow\;\tilde{Y} = -2(7\%-4\%) = -2(3\%) = \mathbf{-6\%}$<br>
+      Year 3: $u = 4\%\;\Rightarrow\;\tilde{Y} = -2(4\%-4\%) = \mathbf{0\%}$
+    </div>
+    <p>Years 1 and 2 are recessions (output below potential). By Year 3, the economy returns exactly to potential — unemployment is back at the natural rate and the output gap closes.</p>
+  </div>
+</div>
+
+</div><!-- end part 1 -->
+
+<!-- ===== PART 2 ===== -->
+<div class="hw-part">
+<div class="hw-part-title">Part 2 · Money, Interest Rates, and Central Banks</div>
+
+<!-- 2.1 -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">2.1</span>
+    <span class="hw-prob-q">The Fed cuts the FFR from 3.75% to 3.5% under ample/abundant reserves. Illustrate and explain using the monetary base supply-demand diagram.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Explanation</div>
+    <p><strong>Setting:</strong> Under ample/abundant reserves, banks hold far more reserves than they strictly need. The demand curve for reserves is flat at the IOR (Interest on Reserves) rate — banks will not accept a rate below IOR because they can always earn IOR by holding reserves at the Fed. The supply curve is a vertical line set by the Fed, but it intersects the flat (IOR) portion of demand. In this regime, the equilibrium federal funds rate simply equals the IOR.</p>
+    <p><strong>The policy action:</strong> To lower the FFR from 3.75% to 3.50%, the Fed reduces the IOR from 3.75% to 3.50%. This directly shifts the entire flat portion of the demand curve downward by 25 basis points. The supply curve (quantity of reserves) does not need to change.</p>
+    <p><strong>Diagram:</strong> The flat portion of the $M^D$ curve shifts from 3.75% down to 3.50%. The vertical supply $M^S$ intersects the new lower flat portion. The equilibrium FFR falls from 3.75% to 3.50%.</p>
+    <div class="formula-box">
+      Before: IOR = 3.75% → FFR = 3.75%<br>
+      Action: Fed announces IOR cut to 3.50%<br>
+      After:  IOR = 3.50% → FFR = 3.50%<br><br>
+      No change in $M^S$ needed — IOR change is sufficient in ample reserves regime.
+    </div>
+    <p>This is the key advantage of the ample reserves framework: the Fed can precisely control the overnight rate by simply adjusting IOR, without having to conduct large open-market operations to shift reserves supply.</p>
+  </div>
+</div>
+
+<!-- 2.2 -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">2.2</span>
+    <span class="hw-prob-q">Fisher equation calculations: (a) $i=1\%,\,\pi=3\%$ find $R$. (b) $R=5\%,\,\pi=10\%$ find $i$. (c) $R=2\%,\,i=6\%$ find $\pi$.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Formula</div><div class="hw-step-body">Fisher equation: $i = R + \pi \;\Rightarrow\; R = i - \pi \;\Rightarrow\; \pi = i - R$<br>
+    where $R$ = real rate, $i$ = nominal rate, $\pi$ = inflation.</div></div>
+    <div class="formula-box" style="margin:10px 18px;">
+      (a) $R = i - \pi = 1\% - 3\% = \mathbf{-2\%}$ &nbsp;(negative real rate — inflation exceeds nominal return)<br><br>
+      (b) $i = R + \pi = 5\% + 10\% = \mathbf{15\%}$ &nbsp;(high nominal rate needed to compensate for high inflation)<br><br>
+      (c) $\pi = i - R = 6\% - 2\% = \mathbf{4\%}$
+    </div>
+    <p>Part (a) illustrates that real rates can be negative — the nominal return of 1% is wiped out by 3% inflation, so the real purchasing power of savings falls. This matters because investment and borrowing decisions depend on the <em>real</em> rate, not the nominal rate.</p>
+  </div>
+</div>
+
+</div><!-- end part 2 -->
+
+<!-- ===== PART 3 ===== -->
+<div class="hw-part">
+<div class="hw-part-title">Part 3 · The IS Curve</div>
+
+<!-- 3.1a -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">3.1a</span>
+    <span class="hw-prob-q">A temporary investment tax credit (firms receive a tax credit per dollar invested). Does this shift the IS curve? How does GDP change?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p><strong>Yes — IS shifts right. GDP rises in the short run.</strong></p>
+    <p>A temporary investment tax credit lowers the effective cost of undertaking investment projects. Firms will invest more than they otherwise would at any given real interest rate. This means investment spending rises above its long-run trend share of potential output: $I_t/\bar{Y}_t > \bar{a}_{i,t}$.</p>
+    <p>This is a positive demand shock to the <em>investment</em> component of expenditure. The aggregate demand shock term rises:</p>
+    <div class="formula-box">$\bar{a}_t = \bar{a}_{c,t} + \underbrace{\bar{a}_{i,t} \uparrow}_{\text{investment tax credit}} + \bar{a}_{g,t} + \bar{a}_{ex,t} - \bar{a}_{im,t} - 1$</div>
+    <p>Higher $\bar{a}_t$ shifts the IS curve to the right. With $R_t$ fixed at $\bar{r}$:</p>
+    <div class="formula-box">$\tilde{Y}_t = \bar{a}_t \uparrow - \bar{b}(R_t - \bar{r}) \;\Rightarrow\; \tilde{Y}_t$ rises above 0. GDP increases in the short run.</div>
+  </div>
+</div>
+
+<!-- 3.1b -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">3.1b</span>
+    <span class="hw-prob-q">A European boom increases European demand for U.S. goods unexpectedly. IS shift? Effect on GDP?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p><strong>Yes — IS shifts right. GDP rises in the short run.</strong></p>
+    <p>Increased European demand for U.S. goods raises U.S. exports above their long-run trend: $EX_t/\bar{Y}_t > \bar{a}_{ex,t}$. This is a positive demand shock to the <em>net exports</em> component of aggregate expenditure.</p>
+    <div class="formula-box">$\bar{a}_t = \bar{a}_{c,t} + \bar{a}_{i,t} + \bar{a}_{g,t} + \underbrace{\bar{a}_{ex,t} \uparrow}_{\text{EU demand } \uparrow} - \bar{a}_{im,t} - 1$</div>
+    <p>Higher $\bar{a}_t$ shifts IS right. With $R_t = \bar{r}$, short-run output $\tilde{Y}_t = \bar{a}_t > 0$. U.S. GDP rises because foreign demand substitutes for domestic demand and drives domestic production higher.</p>
+  </div>
+</div>
+
+<!-- 3.1c -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">3.1c</span>
+    <span class="hw-prob-q">U.S. consumers sharply increase imports from New Zealand. IS shift? Effect on GDP?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p><strong>Yes — IS shifts left. GDP falls in the short run.</strong></p>
+    <p>U.S. consumers buying more New Zealand goods means imports rise above their long-run trend: $IM_t/\bar{Y}_t > \bar{a}_{im,t}$. Since imports are <em>subtracted</em> in the national income identity, this is a negative demand shock.</p>
+    <div class="formula-box">$\bar{a}_t = \bar{a}_{c,t} + \bar{a}_{i,t} + \bar{a}_{g,t} + \bar{a}_{ex,t} - \underbrace{\bar{a}_{im,t} \uparrow}_{\text{imports from NZ } \uparrow} - 1 \;\;\Rightarrow\;\; \bar{a}_t \downarrow$</div>
+    <p>Note: consumers spend more in total, but the extra spending is on <em>foreign</em> goods, not domestically produced goods. Domestic production falls. IS shifts left and $\tilde{Y}_t < 0$.</p>
+  </div>
+</div>
+
+<!-- 3.1d -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">3.1d</span>
+    <span class="hw-prob-q">A housing bubble bursts: home prices fall 20%, new home sales drop sharply. IS shift? Effect on GDP?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p><strong>Yes — IS shifts left. GDP falls in the short run.</strong></p>
+    <p>New home construction is <em>residential investment</em>, which is part of Investment $I$. A sharp drop in new home sales means investment falls well below its long-run trend: $I_t/\bar{Y}_t &lt; \bar{a}_{i,t}$. This is a negative demand shock to the investment component.</p>
+    <p>Additionally, falling housing prices reduce household wealth, which may suppress consumption ($C_t/\bar{Y}_t$ may also fall). Both channels reduce $\bar{a}_t$:</p>
+    <div class="formula-box">$\bar{a}_t = \bar{a}_{c,t} \downarrow + \underbrace{\bar{a}_{i,t} \downarrow}_{\text{residential investment } \downarrow} + \bar{a}_{g,t} + \bar{a}_{ex,t} - \bar{a}_{im,t} - 1$</div>
+    <p>Lower $\bar{a}_t$ shifts the IS curve left. With $R_t = \bar{r}$, $\tilde{Y}_t = \bar{a}_t &lt; 0$. The economy enters a recession — this is precisely the mechanism observed in 2007–2009.</p>
+  </div>
+</div>
+
+<!-- 3.2a -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">3.2a</span>
+    <span class="hw-prob-q">With $C_t/\bar{Y}_t = \bar{a}_{c,t} + \bar{x}\tilde{Y}_t$ and $IM_t/\bar{Y}_t = \bar{a}_{im,t} + \bar{x}\tilde{Y}_t$, derive the new IS curve.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Step 1</div><div class="hw-step-body">Start from the national income identity divided by $\bar{Y}_t$:
+      $$\frac{Y_t}{\bar{Y}_t} = \frac{C_t}{\bar{Y}_t} + \frac{I_t}{\bar{Y}_t} + \frac{G_t}{\bar{Y}_t} + \frac{EX_t}{\bar{Y}_t} - \frac{IM_t}{\bar{Y}_t}$$</div></div>
+    <div class="hw-step"><div class="hw-step-num">Step 2</div><div class="hw-step-body">Substitute all model equations, including the new consumption and imports equations:
+      $$\frac{Y_t}{\bar{Y}_t} = \underbrace{(\bar{a}_{c,t} + \bar{x}\tilde{Y}_t)}_{\text{consumption}} + \underbrace{(\bar{a}_{i,t} - \bar{b}(R_t-\bar{r}))}_{\text{investment}} + \underbrace{\bar{a}_{g,t}}_{\text{govt}} + \underbrace{\bar{a}_{ex,t}}_{\text{exports}} - \underbrace{(\bar{a}_{im,t} + \bar{x}\tilde{Y}_t)}_{\text{imports}}$$</div></div>
+    <div class="hw-step"><div class="hw-step-num">Step 3</div><div class="hw-step-body">The $\bar{x}\tilde{Y}_t$ terms cancel exactly — one from consumption, one from imports:
+      $$\frac{Y_t}{\bar{Y}_t} = \bar{a}_{c,t} + \cancel{\bar{x}\tilde{Y}_t} + \bar{a}_{i,t} - \bar{b}(R_t-\bar{r}) + \bar{a}_{g,t} + \bar{a}_{ex,t} - \bar{a}_{im,t} - \cancel{\bar{x}\tilde{Y}_t}$$</div></div>
+    <div class="hw-step"><div class="hw-step-num">Step 4</div><div class="hw-step-body">Subtract 1 from both sides and use $\tilde{Y}_t \equiv Y_t/\bar{Y}_t - 1$, and define $\bar{a}_t$ as before:
+      $$\tilde{Y}_t = (\bar{a}_{c,t} + \bar{a}_{i,t} + \bar{a}_{g,t} + \bar{a}_{ex,t} - \bar{a}_{im,t} - 1) - \bar{b}(R_t - \bar{r})$$</div></div>
+    <div class="hw-final">$$\boxed{\tilde{Y}_t = \bar{a}_t - \bar{b}(R_t - \bar{r})}$$
+    The IS curve is <strong>identical to the baseline</strong> — the multiplier disappears entirely.</div>
+  </div>
+</div>
+
+<!-- 3.2b -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">3.2b</span>
+    <span class="hw-prob-q">Why does the $\bar{x}$ parameter drop out? Why does a $+1$ pp demand shock now have the same (not larger) effect on output?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Explanation</div>
+    <p>In the <strong>baseline multiplier model</strong> (consumption depends on income, but no import channel), when a demand shock raises output, households earn more income and spend a fraction $\bar{x}$ of it on consumption. This extra consumption goes toward <em>domestically produced</em> goods, raising domestic output further — the multiplier $1/(1-\bar{x}) > 1$.</p>
+    <p>In <strong>this extended model</strong>, the MPC out of income is still $\bar{x}$ — but now, that same fraction $\bar{x}$ of extra income is <em>entirely spent on imports</em> (the import equation rises by exactly $\bar{x}\tilde{Y}_t$). The additional consumption spending <strong>leaks out of the domestic economy</strong> as purchases of foreign goods.</p>
+    <div class="formula-box">
+      Extra income → Extra consumption = $\bar{x}\tilde{Y}_t$ (positive for domestic demand)<br>
+      Extra income → Extra imports = $\bar{x}\tilde{Y}_t$ (negative for domestic demand, since IM is subtracted)<br>
+      Net effect on domestic output: $\bar{x}\tilde{Y}_t - \bar{x}\tilde{Y}_t = 0$
+    </div>
+    <p>The two effects cancel perfectly. There is no multiplier because 100% of the marginal propensity to consume goes to imports. Every round of "extra spending" from higher income is spent abroad, not at home. Thus a $+1$ pp shock to $\bar{a}_t$ raises $\tilde{Y}_t$ by exactly $1$ pp — same as in the baseline IS curve with no multiplier at all.</p>
+    <p><em>Intuition:</em> Think of it as an open-economy version of the multiplier. The more spending leaks abroad through imports, the smaller the domestic multiplier. Here the "import propensity" equals the "consumption propensity," making the domestic multiplier exactly 1.</p>
+  </div>
+</div>
+
+</div><!-- end part 3 -->
+</div><!-- end hw-ps3 -->
+
+</div><!-- end hw-main -->
+</div><!-- end homework-view -->
 <script src="app.js"></script>
 </body>
 </html>

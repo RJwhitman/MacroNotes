@@ -201,6 +201,7 @@ function setMode(mode) {
   document.getElementById('proofs-view').style.display = 'none';
   document.getElementById('flashcard-view').style.display = 'none';
   document.getElementById('quiz-view').style.display = 'none';
+  document.getElementById('homework-view').style.display = 'none';
   document.getElementById('topic-strip').style.display = 'none';
   if (mode === 'overview') {
     document.getElementById('overview-view').style.display = 'block';
@@ -221,6 +222,11 @@ function setMode(mode) {
     document.getElementById('quiz-view').style.display = 'block';
     document.getElementById('topic-strip').style.display = 'flex';
     renderQuiz();
+  } else if (mode === 'homework') {
+    document.getElementById('homework-view').style.display = 'block';
+    setTimeout(() => {
+      if (window.renderMathInElement) renderMathInElement(document.getElementById('homework-view'), {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+    }, 80);
   }
 }
 
@@ -231,6 +237,27 @@ function setTopic(t) {
   if (currentMode === 'notes') showNotesForTopic(t === 'all' ? 1 : t);
   if (currentMode === 'flashcards') initFlashcards();
   if (currentMode === 'quiz') renderQuiz();
+}
+
+// ===== HOMEWORK TOGGLE =====
+function toggleHW(header) {
+  const answer = header.nextElementSibling;
+  const chevron = header.querySelector('.hw-chevron');
+  const isOpen = answer.classList.contains('show');
+  answer.classList.toggle('show', !isOpen);
+  chevron.classList.toggle('open', !isOpen);
+}
+
+function switchPS(n, btn) {
+  document.querySelectorAll('.hw-ps-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.hw-ps-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('hw-ps' + n).classList.add('active');
+  btn.classList.add('active');
+  if (window.renderMathInElement) {
+    setTimeout(() => renderMathInElement(document.getElementById('hw-ps' + n), {
+      delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false
+    }), 50);
+  }
 }
 
 function jumpToNotes(t) {
