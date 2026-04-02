@@ -67,6 +67,37 @@ const flashcards = [
   {t:11, q:"Derive the IS curve with the Keynesian multiplier. What is the multiplier expression?", a:"If $C_t/\\bar{Y}_t = \\bar{a}_{c,t} + \\bar{x}\\tilde{Y}_t$, substituting into the income identity gives $(1-\\bar{x})\\tilde{Y}_t = \\bar{a}_t - \\bar{b}(R_t - \\bar{r})$. Solving: $\\tilde{Y}_t = \\frac{1}{1-\\bar{x}}[\\bar{a}_t - \\bar{b}(R_t - \\bar{r})]$. Multiplier $= 1/(1-\\bar{x}) > 1$."},
   {t:11, q:"State the Permanent Income Hypothesis (PIH). What does Hsieh (2003) find?", a:"PIH: people base consumption on average income over time (permanent income), not current income. Temporary shocks → little change in consumption. Hsieh finds that Alaska's large Permanent Fund payment (anticipated) had small consumption effects — consistent with PIH. But tax refunds (less anticipated) triggered spending of ≈$0.30 per $1 — inconsistent. Conclusion: PIH holds for large, anticipated changes."},
   {t:11, q:"How does fiscal policy affect the IS curve? What is an automatic stabilizer?", a:"Higher government purchases (above trend) → $\\bar{a}_{g,t}$ rises → $\\bar{a}_t$ rises → IS shifts right → higher $\\tilde{Y}_t$. Automatic stabilizers are pre-approved programs (e.g., unemployment insurance) that automatically expand in downturns, stabilizing consumption without new legislation. Transfer payments themselves don't shift IS directly — they work by sustaining consumption (affecting $\\bar{a}_{c,t}$)."},
+  // T12 — Phillips Curve
+  {t:12, q:"State the general Phillips Curve equation and identify every term.", a:"$\\pi_t - \\pi_t^e = \\bar{\\nu}\\tilde{Y}_t + \\bar{o}_t$. $\\pi_t$ = actual inflation, $\\pi_t^e$ = expected inflation, $\\bar{\\nu} > 0$ = slope, $\\tilde{Y}_t$ = output gap, $\\bar{o}_t$ = cost/supply shock. The left side is the inflation forecast error."},
+  {t:12, q:"Why do inflation forecast errors affect output in the Phillips Curve model?", a:"Firms set production at the start of a period before observing $P_{t+1}$. Higher expected $P_{t+1}$ → higher expected real marginal revenue → more production. If actual inflation > expected (positive surprise), firms overproduced relative to perfect-foresight choice → output rises above trend."},
+  {t:12, q:"What is a cost-push shock $\\bar{o}_t$? Give the sign rule and an example.", a:"$\\bar{o}_t$ captures temporary cost deviations from trend. Sign rule: ask what happens to output if $\\pi_t - \\pi_t^e$ is held fixed. The shock is in the opposite direction. Example: oil spike → costs rise → output would fall → $\\bar{o}_t > 0$ (positive shock, shifts PC upward)."},
+  {t:12, q:"State adaptive expectations. Derive the accelerationist Phillips Curve.", a:"Adaptive expectations: $\\pi_t^e = \\pi_{t-1}$. Substituting: $\\pi_t - \\pi_{t-1} = \\bar{\\nu}\\tilde{Y}_t + \\bar{o}_t$, i.e., $\\Delta\\pi_t = \\bar{\\nu}\\tilde{Y}_t + \\bar{o}_t$. The change in inflation depends on the output gap."},
+  {t:12, q:"In the PC diagram ($\\Delta\\pi$ vs $\\tilde{Y}$): what is the slope and y-intercept?", a:"Slope = $\\bar{\\nu} > 0$ (upward sloping). Y-intercept = $\\bar{o}_t$ (cost shock). When $\\tilde{Y}=0$: $\\Delta\\pi = \\bar{o}_t$. A positive shock shifts the PC up; a negative shock shifts it down."},
+  {t:12, q:"What happens in the long run according to the Phillips Curve?", a:"In the long run: $\\pi_t = \\pi_t^e$ (no surprises) and $\\bar{o}_t = 0$ (shocks dissipate). Then $\\Delta\\pi_t = 0$ requires $\\tilde{Y}_t = 0$. Output returns to potential. The PC provides the supply-side adjustment mechanism closing the output gap over time."},
+  // T13 — IS-MP Model
+  {t:13, q:"State the IS-MP model's three equations and identify each endogenous variable.", a:"IS: $\\tilde{Y}_t = \\bar{a}_t - \\bar{b}(R_t - \\bar{r})$. PC: $\\Delta\\pi_t = \\bar{\\nu}\\tilde{Y}_t + \\bar{o}_t$. MP: $R_t$ set by central bank. Endogenous: $\\tilde{Y}_t$, $R_t$, $\\Delta\\pi_t$. Causal chain: $i_t \\Rightarrow R_t \\Rightarrow \\tilde{Y}_t \\Rightarrow \\Delta\\pi_t$."},
+  {t:13, q:"Why can the central bank control the real interest rate by setting the nominal rate?", a:"By the Fisher equation $R_t = i_t - \\pi_t$, if inflation $\\pi_t$ is 'sticky' (adjusts slowly in the short run), then raising/lowering $i_t$ moves $R_t$ one-for-one. This is the 'sticky inflation assumption.'"},
+  {t:13, q:"Describe the IS-MP diagram: axes, curves, and what the intersection represents.", a:"Vertical axis: real interest rate $R$. Horizontal axis: short-run output $\\tilde{Y}$. IS curve: downward-sloping, $\\tilde{Y} = \\bar{a}_t - \\bar{b}(R-\\bar{r})$. MP curve: horizontal at $R = R_t$. Intersection: equilibrium $\\tilde{Y}_t$."},
+  {t:13, q:"How does the Fed stabilize output after a negative demand shock $\\bar{a}_1 < 0$?", a:"Cut $R_1$ below $\\bar{r}$ to shift MP curve down. The target: $R_1 = \\bar{r} + \\bar{a}_1/\\bar{b}$. The lower rate stimulates investment, offsetting the negative shock so $\\tilde{Y}_1 = 0$ is restored."},
+  {t:13, q:"Explain the Volcker disinflation mechanism using the IS-MP and Phillips curve.", a:"Volcker raised $R_t > \\bar{r}$ (MP shifts up) $\\Rightarrow \\tilde{Y}_t < 0$ (recession) $\\Rightarrow \\Delta\\pi_t < 0$ (falling inflation). After inflation reached target, $R_t$ returned to $\\bar{r}$ and output recovered. Cost: severe 1981–82 recession with $>10\\%$ unemployment."},
+  {t:13, q:"What is the inflation-output tradeoff and why does it constrain central banks?", a:"Lowering inflation requires inducing a recession (below-potential output), which raises unemployment and reduces living standards temporarily. Central banks must weigh the costs of inflation against the costs of the recession needed to eliminate it."},
+  // T14 — Unconventional Policy
+  {t:14, q:"Define the Effective Lower Bound (ELB). Why can't nominal rates go to $-\\infty$?", a:"ELB $\\approx 0\\%$ (slightly negative). Physical currency earns 0%, so if IOR falls below ELB, banks switch to cash. Real lower bound: $R_t \\geq \\text{ELB} - \\pi_t$. Higher inflation targets raise policy room by lowering the real floor."},
+  {t:14, q:"What is forward guidance and how does it affect the yield curve?", a:"Forward guidance = central bank communication about future interest rates. If the Fed credibly commits to low rates, expectations of future $i$ fall $\\Rightarrow$ demand for long-term bonds rises $\\Rightarrow$ bond prices rise $\\Rightarrow$ long-term yields fall $\\Rightarrow$ positive demand shock $\\bar{a}_t > 0$."},
+  {t:14, q:"Define quantitative easing (QE). How does it enter the IS-MP model?", a:"QE = central bank purchases of long-term financial assets (Treasuries, MBS) beyond conventional open-market operations. Mechanism: $\\uparrow$ bond demand $\\Rightarrow \\uparrow$ bond prices $\\Rightarrow \\downarrow$ long-term yields $\\Rightarrow$ lower borrowing costs $\\Rightarrow \\bar{a}_t > 0$ (positive demand shock, IS shifts right)."},
+  {t:14, q:"State the YTM formula. What is the inverse relationship between bond prices and yields?", a:"$P = \\sum_{k=1}^N \\frac{C_k}{(1+\\text{YTM})^k} + \\frac{FV}{(1+\\text{YTM})^N}$. If demand rises, prices rise. To make the PDV formula hold, YTM must fall. Hence $\\uparrow P \\Leftrightarrow \\downarrow$ YTM. Intuition: buying a fixed stream of cash flows at a higher price = lower return."},
+  {t:14, q:"Why is the yield curve normally upward sloping? What does an inverted curve signal?", a:"Long bonds are riskier (inflation risk, liquidity risk) so investors demand higher yields for longer maturities. Inverted yield curve (short > long rates) signals that markets expect rates to fall — often because a recession is anticipated. It is a reliable leading recession indicator."},
+  {t:14, q:"How does fiscal stimulus at the ELB enter the IS-MP model? What are the debates?", a:"Fiscal stimulus raises $\\bar{a}_{g,t}$ (government spending share) $\\Rightarrow \\bar{a}_t$ rises $\\Rightarrow$ IS shifts right. Particularly powerful at ELB since MP cannot offset it. Debates: size of multiplier (baseline model: 1; with consumption channel: $>1$), tax cuts vs. spending, type of spending."},
+  // T15 — AS-AD Model
+  {t:15, q:"State the simple monetary policy rule. What does each parameter represent?", a:"$R_t - \\bar{r} = \\bar{m}(\\pi_t - \\bar{\\pi})$. $\\bar{r}$ = long-run real rate; $\\bar{m}$ = aggressiveness to inflation ($\\bar{m}>0$); $\\bar{\\pi}$ = inflation target. When $\\pi > \\bar{\\pi}$, the central bank raises $R$ above $\\bar{r}$."},
+  {t:15, q:"Derive the AD curve equation from the IS curve and policy rule.", a:"IS: $\\tilde{Y}_t = \\bar{a}_t - \\bar{b}(R_t - \\bar{r})$. Policy rule: $R_t - \\bar{r} = \\bar{m}(\\pi_t - \\bar{\\pi})$. Substitute: $\\tilde{Y}_t = \\bar{a}_t - \\bar{b}\\bar{m}(\\pi_t - \\bar{\\pi})$. Output is now a function of inflation."},
+  {t:15, q:"Why is the AD curve downward sloping? What causes it to shift?", a:"Higher $\\pi$ → central bank raises $R$ (policy rule) → lower $\\tilde{Y}$ (IS). Shifts: demand shocks $\\bar{a}_t$ (incl. QE, fiscal stimulus) shift AD left/right; a change in $\\bar{\\pi}$ also shifts AD. Movement along AD is caused by changes in $\\pi_t$."},
+  {t:15, q:"Write the AS curve equation. What causes it to shift?", a:"$\\pi_t = \\pi_{t-1} + \\bar{\\nu}\\tilde{Y}_t + \\bar{o}_t$ (Phillips curve relabeled). Shifts: (1) change in $\\pi_{t-1}$ — if last period's inflation rises, AS shifts up; (2) supply shock $\\bar{o}_t$ — positive shock shifts AS up."},
+  {t:15, q:"Solve for the steady state of the AS-AD model.", a:"Set $\\pi_t = \\pi_{t-1} = \\pi^*$, $\\bar{a}_t=0$, $\\bar{o}_t=0$. From AS: $\\pi^* = \\pi^* + \\bar{\\nu}\\tilde{Y}^* \\Rightarrow \\tilde{Y}^*=0$. From AD with $\\tilde{Y}^*=0$: $0 = -\\bar{b}\\bar{m}(\\pi^*-\\bar{\\pi}) \\Rightarrow \\pi^*=\\bar{\\pi}$. Steady state: $(\\tilde{Y}^*, \\pi^*) = (0, \\bar{\\pi})$."},
+  {t:15, q:"Describe the full transition dynamics after a one-period inflation shock $\\bar{o}_1 > 0$.", a:"Period 1: AS shifts up → stagflation ($\\tilde{Y}_1<0$, $\\pi_1>\\bar{\\pi}$). Periods 2+: shock gone but $\\pi_1$ baked into expectations. AS stays elevated; central bank keeps $\\tilde{Y}<0$ to reduce inflation. Each period: AS shifts down slightly, $\\pi$ falls, $\\tilde{Y}$ rises. Converges back to $(0,\\bar{\\pi})$."},
+  {t:15, q:"What happens graphically when the central bank lowers its inflation target (disinflation)?", a:"AD shifts left (lower $\\bar{\\pi}$ means tighter policy at every $\\pi$). AS unchanged initially. Period 1: $\\tilde{Y}_1<0$, $\\pi_1<\\bar{\\pi}_{\\text{old}}$. Then $\\pi_1$ lowers expectations → AS shifts right/down each period. Long run: new steady state at $(0, \\bar{\\pi}_{\\text{new}})$. $\\text{AD}_1=\\text{AD}^*$; AS shifts gradually."},
+  {t:15, q:"For a persistent demand shock (periods 1–8), what happens when the shock ends?", a:"During shock: AD right, AS shifts up each period (inflation baked in). When shock ends (period 9): AD shifts back left. But AS is now far above steady state. Result: recession ($\\tilde{Y}<0$) with elevated inflation — same transition as after an inflation shock. The boom must be paid for."},
+  {t:15, q:"Herriford's diagram labeling convention for AS-AD: what labels are required?", a:"Label $\\text{AS}_0, \\text{AS}_1, \\text{AS}^*, \\text{AD}_0, \\text{AD}_1, \\text{AD}^*$. Subscript 0 = initial; subscript 1 = period of shock; $*$ = long-run. If curves coincide, stack labels (e.g., $\\text{AD}_0 = \\text{AD}_1 = \\text{AD}^*$). Always label both axes ($\\tilde{Y}$ and $\\pi$)."},
 ];
 const quizQuestions = [
   // T1
@@ -179,6 +210,61 @@ const quizQuestions = [
   {t:11, q:"According to the Permanent Income Hypothesis, a consumer receiving a temporary $5,000 tax refund will:",
    opts:["Spend most of it immediately since it is cash","Spend a small fraction, saving most","Spend it all — income is income","Reduce consumption because of future taxes"],
    ans:1, exp:"PIH predicts consumption is based on permanent (average lifetime) income, not current income. A temporary refund adds little to permanent income, so most is saved. Hsieh (2003) confirms this for Alaska's large Permanent Fund — but found tax refunds DID raise spending (≈$0.30/$1), suggesting PIH works better for large, anticipated changes."},
+  // T12 — Phillips Curve
+  {t:12, q:"In the Phillips Curve $\\pi_t - \\pi_t^e = \\bar{\\nu}\\tilde{Y}_t + \\bar{o}_t$, what happens when actual inflation exceeds expected inflation?",
+   opts:["Output falls below potential","Output equals potential","Output rises above potential","Nothing changes in the real economy"],
+   ans:2, exp:"When $\\pi_t > \\pi_t^e$, the left side is positive. With $\\bar{\\nu} > 0$ and $\\bar{o}_t = 0$: $\\tilde{Y}_t > 0$. Firms were surprised by higher prices and therefore overproduced relative to what they would have chosen with full information."},
+  {t:12, q:"An oil price spike causes production costs to rise above trend. How does this appear in the Phillips Curve?",
+   opts:["$\\bar{o}_t < 0$ — a negative shock, PC shifts down","$\\bar{o}_t > 0$ — a positive shock, PC shifts up","$\\bar{\\nu}$ increases — the PC gets steeper","$\\pi_t^e$ falls — expected inflation declines"],
+   ans:1, exp:"Sign convention: ask what the cost shock does to output, holding $\\pi_t - \\pi_t^e$ fixed. Higher oil costs reduce output (supply contraction). So $\\bar{o}_t$ must be positive to generate higher inflation for any given output gap. The PC shifts upward."},
+  {t:12, q:"Under adaptive expectations, the accelerationist Phillips Curve says that when the economy is in a boom ($\\tilde{Y}_t > 0$):",
+   opts:["Inflation is high but constant","Inflation is rising (accelerating)","Inflation is falling (decelerating)","Expected inflation equals actual inflation"],
+   ans:1, exp:"$\\Delta\\pi_t = \\bar{\\nu}\\tilde{Y}_t + \\bar{o}_t$. With $\\tilde{Y}_t > 0$ and $\\bar{o}_t = 0$: $\\Delta\\pi_t > 0$, meaning inflation is increasing each period. The boom doesn't just keep inflation high — it pushes it higher and higher, hence 'accelerationist.'"},
+  {t:12, q:"In the Phillips Curve diagram (axes: $\\Delta\\pi$ vertical, $\\tilde{Y}$ horizontal), where does the curve cross the vertical axis?",
+   opts:["At $\\bar{\\nu}$ (the slope parameter)","At $\\bar{o}_t$ (the cost shock)","At zero, always","At $\\pi_{t-1}$ (last period's inflation)"],
+   ans:1, exp:"Setting $\\tilde{Y}_t = 0$: $\\Delta\\pi_t = \\bar{o}_t$. So the PC crosses the vertical axis at the cost shock. If $\\bar{o}_t = 0$, the curve passes through the origin. A positive cost shock shifts the intercept upward."},
+  // T13 — IS-MP
+  {t:13, q:"In the IS-MP diagram, what does the MP curve look like and what shifts it?",
+   opts:["Downward-sloping; shifted by demand shocks","Horizontal at $R = R_t$; shifted by Fed policy","Upward-sloping; shifted by cost shocks","Vertical at $\\tilde{Y} = 0$; shifted by productivity"],
+   ans:1, exp:"The MP curve is a horizontal line at $R = R_t$ because the central bank sets the real interest rate exogenously. Raising rates shifts it up (contractionary); lowering rates shifts it down (expansionary). The IS curve is the downward-sloping one."},
+  {t:13, q:"The Fed wants to stabilize output after a negative demand shock $\\bar{a}_1 = -2\\%$ with $\\bar{b} = 1$ and $\\bar{r} = 2\\%$. What should $R_1$ be?",
+   opts:["$R_1 = 4\\%$","$R_1 = 2\\%$","$R_1 = 0\\%$","$R_1 = -2\\%$"],
+   ans:2, exp:"Stabilization condition: $\\bar{a}_1 - \\bar{b}(R_1 - \\bar{r}) = 0 \\Rightarrow R_1 = \\bar{r} + \\bar{a}_1/\\bar{b} = 2\\% + (-2\\%)/1 = 0\\%$. The Fed must cut rates by 2 percentage points to offset the demand shock."},
+  {t:13, q:"Volcker raised real interest rates in the early 1980s. What was the intended and actual short-run effect on output?",
+   opts:["Intended: higher output; Actual: recession","Intended: recession to reduce inflation; Actual: recession","Intended: lower inflation with no output cost; Actual: mild slowdown","Intended: higher inflation; Actual: hyperinflation"],
+   ans:1, exp:"Volcker deliberately raised $R_t$ above $\\bar{r}$ to cause a below-potential output gap ($\\tilde{Y}_t < 0$). Via the Phillips curve, $\\tilde{Y}_t < 0 \\Rightarrow \\Delta\\pi_t < 0$, reducing inflation. The actual 1981–82 recession was severe, with unemployment over 10%."},
+  {t:13, q:"Which statement correctly describes the inflation-output tradeoff?",
+   opts:["Lower inflation always raises output permanently","Reducing inflation requires inducing a recession (below-potential output)","The Fed can lower inflation without any output cost using the IS curve","Higher output permanently lowers inflation"],
+   ans:1, exp:"Lowering inflation via tighter monetary policy raises $R_t$, pushing $\\tilde{Y}_t < 0$ (recession). The recession causes $\\Delta\\pi_t < 0$. Once inflation falls to target, $R_t$ can return to $\\bar{r}$ and output recovers. The cost is temporary output loss."},
+  // T14 — Unconventional Policy
+  {t:14, q:"Why does the Effective Lower Bound (ELB) on nominal interest rates exist?",
+   opts:["Congress prohibits negative rates by law","Physical currency earns 0%, creating a floor on nominal rates","Central banks refuse to set rates below 2%","The Fisher equation prevents negative real rates"],
+   ans:1, exp:"Banks can always switch to holding physical currency instead of reserves if IOR falls below 0%. Currency earns 0%, so it's preferred to negative-yield reserves. In practice, ELB is slightly below 0% because storing currency has costs."},
+  {t:14, q:"The Fed commits publicly to keeping rates near zero through 2025. This is an example of:",
+   opts:["Quantitative easing","Forward guidance","Conventional open-market operations","Fiscal stimulus"],
+   ans:1, exp:"Forward guidance is communication about future interest rates. By credibly committing to low rates, the Fed lowers long-term yield expectations, shifting IS right (positive demand shock) without changing the current overnight rate."},
+  {t:14, q:"How does quantitative easing (QE) enter the IS-MP model?",
+   opts:["It directly lowers $\\bar{r}$ (the trend real rate)","It is a positive demand shock: $\\bar{a}_t > 0$, shifting IS right","It shifts the MP curve upward","It steepens the Phillips curve"],
+   ans:1, exp:"QE lowers long-term yields, reducing borrowing costs and stimulating investment/consumption above what the current overnight rate alone would imply. This appears as a positive demand shock $\\bar{a}_t > 0$, shifting IS right — expanding output at any given $R_t$."},
+  {t:14, q:"Bond prices rise due to increased demand. What happens to the yield to maturity (YTM)?",
+   opts:["YTM rises proportionally","YTM falls — bond prices and yields are inversely related","YTM is unchanged; it depends only on coupon payments","YTM rises if the bond is a Treasury, falls if it is corporate"],
+   ans:1, exp:"Bond prices and yields are inversely related. YTM is the discount rate that equates the bond price to the PV of future cash flows. If prices rise, you pay more for the same future cash flows, so your effective return (YTM) falls."},
+  // T15 — AS-AD
+  {t:15, q:"According to the simple monetary policy rule $R_t - \\bar{r} = \\bar{m}(\\pi_t - \\bar{\\pi})$, what does the central bank do when inflation exceeds its target?",
+   opts:["Lower $R_t$ below $\\bar{r}$ to stimulate output","Raise $R_t$ above $\\bar{r}$ to cool inflation","Keep $R_t = \\bar{r}$ regardless of inflation","Cut the inflation target $\\bar{\\pi}$"],
+   ans:1, exp:"When $\\pi_t > \\bar{\\pi}$, the rule gives $R_t - \\bar{r} = \\bar{m}(\\pi_t - \\bar{\\pi}) > 0$, so $R_t > \\bar{r}$. The central bank tightens policy above the long-run rate to dampen demand and bring inflation back to target."},
+  {t:15, q:"The AD curve in the AS-AD model is downward sloping because:",
+   opts:["Higher output increases inflation, which reduces consumption","Higher inflation leads the central bank to raise the real rate, which reduces output","Firms reduce production when prices fall","Lower inflation increases real wages, reducing labor demand"],
+   ans:1, exp:"The AD curve comes from substituting the policy rule into IS. Higher $\\pi_t \\Rightarrow$ central bank raises $R_t$ (policy rule) $\\Rightarrow$ lower $\\tilde{Y}_t$ (IS curve). The transmission runs: inflation → monetary policy tightening → lower expenditure."},
+  {t:15, q:"In the AS-AD model, a positive demand shock $\\bar{a}_1 > 0$ (with $\\bar{a}_t=0$ for $t>1$) causes which of the following in period 1?",
+   opts:["AS shifts up; AD unchanged; output falls","AD shifts right; AS unchanged; output rises and inflation rises","AS shifts right; AD unchanged; output rises and inflation falls","AD shifts left; AS shifts up; stagflation"],
+   ans:1, exp:"A demand shock $\\bar{a}_1>0$ enters the AD equation directly, shifting AD rightward. AS in period 1 is unchanged (it depends on $\\pi_0$, which hasn't changed). The new intersection gives higher $\\tilde{Y}_1>0$ and higher $\\pi_1>\\bar{\\pi}$."},
+  {t:15, q:"In steady state of the AS-AD model (no shocks), what are the equilibrium values?",
+   opts:["$\\tilde{Y}^*=\\bar{a}$, $\\pi^*=\\bar{\\nu}$","$\\tilde{Y}^*=0$, $\\pi^*=\\bar{\\pi}$","$\\tilde{Y}^*=\\bar{r}$, $\\pi^*=\\bar{\\pi}$","$\\tilde{Y}^*=0$, $\\pi^*=0$"],
+   ans:1, exp:"From AS with $\\pi_t=\\pi_{t-1}$ and no shocks: $\\bar{\\nu}\\tilde{Y}^*=0 \\Rightarrow \\tilde{Y}^*=0$. From AD with $\\tilde{Y}^*=0$ and $\\bar{a}=0$: $\\pi^*=\\bar{\\pi}$. The economy returns to potential output with inflation at the central bank's target."},
+  {t:15, q:"After a one-period inflation shock ($\\bar{o}_1>0$, then zero), why does inflation remain elevated for multiple periods?",
+   opts:["Because the central bank does not respond to the shock","Because adaptive expectations mean $\\pi_t^e = \\pi_{t-1}$, embedding last period's high inflation into the next period's AS","Because the AD curve shifts right permanently","Because the real interest rate cannot adjust"],
+   ans:1, exp:"With adaptive expectations, $\\pi_t^e = \\pi_{t-1}$. After the shock raises $\\pi_1$, this becomes the new expected inflation, shifting AS up again in period 2. Each period the AS shifts down only gradually as $\\pi_{t-1}$ falls. This 'sticky inflation' is why shocks have persistent effects."},
 ];
 
 // ===== APP STATE =====
@@ -189,9 +275,29 @@ let fcFiltered = [];
 let quizScore = 0;
 let quizAnswered = 0;
 
+// ===== HAMBURGER NAV =====
+function openNav() {
+  document.getElementById('nav-drawer').classList.add('open');
+  document.getElementById('nav-overlay').classList.add('open');
+}
+function closeNav() {
+  document.getElementById('nav-drawer').classList.remove('open');
+  document.getElementById('nav-overlay').classList.remove('open');
+}
+function navTo(mode) {
+  closeNav();
+  setMode(mode);
+}
+function syncDrawer(mode) {
+  document.querySelectorAll('.nav-drawer-btn').forEach(b => b.classList.remove('active'));
+  const el = document.getElementById('nd-' + mode);
+  if (el) el.classList.add('active');
+}
+
 // ===== MODE SWITCHING =====
 function setMode(mode) {
   currentMode = mode;
+  syncDrawer(mode);
   document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.mode-btn').forEach(b => {
     if (b.getAttribute('onclick') === `setMode('${mode}')`) b.classList.add('active');
@@ -202,6 +308,7 @@ function setMode(mode) {
   document.getElementById('flashcard-view').style.display = 'none';
   document.getElementById('quiz-view').style.display = 'none';
   document.getElementById('homework-view').style.display = 'none';
+  document.getElementById('exams-view').style.display = 'none';
   document.getElementById('topic-strip').style.display = 'none';
   if (mode === 'overview') {
     document.getElementById('overview-view').style.display = 'block';
@@ -212,7 +319,7 @@ function setMode(mode) {
   } else if (mode === 'proofs') {
     document.getElementById('proofs-view').style.display = 'block';
     setTimeout(() => {
-      if (window.renderMathInElement) renderMathInElement(document.getElementById('proofs-view'), {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+      if (window.renderMathInElement) renderMathInElement(document.getElementById('proofs-view'), {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,strict:false});
     }, 80);
   } else if (mode === 'flashcards') {
     document.getElementById('flashcard-view').style.display = 'block';
@@ -225,7 +332,12 @@ function setMode(mode) {
   } else if (mode === 'homework') {
     document.getElementById('homework-view').style.display = 'block';
     setTimeout(() => {
-      if (window.renderMathInElement) renderMathInElement(document.getElementById('homework-view'), {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+      if (window.renderMathInElement) renderMathInElement(document.getElementById('homework-view'), {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,strict:false});
+    }, 80);
+  } else if (mode === 'exams') {
+    document.getElementById('exams-view').style.display = 'block';
+    setTimeout(() => {
+      if (window.renderMathInElement) renderMathInElement(document.getElementById('exams-view'), {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,strict:false});
     }, 80);
   }
 }
@@ -248,14 +360,44 @@ function toggleHW(header) {
   chevron.classList.toggle('open', !isOpen);
 }
 
+// ===== EXAM TOGGLE =====
+function toggleExam(header) {
+  const answer = header.nextElementSibling;
+  const chevron = header.querySelector('.exam-chevron');
+  const isOpen = answer.classList.contains('show');
+  answer.classList.toggle('show', !isOpen);
+  chevron.classList.toggle('open', !isOpen);
+}
+
+function switchExam(id, btn) {
+  document.querySelectorAll('.exam-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.exam-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('exam-' + id).classList.add('active');
+  btn.classList.add('active');
+  setTimeout(() => {
+    if (window.renderMathInElement) renderMathInElement(document.getElementById('exam-' + id), {
+      delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false
+    });
+  }, 50);
+}
+
+const PS_DESCRIPTIONS = {
+  1: "<strong>PS 1 · Topics 1–3:</strong> GDP measurement &amp; transactions (C, I, G, NX), PPP &amp; real vs. nominal GDP, chain-weighting &amp; the Fisher Index, inflation, CPI vs. GDP deflator, growth rates &amp; the Rule of 70.",
+  2: "<strong>PS 2 · Topics 5–7:</strong> Production functions &amp; TFP, Cobb-Douglas &amp; income shares, development accounting, the Solow model (steady state, transition dynamics, comparative statics), Solow with productivity growth &amp; the balanced growth path.",
+  3: "<strong>PS 3 · Topics 8–11:</strong> Natural rate of unemployment &amp; Okun's Law, labor market flows (bathtub model), money &amp; the federal funds market, IOR &amp; the ample-reserves framework, Fisher equation, the IS curve (derivation, shifts, multiplier, open economy).",
+  4: "<strong>PS 4 · Topics 12–14:</strong> Phillips curve &amp; cost shocks, IS-MP model, monetary stabilization policy, Effective Lower Bound &amp; forward guidance, AS-AD framework (Taylor rule, demand/supply shocks, adaptive expectations, long-run adjustment)."
+};
+
 function switchPS(n, btn) {
   document.querySelectorAll('.hw-ps-pane').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.hw-ps-tab').forEach(b => b.classList.remove('active'));
   document.getElementById('hw-ps' + n).classList.add('active');
   btn.classList.add('active');
+  const desc = document.getElementById('hw-ps-desc-text');
+  if (desc) desc.innerHTML = PS_DESCRIPTIONS[n] || '';
   if (window.renderMathInElement) {
     setTimeout(() => renderMathInElement(document.getElementById('hw-ps' + n), {
-      delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false
+      delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,strict:false
     }), 50);
   }
 }
@@ -284,10 +426,10 @@ function showNotesForTopic(t) {
   if (el) {
     el.classList.add('active');
     setTimeout(() => {
-      if (window.renderMathInElement) renderMathInElement(el, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+      if (window.renderMathInElement) renderMathInElement(el, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,strict:false});
     }, 50);
     // Init chart for this topic
-    const chartInits = {1:initGDP,3:initGrowth,5:initProd,6:initSolow,8:initBathtub,10:initMoney,11:initIS};
+    const chartInits = {1:initGDP,3:initGrowth,5:initProd,6:initSolow,8:initBathtub,10:initMoney,11:initIS,12:initPC,13:initISMP};
     if (chartInits[t]) setTimeout(chartInits[t], 80);
   }
 }
@@ -309,7 +451,7 @@ function showCard() {
   document.getElementById('fc-progress').textContent = `Card ${fcIndex+1} of ${fcFiltered.length} · Topic ${card.t}`;
   setTimeout(() => {
     if (window.renderMathInElement) {
-      renderMathInElement(document.getElementById('fc-inner'), {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+      renderMathInElement(document.getElementById('fc-inner'), {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,strict:false});
     }
   }, 50);
 }
@@ -321,6 +463,7 @@ function prevCard() { fcIndex = (fcIndex-1+fcFiltered.length) % fcFiltered.lengt
 // ===== QUIZ =====
 function renderQuiz() {
   const filtered = currentTopic === 'all' ? [...quizQuestions] : quizQuestions.filter(q => q.t === currentTopic);
+  window._quizFiltered = filtered;
   quizScore = 0; quizAnswered = 0;
   document.getElementById('quiz-score').textContent = 'Score: 0 / 0';
   const container = document.getElementById('quiz-container');
@@ -329,17 +472,25 @@ function renderQuiz() {
       <div class="quiz-q-num">Q${i+1} · Topic ${q.t}</div>
       <div class="quiz-q-text">${q.q}</div>
       <div class="quiz-opts">
-        ${q.opts.map((o,j) => `<button class="quiz-opt" onclick="answerQuiz(${i},${j},${q.ans},'${encodeURIComponent(q.exp)}')">${String.fromCharCode(65+j)}. ${o}</button>`).join('')}
+        ${q.opts.map((o,j) => `<button class="quiz-opt" data-qi="${i}" data-j="${j}">${String.fromCharCode(65+j)}. ${o}</button>`).join('')}
       </div>
       <div class="quiz-exp" id="qe-${i}"></div>
     </div>
   `).join('');
+  container.addEventListener('click', function handler(e) {
+    const btn = e.target.closest('.quiz-opt');
+    if (!btn) return;
+    const qi = parseInt(btn.dataset.qi);
+    const chosen = parseInt(btn.dataset.j);
+    const q = window._quizFiltered[qi];
+    answerQuiz(qi, chosen, q.ans, q.exp);
+  });
   setTimeout(() => {
-    if (window.renderMathInElement) renderMathInElement(container, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+    if (window.renderMathInElement) renderMathInElement(container, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,strict:false});
   }, 80);
 }
 
-function answerQuiz(qi, chosen, correct, expEnc) {
+function answerQuiz(qi, chosen, correct, exp) {
   const qEl = document.getElementById('qq-'+qi);
   const btns = qEl.querySelectorAll('.quiz-opt');
   if (btns[0].disabled) return;
@@ -349,13 +500,13 @@ function answerQuiz(qi, chosen, correct, expEnc) {
     if (j === chosen && chosen !== correct) b.classList.add('wrong');
   });
   const expEl = document.getElementById('qe-'+qi);
-  expEl.innerHTML = decodeURIComponent(expEnc);
+  expEl.innerHTML = exp;
   expEl.classList.add('show');
   quizAnswered++;
   if (chosen === correct) quizScore++;
   document.getElementById('quiz-score').textContent = `Score: ${quizScore} / ${quizAnswered}`;
   setTimeout(() => {
-    if (window.renderMathInElement) renderMathInElement(expEl, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+    if (window.renderMathInElement) renderMathInElement(expEl, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,strict:false});
   }, 50);
 }
 
@@ -652,5 +803,112 @@ function updateIS() {
   if (isChart) { isChart.data.datasets[0].data = ys; isChart.data.datasets[1].data = rLine; isChart.data.datasets[2].data = eq; isChart.update(); }
 }
 
+// ===== T12: PHILLIPS CURVE CHART =====
+let pcChart;
+function initPC() {
+  const ctx = document.getElementById('chart-pc');
+  if (!ctx || pcChart) return;
+  pcChart = new Chart(ctx, {
+    type: 'line',
+    data: { datasets: [
+      {label: 'Phillips Curve PC', data: [], borderColor: '#fb923c', borderWidth: 2.5, pointRadius: 0, tension: 0.1},
+      {label: 'Current position', data: [], borderColor: '#fb923c', borderWidth: 0, pointRadius: 9, pointBackgroundColor: '#fb923c', showLine: false},
+      {label: 'No-shock baseline', data: [], borderColor: MUTED, borderWidth: 1.2, borderDash: [4,3], pointRadius: 0},
+    ]},
+    options: { responsive: true, maintainAspectRatio: false, animation: false,
+      plugins: { legend: { labels: { color: MUTED, font: { size: 11 } } } },
+      scales: {
+        x: { type: 'linear', title: { display: true, text: 'Output gap Ỹ (%)', color: MUTED }, grid: { color: BORDER }, ticks: { color: MUTED }, min: -8, max: 8 },
+        y: { title: { display: true, text: 'Change in inflation Δπ (pp)', color: MUTED }, grid: { color: BORDER }, ticks: { color: MUTED }, min: -8, max: 8 }
+      }}
+  });
+  updatePC();
+}
+function updatePC() {
+  const nu = parseFloat(document.getElementById('pc-nu').value);
+  const yGap = parseFloat(document.getElementById('pc-y').value);
+  const shock = parseFloat(document.getElementById('pc-o').value);
+  document.getElementById('pc-nu-val').textContent = nu.toFixed(2);
+  document.getElementById('pc-y-val').textContent = yGap.toFixed(1) + '%';
+  document.getElementById('pc-o-val').textContent = shock.toFixed(2);
+  // PC line: Δπ = ν * Y + shock
+  const ys = [];
+  for (let y = -8; y <= 8; y += 0.2) {
+    ys.push({ x: y, y: nu * y + shock });
+  }
+  // No-shock baseline (shock=0)
+  const base = [{ x: -8, y: nu * -8 }, { x: 8, y: nu * 8 }];
+  const dpi = nu * yGap + shock;
+  const dot = [{ x: yGap, y: dpi }];
+  document.getElementById('pc-dpi').textContent = dpi.toFixed(2) + ' pp';
+  document.getElementById('pc-intercept').textContent = shock.toFixed(2) + ' pp';
+  const state = yGap > 0.1 ? 'Boom (↑ inflation)' : yGap < -0.1 ? 'Recession (↓ inflation)' : 'At potential';
+  document.getElementById('pc-state').textContent = state;
+  if (pcChart) { pcChart.data.datasets[0].data = ys; pcChart.data.datasets[1].data = dot; pcChart.data.datasets[2].data = base; pcChart.update(); }
+}
+
+// ===== IS-MP CHART =====
+let ismpChart = null;
+const RBAR = 2; // trend real rate %
+
+function initISMP() {
+  const ctx = document.getElementById('chart-ismp');
+  if (!ctx) return;
+  if (ismpChart) { ismpChart.destroy(); ismpChart = null; }
+  const ys = buildISLine(0, 1);
+  ismpChart = new Chart(ctx, {
+    data: {
+      datasets: [
+        { type:'line', label:'IS curve', data: ys.pts, borderColor:'#fb923c', borderWidth:2.5, pointRadius:0, tension:0 },
+        { type:'line', label:'MP curve', data:[{x:-6,y:RBAR},{x:6,y:RBAR}], borderColor:'#38bdf8', borderWidth:2.5, pointRadius:0, tension:0, borderDash:[] },
+        { type:'scatter', label:'Equilibrium', data:[{x:0,y:RBAR}], pointRadius:7, pointBackgroundColor:'#fff', pointBorderColor:'#34d399', pointBorderWidth:2.5 },
+        { type:'line', label:'LR potential', data:[{x:0,y:-4},{x:0,y:9}], borderColor:'rgba(255,255,255,0.2)', borderWidth:1.5, pointRadius:0, borderDash:[4,4], tension:0 }
+      ]
+    },
+    options: {
+      animation:false, responsive:true, maintainAspectRatio:true,
+      scales: {
+        x: { type:'linear', min:-6, max:6, title:{display:true,text:'Output gap, Ỹ (%)',color:'#94a3b8',font:{size:11}}, grid:{color:'rgba(255,255,255,0.06)'}, ticks:{color:'#64748b',font:{size:10},callback:v=>v+'%'} },
+        y: { min:-4, max:9, title:{display:true,text:'Real interest rate, R (%)',color:'#94a3b8',font:{size:11}}, grid:{color:'rgba(255,255,255,0.06)'}, ticks:{color:'#64748b',font:{size:10},callback:v=>v+'%'} }
+      },
+      plugins: { legend:{labels:{color:'#94a3b8',font:{size:10},boxWidth:16}}, tooltip:{callbacks:{label:p=>`${p.dataset.label}: R=${p.parsed.y.toFixed(1)}%, Ỹ=${p.parsed.x.toFixed(1)}%`}} }
+    }
+  });
+  updateISMP();
+}
+
+function buildISLine(a, b) {
+  const pts = [];
+  for (let R = -4; R <= 9; R += 0.25) {
+    const Y = a - b * (R - RBAR);
+    pts.push({x: +Y.toFixed(3), y: +R.toFixed(3)});
+  }
+  return { pts };
+}
+
+function updateISMP() {
+  if (!ismpChart) return;
+  const R  = +document.getElementById('ismp-R').value;
+  const a  = +document.getElementById('ismp-a').value;
+  const b  = +document.getElementById('ismp-b').value;
+  document.getElementById('ismp-R-val').textContent = R.toFixed(1)+'%';
+  document.getElementById('ismp-a-val').textContent = a.toFixed(1);
+  document.getElementById('ismp-b-val').textContent = b.toFixed(2);
+  document.getElementById('ismp-rbar').textContent  = RBAR.toFixed(1)+'%';
+  const Yt = a - b * (R - RBAR);
+  document.getElementById('ismp-Ytilde').textContent = Yt.toFixed(2)+'%';
+  const lbl = document.getElementById('ismp-state-label');
+  if (Math.abs(Yt) < 0.05) { lbl.textContent='At potential'; lbl.style.color='#34d399'; }
+  else if (Yt > 0)           { lbl.textContent='Boom (above potential)'; lbl.style.color='#fb923c'; }
+  else                       { lbl.textContent='Recession (below potential)'; lbl.style.color='#f87171'; }
+  const { pts } = buildISLine(a, b);
+  ismpChart.data.datasets[0].data = pts;
+  ismpChart.data.datasets[1].data = [{x:-6,y:R},{x:6,y:R}];
+  ismpChart.data.datasets[1].borderColor = R > RBAR ? '#f87171' : R < RBAR ? '#34d399' : '#38bdf8';
+  ismpChart.data.datasets[2].data = [{x:Yt, y:R}];
+  ismpChart.update('none');
+}
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {});
+

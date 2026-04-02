@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Macroeconomic Theory — Study Guide</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swapfamily=Raleway:wght@300;400;500;600https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swapfamily=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"
-  onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}], throwOnError:false});"></script>
+  onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}], throwOnError:false,strict:false});"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -19,11 +19,29 @@
   <div>
     <h1>Macro<span>economic</span> Theory</h1>
   </div>
-  <div style="text-align:right;">
-    <div style="font-size:0.7rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;">Topics 1–11</div>
-    <div style="font-size:0.75rem;color:var(--accent);font-family:var(--font-mono);margin-top:2px;">Study Guide</div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div style="text-align:right;">
+      <div style="font-size:0.7rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;">Topics 1–15</div>
+      <div style="font-size:0.75rem;color:var(--accent);font-family:var(--font-mono);margin-top:2px;">Study Guide</div>
+    </div>
+    <button class="hamburger-btn" onclick="openNav()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<!-- Hamburger nav drawer -->
+<div class="nav-overlay" id="nav-overlay" onclick="closeNav()"></div>
+<div class="nav-drawer" id="nav-drawer">
+  <div class="nav-drawer-title">Navigate</div>
+  <button class="nav-drawer-btn active" id="nd-overview" onclick="navTo('overview')"><span class="nav-icon">⊞</span>Overview</button>
+  <button class="nav-drawer-btn" id="nd-notes" onclick="navTo('notes')"><span class="nav-icon">📖</span>Study Notes</button>
+  <button class="nav-drawer-btn" id="nd-proofs" onclick="navTo('proofs')"><span class="nav-icon">∑</span>Proofs</button>
+  <button class="nav-drawer-btn" id="nd-flashcards" onclick="navTo('flashcards')"><span class="nav-icon">🃏</span>Flashcards</button>
+  <button class="nav-drawer-btn" id="nd-quiz" onclick="navTo('quiz')"><span class="nav-icon">✓</span>Quiz</button>
+  <button class="nav-drawer-btn" id="nd-homework" onclick="navTo('homework')" style="color:#a78bfa;"><span class="nav-icon">📝</span>Homework</button>
+  <button class="nav-drawer-btn" id="nd-exams" onclick="navTo('exams')" style="color:#fb923c;"><span class="nav-icon">📋</span>Exams</button>
+</div>
 
 <div class="mode-bar">
   <button class="mode-btn active" onclick="setMode('overview')">Overview</button>
@@ -32,6 +50,7 @@
   <button class="mode-btn" onclick="setMode('flashcards')">Flashcards</button>
   <button class="mode-btn" onclick="setMode('quiz')">Quiz</button>
   <button class="mode-btn" onclick="setMode('homework')" style="color:#a78bfa;">Homework</button>
+  <button class="mode-btn" onclick="setMode('exams')" style="color:#fb923c;">Exams</button>
 </div>
 
 <div class="topic-strip" id="topic-strip" style="display:none;">
@@ -47,6 +66,10 @@
   <button class="topic-chip" onclick="setTopic(9)">T9 · Short Run</button>
   <button class="topic-chip" onclick="setTopic(10)">T10 · Money</button>
   <button class="topic-chip" onclick="setTopic(11)">T11 · IS Curve</button>
+  <button class="topic-chip" onclick="setTopic(12)">T12 · Phillips Curve</button>
+  <button class="topic-chip" onclick="setTopic(13)">T13 · IS-MP Model</button>
+  <button class="topic-chip" onclick="setTopic(14)">T14 · Unconventional Policy</button>
+  <button class="topic-chip" onclick="setTopic(15)">T15 · AS-AD Model</button>
 </div>
 
 <!-- ===== OVERVIEW ===== -->
@@ -168,6 +191,50 @@
         <li>Aggregate demand shocks (shift IS)</li>
         <li>Multiplier effects: $\frac{1}{1-\bar{x}}$</li>
         <li>PIH, Life-cycle model, fiscal policy</li>
+      </ul>
+    </div>
+    <div class="topic-card" data-t="12" onclick="jumpToNotes(12)">
+      <div class="topic-num">Topic 12</div>
+      <div class="topic-name">The Phillips Curve</div>
+      <ul class="topic-bullets">
+        <li>$\pi_t - \pi_t^e = \bar{\nu}\tilde{Y}_t + \bar{o}_t$</li>
+        <li>Inflation expectations & forecast errors</li>
+        <li>Adaptive expectations: $\pi_t^e = \pi_{t-1}$</li>
+        <li>Accelerationist PC: $\Delta\pi_t = \bar{\nu}\tilde{Y}_t + \bar{o}_t$</li>
+        <li>Supply/cost-push shocks $\bar{o}_t$</li>
+      </ul>
+    </div>
+    <div class="topic-card" data-t="13" onclick="jumpToNotes(13)">
+      <div class="topic-num">Topic 13</div>
+      <div class="topic-name">Monetary Policy &amp; IS-MP Model</div>
+      <ul class="topic-bullets">
+        <li>MP curve: $R = R_t$ (Fed sets real rate)</li>
+        <li>IS-MP diagram: $R$ vs $\tilde{Y}$</li>
+        <li>Fisher equation: $R_t = i_t - \pi_t$</li>
+        <li>Stabilizing output after demand shocks</li>
+        <li>Volcker disinflation &amp; inflation-output tradeoff</li>
+      </ul>
+    </div>
+    <div class="topic-card" data-t="14" onclick="jumpToNotes(14)">
+      <div class="topic-num">Topic 14</div>
+      <div class="topic-name">Unconventional Monetary Policy</div>
+      <ul class="topic-bullets">
+        <li>Effective Lower Bound (ELB): $i_t \geq \text{ELB}$</li>
+        <li>Bond S/D: prices ↑ → yields ↓ (inverse relation)</li>
+        <li>Forward guidance: shifting rate expectations</li>
+        <li>Quantitative easing (QE): buying long-term assets</li>
+        <li>Fiscal stimulus &amp; the multiplier at ELB</li>
+      </ul>
+    </div>
+    <div class="topic-card" data-t="15" onclick="jumpToNotes(15)">
+      <div class="topic-num">Topic 15</div>
+      <div class="topic-name">AS-AD Model</div>
+      <ul class="topic-bullets">
+        <li>Policy rule: $R_t - \bar{r} = \bar{m}(\pi_t - \bar{\pi})$</li>
+        <li>AD curve: IS + policy rule combined</li>
+        <li>AS curve: Phillips curve relabeled</li>
+        <li>Steady state: $\tilde{Y}^* = 0$, $\pi^* = \bar{\pi}$</li>
+        <li>Events: inflation shock, disinflation, demand shock</li>
       </ul>
     </div>
   </div>
@@ -1151,6 +1218,455 @@
 </main>
 </div>
 
+<!-- T12 -->
+<div class="notes-container" id="notes-12">
+<main>
+<div class="section-title">Topic 12 · The Phillips Curve</div>
+<div class="section-subtitle">Inflation · Expectations · Output Gap · Cost Shocks · Adaptive Expectations</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Overview</span>
+  <h3>What Is the Phillips Curve?</h3>
+  <p>The Phillips Curve describes the <strong>supply side</strong> of the short-run model. While the IS curve captured the demand side (expenditure), the Phillips Curve links <strong>inflation to short-run output</strong>. Named after economist Bill Phillips, it was originally a data pattern later given rigorous theoretical foundations by Robert E. Lucas Jr. in the early 1970s.</p>
+  <p>Key insight: GDP = Expenditure = Production. The IS curve tells us about expenditure; the Phillips Curve tells us about production. Together they pin down both output and inflation.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Inflation Timing Convention</span>
+  <h3>Inflation Rate Definition</h3>
+  <p>We use the convention that $P_t$ is the price level at the <em>start</em> of period $t$ (and end of period $t-1$). Inflation over period $t$ is the percent change in prices during that period:</p>
+  <div class="formula-box">
+    $\pi_t \equiv \dfrac{P_{t+1} - P_t}{P_t}$
+  </div>
+  <p>Note: $\pi_t$ covers the same period as output $\tilde{Y}_t$ (both occur "during" period $t$). Firms know $P_t$ at the start of the period but do <em>not</em> yet know $P_{t+1}$.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Micro Foundation</span>
+  <h3>Why Inflation Surprises Affect Output</h3>
+  <p>Consider a profit-maximizing firm. It must choose how much to produce at the <em>start</em> of period $t$, before it observes $P_{t+1}$. Its real profits depend on:</p>
+  <div class="formula-box">
+    Real profits = $\dfrac{R_{t+1}(q_t)}{P_{t+1}} - \dfrac{C_t(q_t)}{P_t}$
+  </div>
+  <p>The firm knows current costs (paid up front) but faces uncertainty about future revenues (earned after sales). Higher expected $P_{t+1}$ means higher expected real marginal revenue, so the firm produces more.</p>
+  <p>For the <strong>"average" firm</strong> whose good price tracks the overall price level: if actual inflation $\pi_t$ exceeds expected inflation $\pi_t^e$, then actual $P_{t+1}$ exceeds expected $P_{t+1}$, so firms <em>overproduce</em> relative to trend — actual output exceeds potential.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Equation</span>
+  <h3>The Phillips Curve Equation</h3>
+  <p>The Phillips Curve captures the relationship between inflation forecast errors and the output gap:</p>
+  <div class="formula-box">
+    General form:
+    $$\pi_t - \pi_t^e = \bar{\nu}\tilde{Y}_t + \bar{o}_t$$
+    <br>
+    Where: $\pi_t$ = actual inflation, $\pi_t^e$ = expected inflation, $\bar{\nu} > 0$ = slope parameter, $\tilde{Y}_t$ = output gap, $\bar{o}_t$ = cost/inflation shock.
+  </div>
+  <ul>
+    <li>If $\pi_t > \pi_t^e$ (inflation surprise), firms overproduce: $\tilde{Y}_t > 0$.</li>
+    <li>If $\pi_t < \pi_t^e$ (inflation disappointment), firms underproduce: $\tilde{Y}_t < 0$.</li>
+    <li>If $\pi_t = \pi_t^e$ and $\bar{o}_t = 0$: output is exactly at potential ($\tilde{Y}_t = 0$).</li>
+  </ul>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Shock Analysis</span>
+  <h3>Cost / Inflation Shocks ($\bar{o}_t$)</h3>
+  <p>Production can also deviate from trend even when actual inflation equals expected inflation — if input costs deviate from their trend. The term $\bar{o}_t$ captures these <strong>cost-push shocks</strong> (also called "price shocks," "supply shocks," or "inflation shocks").</p>
+  <p><strong>Sign convention:</strong> Ask what happens to output if we hold $\pi_t - \pi_t^e$ fixed. The shock goes in the <em>opposite</em> direction.</p>
+  <ul>
+    <li><strong>Positive shock ($\bar{o}_t > 0$):</strong> Higher production costs → output falls for a given inflation surprise → upward PC shift. Example: oil price spike raises input costs, pushes inflation up without a demand boom.</li>
+    <li><strong>Negative shock ($\bar{o}_t < 0$):</strong> Favorable cost shock → output would rise → downward PC shift. Example: productivity surge lowers unit costs.</li>
+  </ul>
+  <div class="formula-box">
+    Rule: If higher costs → output ↓ (holding $\pi_t - \pi_t^e$ fixed) → $\bar{o}_t > 0$ (positive inflation shock)
+  </div>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Adaptive Expectations</span>
+  <h3>Adaptive Expectations & the Accelerationist PC</h3>
+  <p>Under <strong>adaptive expectations</strong>, firms expect next period's inflation to equal last period's actual inflation:</p>
+  <div class="formula-box">
+    $\pi_t^e = \pi_{t-1}$
+  </div>
+  <p>Substituting into the general Phillips Curve:</p>
+  <div class="formula-box">
+    $\pi_t - \pi_{t-1} = \bar{\nu}\tilde{Y}_t + \bar{o}_t$
+    $$\boxed{\Delta\pi_t = \bar{\nu}\tilde{Y}_t + \bar{o}_t}$$
+  </div>
+  <p>This is the <strong>accelerationist Phillips Curve</strong>:</p>
+  <ul>
+    <li>When $\tilde{Y}_t > 0$ (boom): inflation is <em>rising</em> — prices accelerate.</li>
+    <li>When $\tilde{Y}_t < 0$ (recession): inflation is <em>falling</em> — prices decelerate.</li>
+    <li>When $\tilde{Y}_t = 0$ (at potential) and $\bar{o}_t = 0$: inflation is <em>constant</em>.</li>
+  </ul>
+</div>
+
+<div class="concept-block graph-block">
+  <span class="tag" style="background:rgba(52,211,153,0.1);color:var(--accent4);border:1px solid rgba(52,211,153,0.3);">Interactive Chart</span>
+  <h3>Phillips Curve Explorer</h3>
+  <p>Adjust the output gap and cost shock to see how $\Delta\pi$ changes. The dot marks the current position. Shift the shock to see how the PC moves up or down.</p>
+  <div class="graph-canvas-wrap"><canvas id="chart-pc" height="230"></canvas></div>
+  <div class="graph-controls">
+    <div class="graph-ctrl"><label>Slope $\bar{\nu}$</label><input type="range" id="pc-nu" min="0.2" max="2.0" step="0.1" value="0.8" oninput="updatePC()"><span class="val" id="pc-nu-val">0.80</span></div>
+    <div class="graph-ctrl"><label>Output gap $\tilde{Y}_t$ (%)</label><input type="range" id="pc-y" min="-6" max="6" step="0.5" value="0" oninput="updatePC()"><span class="val" id="pc-y-val">0.0%</span></div>
+    <div class="graph-ctrl"><label>Cost shock $\bar{o}_t$ (pp)</label><input type="range" id="pc-o" min="-3" max="3" step="0.25" value="0" oninput="updatePC()"><span class="val" id="pc-o-val">0.00</span></div>
+  </div>
+  <div style="margin-top:10px;">
+    <span class="graph-stat">$\Delta\pi_t$: <span id="pc-dpi">0.00 pp</span></span>
+    <span class="graph-stat">PC intercept ($\tilde{Y}=0$): <span id="pc-intercept">0.00 pp</span></span>
+    <span class="graph-stat">State: <span id="pc-state">Neutral</span></span>
+  </div>
+</div>
+
+<div class="concept-block example-block">
+  <span class="tag tag-exam">Worked Example</span>
+  <h3>Reading the Phillips Curve Diagram</h3>
+  <p>The PC is plotted with $\Delta\pi_t$ on the vertical axis and $\tilde{Y}_t$ on the horizontal axis:</p>
+  <ul>
+    <li><strong>Slope:</strong> $\bar{\nu} > 0$ — upward sloping. Higher output → faster-rising inflation.</li>
+    <li><strong>Intercept:</strong> When $\tilde{Y}_t = 0$, $\Delta\pi_t = \bar{o}_t$. The PC crosses the vertical axis at the cost shock.</li>
+    <li><strong>Positive shock $\bar{o}_t > 0$:</strong> Shifts the entire PC <em>upward</em> — inflation rises faster for any given output gap.</li>
+    <li><strong>No shock ($\bar{o}_t = 0$):</strong> PC passes through the origin. A slumping economy ($\tilde{Y} < 0$) has falling inflation; a booming economy ($\tilde{Y} > 0$) has rising inflation.</li>
+  </ul>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Long Run</span>
+  <h3>Long-Run Implications</h3>
+  <p>In the long run, everyone adjusts — no inflation surprises on average. This means $\pi_t = \pi_t^e$ and $\bar{o}_t = 0$, so the Phillips Curve requires $\tilde{Y}_t = 0$. Output returns to its potential level. This is consistent with the Solow model's long-run prediction: the economy eventually returns to its trend.</p>
+  <p>The Phillips Curve thus provides the <strong>supply-side adjustment mechanism</strong>: deviations from potential output are self-correcting over time as inflation expectations update and cost shocks dissipate.</p>
+</div>
+
+</main>
+</div>
+
+<!-- T13 -->
+<div class="notes-container" id="notes-13">
+<main>
+<div class="section-title">Topic 13 · Monetary Policy &amp; the IS-MP Model</div>
+<div class="section-subtitle">MP Curve · IS-MP Diagram · Fisher Equation · Stabilization · Volcker Disinflation</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Model Overview</span>
+  <h3>The IS-MP Model</h3>
+  <p>The IS-MP model integrates monetary policy into the short-run framework. It has three components working in sequence:</p>
+  <ol style="padding-left:18px;margin:8px 0;display:flex;flex-direction:column;gap:4px;">
+    <li style="font-size:0.85rem;color:var(--text);line-height:1.65;"><strong>MP curve:</strong> The central bank sets the real interest rate $R_t$.</li>
+    <li style="font-size:0.85rem;color:var(--text);line-height:1.65;"><strong>IS curve:</strong> The real interest rate determines short-run output $\tilde{Y}_t$.</li>
+    <li style="font-size:0.85rem;color:var(--text);line-height:1.65;"><strong>Phillips curve:</strong> Short-run output determines the change in inflation $\Delta\pi_t$.</li>
+  </ol>
+  <div class="formula-box">
+    IS curve: $\tilde{Y}_t = \bar{a}_t - \bar{b}(R_t - \bar{r})$<br>
+    Phillips curve (adaptive): $\Delta\pi_t = \bar{\nu}\tilde{Y}_t + \bar{o}_t$<br>
+    MP curve: $R_t = $ (set by central bank)
+  </div>
+  <p><strong>Endogenous variables:</strong> $\tilde{Y}_t,\; R_t,\; \Delta\pi_t$. The chain is: $i_t \Rightarrow R_t \Rightarrow \tilde{Y}_t \Rightarrow \Delta\pi_t$.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-def">Fisher Equation</span>
+  <h3>From Nominal to Real Interest Rates</h3>
+  <p>The central bank directly controls the <em>nominal</em> interest rate $i_t$, not the real rate. The Fisher equation links the two:</p>
+  <div class="formula-box">$$i_t = R_t + \pi_t \quad\Longrightarrow\quad R_t = i_t - \pi_t$$</div>
+  <p>In the short run, inflation $\pi_t$ is "sticky" — it adjusts slowly. This means the central bank can effectively control the real interest rate $R_t$ by adjusting $i_t$, since $\pi_t$ doesn't move immediately. This is the <strong>"sticky inflation assumption."</strong></p>
+  <p>The ELB constraint on nominal rates also constrains real rates: $i_t \geq \text{ELB}$ implies $R_t \geq \text{ELB} - \pi_t$.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">IS-MP Diagram</span>
+  <h3>Drawing the IS-MP Diagram</h3>
+  <p>The IS-MP diagram has $R$ (real interest rate) on the vertical axis and $\tilde{Y}$ (short-run output) on the horizontal axis.</p>
+  <ul style="padding-left:18px;margin:8px 0;display:flex;flex-direction:column;gap:5px;">
+    <li style="font-size:0.85rem;color:var(--text);line-height:1.65;"><strong>IS curve:</strong> Downward sloping. Higher $R$ reduces investment demand, lowering $\tilde{Y}$. Slope $= -1/\bar{b}$ (written with $\tilde{Y}$ on horizontal axis). Shifts right when $\bar{a}_t$ rises (positive demand shock) and left when $\bar{a}_t$ falls.</li>
+    <li style="font-size:0.85rem;color:var(--text);line-height:1.65;"><strong>MP curve:</strong> Horizontal line at $R = R_t$. The Fed directly sets this level. Moving it up (tighter policy) reduces output; moving it down (looser policy) raises output.</li>
+    <li style="font-size:0.85rem;color:var(--text);line-height:1.65;"><strong>Equilibrium:</strong> Intersection of IS and MP gives the model solution for $\tilde{Y}_t$.</li>
+  </ul>
+  <p>When $R_t = \bar{r}$ and $\bar{a}_t = 0$, the equilibrium is $\tilde{Y}_t = 0$ — the economy is at potential.</p>
+  <div id="ismp-chart-wrap" style="background:rgba(10,17,32,0.5);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:12px;">
+    <canvas id="chart-ismp" height="200"></canvas>
+    <div class="graph-controls" style="margin-top:12px;flex-wrap:wrap;gap:10px;">
+      <div class="graph-ctrl"><label>MP rate $R_t$ (%)</label><input type="range" id="ismp-R" min="-2" max="8" step="0.5" value="2" oninput="updateISMP()"><span class="val" id="ismp-R-val">2.0%</span></div>
+      <div class="graph-ctrl"><label>Demand shock $\bar{a}_t$</label><input type="range" id="ismp-a" min="-4" max="4" step="0.5" value="0" oninput="updateISMP()"><span class="val" id="ismp-a-val">0.0</span></div>
+      <div class="graph-ctrl"><label>IS sensitivity $\bar{b}$</label><input type="range" id="ismp-b" min="0.5" max="3" step="0.25" value="1" oninput="updateISMP()"><span class="val" id="ismp-b-val">1.00</span></div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="graph-stat">$\bar{r}$ (trend rate): <span id="ismp-rbar">2.0%</span></span>
+      <span class="graph-stat">Equilibrium $\tilde{Y}_t$: <span id="ismp-Ytilde">0.00%</span></span>
+      <span class="graph-stat" id="ismp-state-label" style="color:var(--accent);">At potential</span>
+    </div>
+  </div>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Policy Analysis</span>
+  <h3>Stabilizing Output after a Demand Shock</h3>
+  <p>Suppose the economy starts at potential ($\tilde{Y}_0 = 0$, $R_0 = \bar{r}$) and then experiences a <strong>negative demand shock</strong> $\bar{a}_1 = -2\%$. Without policy intervention, the IS curve shifts left and output falls to $\tilde{Y}_1 = -2\%$.</p>
+  <p>To stabilize output ($\tilde{Y}_1 = 0$), the Fed cuts $R_1$ below $\bar{r}$. The MP curve shifts down, and the new intersection with the shifted IS curve restores output to potential. This shows the power of monetary stabilization policy.</p>
+  <div class="formula-box">
+    Stabilization condition: set $R_1$ so that $\bar{a}_1 - \bar{b}(R_1 - \bar{r}) = 0$<br>
+    $\Rightarrow\; R_1 = \bar{r} + \bar{a}_1/\bar{b}$<br>
+    If $\bar{a}_1 = -2\%$ and $\bar{b} = 1$: $R_1 = \bar{r} - 2\%$
+  </div>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Case Study</span>
+  <h3>The Volcker Disinflation</h3>
+  <p>A <strong>disinflation</strong> is a reduction in the inflation rate. Paul Volcker became Fed chair in 1979 and dramatically raised nominal interest rates — pushing real rates well above their long-run value. The mechanism:</p>
+  <ul style="padding-left:18px;margin:8px 0;display:flex;flex-direction:column;gap:4px;">
+    <li style="font-size:0.85rem;color:var(--text);line-height:1.65;">$\uparrow R_t$ (MP curve shifts up) $\Rightarrow\; \tilde{Y}_t < 0$ (recession)</li>
+    <li style="font-size:0.85rem;color:var(--text);line-height:1.65;">$\tilde{Y}_t < 0 \Rightarrow \Delta\pi_t < 0$ (falling inflation via Phillips curve)</li>
+    <li style="font-size:0.85rem;color:var(--text);line-height:1.65;">Once inflation fell to target, $R_t$ returned to $\bar{r}$ and output recovered</li>
+  </ul>
+  <p>The cost: a deep recession in 1981–82, with unemployment peaking above 10%. This illustrates the <strong>inflation-output tradeoff</strong>: lowering inflation requires temporarily inducing below-potential output.</p>
+  <div class="formula-box">
+    IS-MP chain: $\uparrow i_t \Rightarrow \uparrow R_t \Rightarrow \downarrow\tilde{Y}_t \Rightarrow \downarrow\Delta\pi_t$
+  </div>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-def">Costs of Inflation</span>
+  <h3>Why Central Banks Fight Inflation</h3>
+  <p>Unexpected inflation is generally considered more harmful than anticipated inflation. Key costs:</p>
+  <ul style="padding-left:18px;margin:8px 0;display:flex;flex-direction:column;gap:4px;">
+    <li style="font-size:0.85rem;color:var(--text);line-height:1.65;"><strong>Savings erosion:</strong> If nominal interest rates don't adjust quickly, real returns on savings fall.</li>
+    <li style="font-size:0.85rem;color:var(--text);line-height:1.65;"><strong>Income lag:</strong> Wages may not keep up with prices, reducing real purchasing power in the short run.</li>
+    <li style="font-size:0.85rem;color:var(--text);line-height:1.65;"><strong>Debtors benefit:</strong> Borrowers repay in cheaper dollars — their real debt burden falls. (Redistributive, not a net social loss.)</li>
+    <li style="font-size:0.85rem;color:var(--text);line-height:1.65;"><strong>Menu costs &amp; shoe-leather costs:</strong> Businesses must constantly update prices; individuals hold less cash to avoid inflation tax.</li>
+  </ul>
+</div>
+
+</main>
+</div>
+
+<!-- T14 -->
+<div class="notes-container" id="notes-14">
+<main>
+<div class="section-title">Topic 14 · Unconventional Monetary Policy</div>
+<div class="section-subtitle">ELB · Bond Markets &amp; Yields · Forward Guidance · Quantitative Easing · Fiscal Stimulus</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Overview</span>
+  <h3>Conventional vs. Unconventional Policy</h3>
+  <p><strong>Conventional monetary policy:</strong> The central bank adjusts the <em>overnight</em> interest rate (the federal funds rate in the U.S.) by buying/selling short-maturity bonds in open-market operations. This is the primary policy tool.</p>
+  <p><strong>Unconventional monetary policy:</strong> Tools used when conventional policy is insufficient — typically because rates have hit the Effective Lower Bound (ELB). These tools aim to influence <em>longer-term</em> interest rates rather than just the overnight rate. The two main tools are <em>forward guidance</em> and <em>quantitative easing (QE)</em>.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">ELB</span>
+  <h3>The Effective Lower Bound (ELB)</h3>
+  <p>The demand curve for overnight money (reserves/currency) is bounded below by the <strong>interest rate on reserves (IOR)</strong>. But if IOR falls below zero, banks can instead hold <em>physical currency</em>, which earns zero. This creates a floor on nominal rates.</p>
+  <div class="formula-box">
+    $i_t \;\geq\; \text{ELB}$ where $\text{ELB} \approx 0$ (slightly negative in practice due to storage costs)<br><br>
+    Via Fisher equation: $\;R_t = i_t - \pi_t \;\;\Rightarrow\;\; R_t \;\geq\; \text{ELB} - \pi_t$
+  </div>
+  <p>The <strong>real lower bound</strong> on $R_t$ depends on both ELB and on inflation $\pi_t$. If inflation expectations are too low, the central bank may be unable to push real rates low enough to prevent a recession. This is why central banks target <em>positive</em> inflation — to preserve room to cut real rates.</p>
+  <p><strong>Japan example:</strong> The Bank of Japan set IOR slightly below zero ($\approx -0.1\%$). The true ELB is slightly below zero because storing physical currency has real costs (vaults, transport, insurance).</p>
+  <p>The U.S. hit the ZLB in 2008 (financial crisis) and again in 2020 (COVID-19). At the ZLB, conventional policy loses traction, motivating unconventional tools.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-def">Bonds &amp; Yields</span>
+  <h3>Yield to Maturity (YTM)</h3>
+  <p>A bond is a promise to make a stream of future cash flows. The <strong>YTM</strong> is the discount rate that sets the bond's price equal to the present discounted value of its promised payments — it captures the bond's effective interest rate/return:</p>
+  <div class="formula-box">
+    $$P_{\text{nom},t} = \frac{\text{Coupon}_{t+1}}{1+\text{YTM}_{t}} + \frac{\text{Coupon}_{t+2}}{(1+\text{YTM}_{t})^2} + \cdots + \frac{FV_{t+N}}{(1+\text{YTM}_{t})^N}$$
+    where $P_{\text{nom},t}$ = bond price, $FV_{t+N}$ = face value paid at maturity $N$, YTM solved for given all other values.
+  </div>
+  <p><strong>Bond prices and yields are inversely related.</strong> If demand for bonds rises → prices rise → to satisfy the PDV equation, YTM must fall. Intuition: paying more for the same fixed future cash flows implies a lower effective return.</p>
+  <p><strong>Bond supply and demand:</strong> Governments/firms issue bonds to raise funds (supply). Investors buy bonds based on expected returns (demand). In the $P_{\text{bond}}$–$Q$ diagram, the equilibrium price determines the yield. Any shock that shifts demand rightward raises prices and lowers yields.</p>
+  <p>The <strong>yield curve</strong> plots YTM against maturity (1mo, 3mo, 1yr, 2yr, …, 30yr). It is normally <em>upward sloping</em> because long bonds carry greater inflation and liquidity risk. An <strong>inverted yield curve</strong> (short rates above long) often signals an expected recession.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Tool 1</span>
+  <h3>Forward Guidance</h3>
+  <p>Forward guidance is <strong>communication about future interest rates</strong> that changes market expectations. If the Fed credibly commits to keeping short-term rates low for longer, investors revise their expectations downward, reducing <em>long-term</em> yields today even without changing the current rate.</p>
+  <p><strong>Bond-market mechanism:</strong> Lower expected future short-term rates → demand for long-term bonds rises (investors want to lock in current returns) → $P_{\text{bond}} \uparrow$ → YTM $\downarrow$ → positive demand shock.</p>
+  <p><strong>Example:</strong> In January 2012, the FOMC publicly committed to holding rates near zero through late 2014. This lowered long-term yields and acted as additional stimulus without touching the overnight rate.</p>
+  <div class="formula-box">
+    Forward guidance $\;\Rightarrow\;$ $\downarrow\mathbb{E}[\text{future } i]$ $\;\Rightarrow\;$ $\uparrow$ bond demand $\;\Rightarrow\;$ $\uparrow P_{\text{bond}}$ $\;\Rightarrow\;$ $\downarrow$ long-term yields $\;\Rightarrow\;$ $\bar{a}_t > 0$
+  </div>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Tool 2</span>
+  <h3>Quantitative Easing (QE)</h3>
+  <p>QE is the central bank's <strong>direct purchase of long-maturity financial assets</strong> (long-term Treasuries, mortgage-backed securities) — going beyond the short-maturity bonds used in conventional open-market operations.</p>
+  <p><strong>Mechanism:</strong> Fed purchases reduce the quantity of bonds available to private investors (reduces supply, or equivalently increases demand in the bond market) → $P_{\text{bond}} \uparrow$ → yields $\downarrow$ → lower long-term borrowing costs for households and firms → investment/consumption rise → positive demand shock $\bar{a}_t > 0$.</p>
+  <div class="formula-box">
+    <strong>Fed Balance Sheet (billions $):</strong><br>
+    Assets: U.S. Treasuries $790 \to 2{,}460$; MBS $0 \to 1{,}720$; Total $906 \to 4{,}520$ (May 2007 → May 2015)<br>
+    Liabilities: Currency $814 \to 1{,}360$; Reserves $7 \to 2{,}600$<br><br>
+    QE $\;\Rightarrow\;$ $\uparrow$ bond demand $\;\Rightarrow\;$ $\uparrow P_{\text{bond}}$ $\;\Rightarrow\;$ $\downarrow$ long-term yields $\;\Rightarrow\;$ $\bar{a}_t > 0$
+  </div>
+  <p>Three rounds of QE (QE1 2008, QE2 2010, QE3 2012–2014) expanded the Fed's balance sheet from ~$900B to ~$4.5T. COVID-era QE pushed it to ~$9T by 2022.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-def">Model Entry</span>
+  <h3>How Unconventional Policy Enters the Short-Run Model</h3>
+  <p>Both forward guidance and QE enter the IS-MP model as <strong>positive demand shocks</strong>: $\bar{a}_t > 0$. They cause expenditures to deviate above their usual levels for reasons unrelated to the <em>current</em> overnight real interest rate.</p>
+  <p>In the IS diagram, this shifts IS rightward — expanding output at any given $R_t$. This is especially powerful at the ELB, where the MP curve cannot be lowered further. Unconventional tools can still stimulate demand by shifting IS even when conventional policy is stuck.</p>
+  <p><strong>Note (for AS-AD model, Topic 15):</strong> Unconventional policy also enters as a demand shock $\bar{a}_t > 0$ that shifts the AD curve rightward.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-def">Alternative</span>
+  <h3>Fiscal Stimulus</h3>
+  <p>When constrained by the ELB, <strong>fiscal policy</strong> can act as a demand shock. Government spending or tax cuts raise $\bar{a}_t$, shifting IS (and AD) rightward.</p>
+  <p><strong>Example:</strong> The American Recovery and Reinvestment Act (ARRA) of 2009 — approximately $800B in tax cuts and new spending — was enacted while the U.S. was at the ZLB, making fiscal stimulus particularly valuable since monetary policy could not offset inaction.</p>
+  <p>Key ongoing debates: appropriate mix of tax cuts vs. spending, optimal types of spending, and the size of the <strong>fiscal multiplier</strong>. Baseline IS model: multiplier = 1. With a consumption-multiplier channel: multiplier $> 1$.</p>
+</div>
+
+</main>
+</div>
+
+<!-- T15 -->
+<div class="notes-container" id="notes-15">
+<main>
+<div class="section-title">Topic 15 · Aggregate Supply &amp; Aggregate Demand</div>
+<div class="section-subtitle">Policy Rule · AD Curve · AS Curve · Steady State · Shocks &amp; Transition Dynamics</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Overview</span>
+  <h3>Building the AS-AD Framework</h3>
+  <p>The AS-AD model combines all three short-run model equations into a single two-curve diagram plotted in $(\tilde{Y}, \pi)$ space (output gap on horizontal, inflation on vertical):</p>
+  <ul>
+    <li>The <strong>AD curve</strong> comes from combining the IS curve with a monetary policy rule. It replaces the IS-MP pair.</li>
+    <li>The <strong>AS curve</strong> is just the Phillips curve with a new name. It is unchanged.</li>
+    <li>The intersection of AD and AS gives the equilibrium values of $\tilde{Y}_t$ and $\pi_t$ in period $t$.</li>
+  </ul>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Policy Rule</span>
+  <h3>Simple Monetary Policy Rule</h3>
+  <p>Rather than treating $R_t$ as a free choice, we approximate central bank behavior with a rule. The <strong>simple policy rule</strong> says the central bank raises the real rate above trend whenever inflation exceeds target:</p>
+  <div class="formula-box">
+    $$R_t - \bar{r} = \bar{m}(\pi_t - \bar{\pi})$$
+    $R_t$ = desired real rate, $\bar{r}$ = long-run real rate, $\bar{m}$ = aggressiveness parameter ($\bar{m}>0$), $\bar{\pi}$ = inflation target
+  </div>
+  <p>When $\pi_t > \bar{\pi}$: the central bank raises $R_t$ above $\bar{r}$ (tightening). When $\pi_t < \bar{\pi}$: it lowers $R_t$ below $\bar{r}$ (loosening). A higher $\bar{m}$ means a more aggressive response to inflation deviations.</p>
+  <p>This implies a nominal rate rule too: $i_t = \bar{r} + \pi_t + \bar{m}(\pi_t - \bar{\pi})$ — the <strong>Taylor-type rule</strong>. Richer rules also respond explicitly to the output gap $\tilde{Y}_t$ (Taylor Rule), but the qualitative results are similar.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Equation</span>
+  <h3>The Aggregate Demand (AD) Curve</h3>
+  <p>Substitute the policy rule into the IS curve:</p>
+  <div class="formula-box">
+    IS: $\tilde{Y}_t = \bar{a}_t - \bar{b}(R_t - \bar{r})$<br>
+    Policy rule: $R_t - \bar{r} = \bar{m}(\pi_t - \bar{\pi})$<br><br>
+    Combined $\Rightarrow$ <strong>AD curve:</strong>
+    $$\boxed{\tilde{Y}_t = \bar{a}_t - \bar{b}\bar{m}(\pi_t - \bar{\pi})}$$
+  </div>
+  <p>Short-run output is now a function of the <em>inflation rate</em> — not just of the interest rate. Key features:</p>
+  <ul>
+    <li><strong>Downward sloping</strong> in $(\tilde{Y}, \pi)$ space: higher $\pi$ → central bank raises $R$ → lower $\tilde{Y}$.</li>
+    <li><strong>Movement along AD</strong>: caused by changes in $\pi_t$ (the central bank responds to inflation per the rule).</li>
+    <li><strong>Shifts of AD</strong>: caused by demand shocks $\bar{a}_t$ (including unconventional policy, fiscal stimulus) or changes in the inflation target $\bar{\pi}$.</li>
+    <li><strong>Steeper AD</strong> (flatter in $\pi$–$\tilde{Y}$): higher $\bar{m}$ (more aggressive policy) makes the curve more responsive, so a given inflation deviation causes a larger output response.</li>
+  </ul>
+  <p><strong>Exam note:</strong> Herriford requires the AD curve to be labeled with a time subscript, e.g., $\text{AD}_t$. The textbook sometimes omits this.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-key">Core Equation</span>
+  <h3>The Aggregate Supply (AS) Curve</h3>
+  <p>The AS curve is the <strong>Phillips curve relabeled</strong>. With adaptive expectations ($\pi_t^e = \pi_{t-1}$):</p>
+  <div class="formula-box">
+    $$\boxed{\pi_t = \pi_{t-1} + \bar{\nu}\tilde{Y}_t + \bar{o}_t}$$
+    $\pi_{t-1}$ = lagged inflation (intercept), $\bar{\nu}$ = slope, $\bar{o}_t$ = supply/price shock
+  </div>
+  <p>Key features:</p>
+  <ul>
+    <li><strong>Upward sloping</strong> in $(\tilde{Y}, \pi)$ space: higher output → higher inflation (above expectations).</li>
+    <li><strong>Passes through $(\tilde{Y}=0,\; \pi = \pi_{t-1} + \bar{o}_t)$</strong> — the y-intercept shifts with lagged inflation and supply shocks.</li>
+    <li><strong>Shifts of AS</strong>: caused by a change in lagged inflation $\pi_{t-1}$ (which updates each period) or supply shocks $\bar{o}_t$. A price shock $\bar{o}_t > 0$ shifts AS <em>up</em>; a fall in $\pi_{t-1}$ shifts AS <em>down/right</em>.</li>
+  </ul>
+  <p><strong>Exam note:</strong> Label the AS curve with a time subscript, e.g., $\text{AS}_t$. The AS curve shifts every period as $\pi_{t-1}$ updates.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-def">Full Model</span>
+  <h3>The Complete AS-AD System</h3>
+  <p>The full model with adaptive expectations has four equations and four endogenous variables per period:</p>
+  <div class="formula-box">
+    IS curve: $\tilde{Y}_t = \bar{a}_t - \bar{b}(R_t - \bar{r})$<br>
+    Phillips curve: $\pi_t - \pi_t^e = \bar{\nu}\tilde{Y}_t + \bar{o}_t$<br>
+    Adaptive expectations: $\pi_t^e = \pi_{t-1}$<br>
+    Policy rule: $R_t - \bar{r} = \bar{m}(\pi_t - \bar{\pi})$<br><br>
+    Endogenous: $\tilde{Y}_t,\; R_t,\; \pi_t^e,\; \pi_t$ (for $t \geq 0$)<br>
+    Exogenous/parameters: $\bar{a}_t,\; \bar{o}_t,\; \bar{b},\; \bar{m},\; \bar{\nu},\; \bar{r},\; \bar{\pi},\; \pi_{-1}$
+  </div>
+  <p>The two-equation shortcut collapses this to AD + AS, solving only for $\tilde{Y}_t$ and $\pi_t$ (interest rates implicit).</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-def">Long-Run</span>
+  <h3>Steady State of the AS-AD Model</h3>
+  <p>The <strong>steady state</strong> (long-run equilibrium) is the values of $\tilde{Y}$ and $\pi$ when all variables are constant over time and there are no shocks ($\bar{a}_t = 0$, $\bar{o}_t = 0$).</p>
+  <div class="formula-box">
+    From AS (with $\pi_t = \pi_{t-1} = \pi^*$ and $\bar{o}_t=0$): $\;\pi^* = \pi^* + \bar{\nu}\tilde{Y}^* \;\Rightarrow\; \boxed{\tilde{Y}^* = 0}$<br><br>
+    Substituting into AD (with $\tilde{Y}^*=0$ and $\bar{a}_t=0$): $\;0 = 0 - \bar{b}\bar{m}(\pi^* - \bar{\pi}) \;\Rightarrow\; \boxed{\pi^* = \bar{\pi}}$
+  </div>
+  <p>In steady state: output is at potential ($\tilde{Y}^*=0$) and inflation equals the central bank's target ($\pi^* = \bar{\pi}$). The AS and AD curves intersect at the origin of the $(\tilde{Y},\pi)$ diagram with $\pi = \bar{\pi}$.</p>
+  <p><strong>Diagram conventions (Herriford's instructions):</strong> Label curves as $\text{AS}_0, \text{AS}_1, \text{AS}^*, \text{AD}_0, \text{AD}_1, \text{AD}^*$ where subscript 0 = initial, subscript 1 = period of shock, and $*$ = long-run. If multiple curves coincide, stack the labels (e.g., $\text{AD}_0 = \text{AD}_1 = \text{AD}^*$).</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-event">Event 1</span>
+  <h3>Inflation (Supply) Shock</h3>
+  <p>Economy starts in steady state. A one-time supply shock hits: $\bar{o}_1 > 0$, then $\bar{o}_t = 0$ for $t>1$.</p>
+  <ul>
+    <li><strong>Period 1:</strong> AS shifts <em>up</em> (price shock raises inflation at every $\tilde{Y}$). AD unchanged. New intersection at $B$: $\pi_1 > \bar{\pi}$, $\tilde{Y}_1 < 0$ — <strong>stagflation</strong>.</li>
+    <li><strong>Period 2+:</strong> Shock is gone ($\bar{o}_t=0$), but $\pi_1 > \bar{\pi}$ is now baked into $\pi_1^e = \pi_1$. AS shifts down (but stays above $\text{AS}_0$ since $\pi_1 > \bar{\pi}$). The central bank keeps output below potential to bring inflation down. Inflation falls slowly each period.</li>
+    <li><strong>Long run:</strong> AS gradually drifts down toward $\text{AS}_0 = \text{AS}^*$. Economy returns to $(\tilde{Y}^*, \bar{\pi})$.</li>
+  </ul>
+  <div class="formula-box">
+    Transition: $\tilde{Y}_1 &lt; 0$ (recession), $\pi_1 > \bar{\pi}$ (stagflation) $\;\to\;$ over time $\pi_t \downarrow$ and $\tilde{Y}_t \uparrow$ back to $(0, \bar{\pi})$
+  </div>
+  <p><strong>Key insight:</strong> Even a temporary shock has a lasting effect on inflation because of adaptive expectations ("sticky inflation"). Convergence is fastest when the economy is furthest from steady state.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-event">Event 2</span>
+  <h3>Disinflation (Inflation Target Cut)</h3>
+  <p>Economy starts in steady state at old target $\bar{\pi}_{\text{old}}$. Policymakers announce a lower target $\bar{\pi}_{\text{new}} < \bar{\pi}_{\text{old}}$ starting in period 1.</p>
+  <ul>
+    <li><strong>Period 1:</strong> AD shifts <em>left</em> (lower $\bar{\pi}$ makes the central bank tighter at every $\pi$). AS unchanged ($\pi_0 = \bar{\pi}_{\text{old}}$ still anchors expectations). New intersection: $\tilde{Y}_1 < 0$ (recession), $\pi_1 < \bar{\pi}_{\text{old}}$ (falling inflation).</li>
+    <li><strong>Period 2+:</strong> Lower $\pi_1$ shifts AS <em>right/down</em> (lower $\pi_{t-1}$ means lower expected inflation). AS gradually converges rightward. Inflation keeps falling toward $\bar{\pi}_{\text{new}}$; output gap slowly closes.</li>
+    <li><strong>Long run ($\text{AS}^*, \text{AD}^*$):</strong> Economy reaches new steady state at $(\tilde{Y}^*=0, \pi^*=\bar{\pi}_{\text{new}})$.</li>
+  </ul>
+  <div class="formula-box">
+    $\text{AD}_0 \neq \text{AD}_1 = \text{AD}^*\quad$ (AD shifts once and stays there)<br>
+    $\text{AS}_0 = \text{AS}_1 \neq \text{AS}^*\quad$ (AS shifts gradually each period)
+  </div>
+  <p><strong>Key insight:</strong> Disinflation requires a recession. The "sacrifice ratio" measures how much output is lost per percentage point reduction in inflation.</p>
+</div>
+
+<div class="concept-block">
+  <span class="tag tag-event">Event 3</span>
+  <h3>Positive, Persistent Demand Shock</h3>
+  <p>Economy starts in steady state. A demand shock $\bar{a}_t > 0$ persists for many periods (say $t = 1, \ldots, 8$), then disappears ($\bar{a}_t = 0$ for $t > 8$).</p>
+  <ul>
+    <li><strong>Period 1:</strong> AD shifts <em>right</em>. AS unchanged. New intersection: $\tilde{Y}_1 > 0$ (boom), $\pi_1 > \bar{\pi}$ (inflation rises).</li>
+    <li><strong>Periods 2–8 (shock persists):</strong> Higher $\pi_1$ shifts AS <em>up</em> each period. AD stays at $\text{AD}_1$. Output remains above potential but gradually declines; inflation keeps rising. The economy approaches the AD curve's intersection with the AS "stack."</li>
+    <li><strong>Period 9+ (shock ends):</strong> AD shifts back left to $\text{AD}_0 = \text{AD}^*$. Now AS has shifted far up (inflation baked in from boom). New intersection: $\tilde{Y}_9 < 0$ (recession), $\pi_9 > \bar{\pi}$. Economy must work off elevated inflation the same way as in Event 1.</li>
+  </ul>
+  <div class="formula-box">
+    $\text{AD}_0 = \text{AD}^* \neq \text{AD}_1 = \cdots = \text{AD}_8\quad$ (AD shifts out, then back)<br>
+    $\text{AS}_0 = \text{AS}_1 \neq \cdots$ (AS shifts up through boom, then gradually back down)
+  </div>
+  <p><strong>Key insight:</strong> Booms are followed by recessions. The inflation created during the boom must be wrung out via below-potential output. "The economy pays for its boom."</p>
+</div>
+
+</main>
+</div>
+
 </div><!-- end notes-view -->
 
 <!-- ===== PROOFS VIEW ===== -->
@@ -1796,6 +2312,260 @@
   <div class="qed">∎ Because $0 < \bar{x} < 1$, the multiplier exceeds 1. A $1\%$ demand shock produces more than $1\%$ output change — each round of higher income induces further consumption, which raises income again, and so on.</div>
 </div>
 
+<!-- T12: Accelerationist PC Derivation -->
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T12 · Phillips Curve</span>
+  <h3>Proof: Accelerationist Phillips Curve from Adaptive Expectations</h3>
+  <p>Show that combining the expectations-augmented PC with adaptive expectations yields $\Delta\pi_t = \bar{\nu}\tilde{Y}_t + \bar{o}_t$.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">Start with the expectations-augmented Phillips Curve:
+      $$\pi_t - \pi_t^e = \bar{\nu}\tilde{Y}_t + \bar{o}_t$$
+      Inflation exceeds expected inflation when output is above potential, plus cost shocks.</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">Apply adaptive expectations: agents set this period's expected inflation equal to last period's actual inflation:
+      $$\pi_t^e = \pi_{t-1}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">Substitute $\pi_t^e = \pi_{t-1}$ into Step 1:
+      $$\pi_t - \pi_{t-1} = \bar{\nu}\tilde{Y}_t + \bar{o}_t$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">By definition, $\Delta\pi_t \equiv \pi_t - \pi_{t-1}$. Therefore:
+      $$\boxed{\Delta\pi_t = \bar{\nu}\tilde{Y}_t + \bar{o}_t}$$
+      The <em>change</em> in inflation (not its level) depends on the output gap and cost shocks.</div>
+  </div>
+  <div class="qed">∎ With adaptive expectations, any output boom ($\tilde{Y}_t > 0$) accelerates inflation, while a recession decelerates it. There is no stable long-run tradeoff between $\pi$ and $\tilde{Y}$.</div>
+</div>
+
+<!-- T12: Long-run neutrality of PC -->
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T12 · Phillips Curve</span>
+  <h3>Proof: Long-Run Phillips Curve is Vertical</h3>
+  <p>Show that in the long run (steady state), the output gap is zero regardless of the inflation rate.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">In the long run, inflation is constant: $\pi_t = \pi_{t-1} = \pi^*$. This means $\Delta\pi_t = 0$.</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">Substitute $\Delta\pi_t = 0$ and $\bar{o}_t = 0$ (no long-run shocks) into the accelerationist PC:
+      $$0 = \bar{\nu}\tilde{Y}^* + 0$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">Since $\bar{\nu} > 0$, this implies:
+      $$\boxed{\tilde{Y}^* = 0}$$
+      regardless of what $\pi^*$ is.</div>
+  </div>
+  <div class="qed">∎ In the long run output always returns to potential. Monetary policy cannot permanently raise output above potential — attempting to do so only causes accelerating inflation (Friedman-Phelps result).</div>
+</div>
+
+<!-- T13: IS-MP equilibrium output -->
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T13 · IS-MP Model</span>
+  <h3>Proof: IS-MP Equilibrium — Solving for Short-Run Output</h3>
+  <p>Given the IS curve and the central bank's choice of $R_t$, derive the equilibrium $\tilde{Y}_t$.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">The IS curve gives output as a function of the real interest rate:
+      $$\tilde{Y}_t = \bar{a}_t - \bar{b}(R_t - \bar{r})$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">The central bank sets $R_t$ via the MP curve (a horizontal line at the chosen rate). Substituting $R_t$ directly into the IS equation gives equilibrium output immediately — there is no further solving needed since $R_t$ is set exogenously by the Fed.</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">The Fed's stabilization problem: choose $R_t$ to achieve $\tilde{Y}_t = 0$.
+      $$0 = \bar{a}_t - \bar{b}(R_t^* - \bar{r}) \;\Rightarrow\; R_t^* - \bar{r} = \frac{\bar{a}_t}{\bar{b}}$$
+      $$\boxed{R_t^* = \bar{r} + \frac{\bar{a}_t}{\bar{b}}}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">For a negative shock $\bar{a}_t < 0$: $R_t^* < \bar{r}$ — the Fed <em>cuts</em> the rate below trend to offset the contractionary shock. For a positive shock $\bar{a}_t > 0$: $R_t^* > \bar{r}$ — the Fed <em>raises</em> the rate to prevent overheating.</div>
+  </div>
+  <div class="qed">∎ Perfect stabilization requires the Fed to move $R_t$ by exactly $\bar{a}_t / \bar{b}$ relative to the trend rate — offsetting any demand shock dollar-for-dollar through the interest rate channel.</div>
+</div>
+
+<!-- T13: Fisher equation and sticky inflation -->
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T13 · IS-MP Model</span>
+  <h3>Proof: Why Controlling $i_t$ Controls $R_t$ in the Short Run</h3>
+  <p>Show that with sticky inflation, a change in the nominal rate $i_t$ translates one-for-one to a change in the real rate $R_t$.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">Fisher equation: $R_t = i_t - \pi_t$. The real rate equals the nominal rate minus inflation.</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">In the short run, $\pi_t$ is predetermined (sticky) — firms and workers set prices/wages based on past conditions and cannot instantly adjust. Thus, at any point in time, $\pi_t$ is approximately fixed.</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">Differentiate with respect to $i_t$ holding $\pi_t$ fixed:
+      $$\frac{\partial R_t}{\partial i_t} = 1 \quad (\pi_t \text{ held constant})$$
+      A 1 percentage point increase in $i_t$ raises $R_t$ by exactly 1 percentage point.</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">This breaks down in the long run when inflation adjusts. If the Fed permanently raises $i_t$ and inflation adjusts upward by the same amount, $R_t$ returns to $\bar{r}$ — money is neutral in the long run.</div>
+  </div>
+  <div class="qed">∎ Monetary non-neutrality is a short-run phenomenon. The sticky inflation assumption is what gives the central bank real power over the economy through conventional policy.</div>
+</div>
+
+<!-- T14: ELB limits real rate reduction -->
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T14 · Unconventional Policy</span>
+  <h3>Proof: ELB Constraint on the Real Interest Rate</h3>
+  <p>Show that the ELB limits how low the real interest rate can go, and that higher inflation targets expand policy room.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">By definition, the ELB constrains the nominal rate: $i_t \geq \text{ELB}$.</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">Apply the Fisher equation $R_t = i_t - \pi_t$:
+      $$R_t = i_t - \pi_t \geq \text{ELB} - \pi_t$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">Define the real lower bound: $R_t^{\min} = \text{ELB} - \pi_t$. The Fed cannot reduce $R_t$ below $R_t^{\min}$.
+      $$\boxed{R_t \;\geq\; \text{ELB} - \pi_t}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">Policy room = how far below $\bar{r}$ the Fed can push $R_t$:
+      $$\text{Policy room} = \bar{r} - R_t^{\min} = \bar{r} - \text{ELB} + \pi_t$$
+      Higher $\pi_t$ (and thus higher $\pi_t^e \approx \bar{\pi}$) directly increases policy room. A 1 pp higher inflation target expands the real lower bound by 1 pp.</div>
+  </div>
+  <div class="qed">∎ This is the core argument for why central banks target 2% rather than 0% inflation — it maintains ~2pp of additional policy room beyond the ELB, reducing the frequency and severity of hitting the constraint.</div>
+</div>
+
+<!-- T14: YTM inverse price relationship -->
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T14 · Unconventional Policy</span>
+  <h3>Proof: Bond Prices and Yields Move Inversely</h3>
+  <p>Show formally that if the market price of a bond rises, its YTM must fall.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">YTM is defined as the $y$ that solves:
+      $$P = \sum_{k=1}^N \frac{C_k}{(1+y)^k} + \frac{FV}{(1+y)^N}$$
+      where $P$ is the price, $C_k$ are coupon payments, and $FV$ is face value. All cash flows are fixed.</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">Define $f(y) = \sum_{k=1}^N \frac{C_k}{(1+y)^k} + \frac{FV}{(1+y)^N}$. Take the derivative:
+      $$f'(y) = -\sum_{k=1}^N \frac{k \cdot C_k}{(1+y)^{k+1}} - \frac{N \cdot FV}{(1+y)^{N+1}} < 0$$
+      Every term is strictly negative (since $C_k, FV, k, N > 0$). Therefore $f$ is strictly decreasing in $y$.</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">Since $P = f(y)$ and $f$ is strictly decreasing: if $P$ rises to $P' > P$, then the new YTM $y'$ satisfying $P' = f(y')$ must be smaller: $y' < y$.
+      $$\boxed{P \uparrow \;\Leftrightarrow\; \text{YTM} \downarrow}$$</div>
+  </div>
+  <div class="qed">∎ The inverse relationship holds for any coupon bond with positive cash flows. This is the mechanism through which forward guidance and QE — by raising bond demand and prices — lower long-term yields and stimulate the economy.</div>
+</div>
+
+<!-- T15: AD Curve Derivation -->
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T15 · AS-AD</span>
+  <h3>Proof: Deriving the Aggregate Demand Curve</h3>
+  <p>Derive the AD equation $\tilde{Y}_t = \bar{a}_t - \bar{b}\bar{m}(\pi_t - \bar{\pi})$ by combining the IS curve and monetary policy rule.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">Write the IS curve:
+      $$\tilde{Y}_t = \bar{a}_t - \bar{b}(R_t - \bar{r}) \tag{IS}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">Write the monetary policy rule:
+      $$R_t - \bar{r} = \bar{m}(\pi_t - \bar{\pi}) \tag{MP rule}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">Substitute the MP rule into (IS) — replace $(R_t - \bar{r})$:
+      $$\tilde{Y}_t = \bar{a}_t - \bar{b}\cdot\bar{m}(\pi_t - \bar{\pi})$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">This is the AD curve:
+      $$\boxed{\tilde{Y}_t = \bar{a}_t - \bar{b}\bar{m}(\pi_t - \bar{\pi})}$$
+      Slope in $(\tilde{Y}, \pi)$ space: $\frac{d\pi}{d\tilde{Y}} = \frac{-1}{\bar{b}\bar{m}} < 0$ — downward sloping.<br>
+      Y-intercept (at $\tilde{Y}=0$): $\pi = \bar{\pi} + \frac{\bar{a}_t}{\bar{b}\bar{m}}$.<br>
+      Higher $\bar{m}$ → flatter slope → more aggressive response to inflation deviations.</div>
+  </div>
+  <div class="qed">∎ The AD curve is not a behavioral equation on its own — it is a reduced form combining two structural equations (IS + policy rule). A demand shock $\bar{a}_t$ shifts it; a change in $\bar{\pi}$ also shifts it.</div>
+</div>
+
+<!-- T15: Steady State -->
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T15 · AS-AD</span>
+  <h3>Proof: Steady State of the AS-AD Model</h3>
+  <p>Show that the unique steady state is $(\tilde{Y}^*, \pi^*) = (0, \bar{\pi})$.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">In steady state: all variables are constant over time, so $\pi_t = \pi_{t-1} = \pi^*$, and there are no shocks: $\bar{a}_t = \bar{o}_t = 0$.</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">Substitute into the AS curve $\pi_t = \pi_{t-1} + \bar{\nu}\tilde{Y}_t + \bar{o}_t$:
+      $$\pi^* = \pi^* + \bar{\nu}\tilde{Y}^* + 0 \;\Rightarrow\; \bar{\nu}\tilde{Y}^* = 0$$
+      Since $\bar{\nu} > 0$: $\;\boxed{\tilde{Y}^* = 0}$.</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">Substitute $\tilde{Y}^* = 0$ and $\bar{a}_t = 0$ into the AD curve:
+      $$0 = 0 - \bar{b}\bar{m}(\pi^* - \bar{\pi}) \;\Rightarrow\; \bar{b}\bar{m}(\pi^* - \bar{\pi}) = 0$$
+      Since $\bar{b}, \bar{m} > 0$: $\;\boxed{\pi^* = \bar{\pi}}$.</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">Uniqueness: the AS is upward sloping and AD is downward sloping in $(\tilde{Y}, \pi)$ space. Two lines with opposite slopes intersect in exactly one point. That point is $(0, \bar{\pi})$.</div>
+  </div>
+  <div class="qed">∎ In the long run, the economy always returns to potential output with inflation at the target. The central bank can influence the long-run inflation rate (by changing $\bar{\pi}$) but cannot permanently raise output above potential.</div>
+</div>
+
+<!-- T15: Inflation Shock period-by-period dynamics -->
+<div class="concept-block proof-block">
+  <span class="tag tag-key">T15 · AS-AD</span>
+  <h3>Proof: Inflation Convergence After a One-Period Supply Shock</h3>
+  <p>Show that after a one-period shock $\bar{o}_1 > 0$, the economy converges back to $(0, \bar{\pi})$ under adaptive expectations, and that convergence is monotone.</p>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 1</div>
+    <div class="proof-step-body">Solve AS and AD simultaneously in period $t$ (with $\bar{a}_t = 0$, $\bar{o}_t = 0$ for $t \geq 2$):
+      $$\text{AD: } \tilde{Y}_t = -\bar{b}\bar{m}(\pi_t - \bar{\pi})$$
+      $$\text{AS: } \pi_t = \pi_{t-1} + \bar{\nu}\tilde{Y}_t$$
+    Substitute AD into AS:
+      $$\pi_t = \pi_{t-1} + \bar{\nu}\cdot(-\bar{b}\bar{m})(\pi_t - \bar{\pi})$$
+      $$\pi_t = \pi_{t-1} - \bar{\nu}\bar{b}\bar{m}(\pi_t - \bar{\pi})$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 2</div>
+    <div class="proof-step-body">Let $\lambda \equiv \bar{\nu}\bar{b}\bar{m} > 0$. Rearrange to solve for $\pi_t$:
+      $$\pi_t + \lambda\pi_t = \pi_{t-1} + \lambda\bar{\pi}$$
+      $$(1+\lambda)\pi_t = \pi_{t-1} + \lambda\bar{\pi}$$
+      $$\pi_t = \frac{\pi_{t-1}}{1+\lambda} + \frac{\lambda\bar{\pi}}{1+\lambda} = \bar{\pi} + \frac{\pi_{t-1} - \bar{\pi}}{1+\lambda}$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 3</div>
+    <div class="proof-step-body">Define the gap $g_t \equiv \pi_t - \bar{\pi}$. Then:
+      $$g_t = \frac{g_{t-1}}{1+\lambda}$$
+      This is a first-order linear difference equation with convergence factor $\frac{1}{1+\lambda} \in (0,1)$. Starting from $g_1 > 0$ (due to the shock), each period the gap shrinks by factor $\frac{1}{1+\lambda}$:
+      $$g_t = g_1 \cdot \left(\frac{1}{1+\lambda}\right)^{t-1} \to 0 \text{ as } t \to \infty$$</div>
+  </div>
+  <div class="proof-step">
+    <div class="proof-step-num">Step 4</div>
+    <div class="proof-step-body">Convergence is faster when $\lambda = \bar{\nu}\bar{b}\bar{m}$ is large — i.e., when the PC slope ($\bar{\nu}$), IS sensitivity ($\bar{b}$), or policy aggressiveness ($\bar{m}$) are larger. Output gap each period:
+      $$\tilde{Y}_t = -\bar{b}\bar{m}\cdot g_t < 0 \quad \text{(recession throughout adjustment)}$$</div>
+  </div>
+  <div class="qed">∎ After a one-period supply shock, the inflation gap decays geometrically at rate $1/(1+\lambda)$. The output gap is negative throughout — the central bank sustains a mild recession to wring out elevated inflation. Convergence is fastest when the economy is farthest from steady state.</div>
+</div>
+
 </main>
 </div><!-- end proofs-view -->
 
@@ -1827,25 +2597,26 @@
 <!-- ===== QUIZ ===== -->
 <div id="quiz-view" style="display:none;">
   <div class="section-title">Quiz</div>
-  <div class="section-subtitle">Test yourself on Topics 1–11 · Answers revealed after selection</div>
+  <div class="section-subtitle">Test yourself on Topics 1–15 · Answers revealed after selection</div>
   <div class="quiz-score" id="quiz-score">Score: 0 / 0</div>
   <div id="quiz-container"></div>
 </div>
-
-</div><!-- end app-wrapper -->
 
 <!-- ===== HOMEWORK VIEW ===== -->
 <div id="homework-view" style="display:none;">
 <div id="hw-main" style="padding:24px 28px;">
 
-<div style="font-family:var(--font-head);font-size:1.75rem;font-weight:700;color:var(--text);margin-bottom:4px;">Homework</div>
-<div style="font-size:0.8rem;color:var(--muted);letter-spacing:0.04em;margin-bottom:6px;">ECO 320L · Spring 2026 · Dr. Trenton Herriford</div>
-<div style="font-size:0.78rem;color:#a78bfa;font-family:var(--font-mono);margin-bottom:18px;">Click any problem to reveal full worked answer ▸</div>
+<div style="font-family:var(--font-head);font-size:1.75rem;font-weight:700;color:var(--text);margin-bottom:18px;">Homework</div>
 
 <div class="hw-ps-tabs">
   <button class="hw-ps-tab" onclick="switchPS(1,this)">PS 1</button>
   <button class="hw-ps-tab" onclick="switchPS(2,this)">PS 2</button>
-  <button class="hw-ps-tab active" onclick="switchPS(3,this)">PS 3</button>
+  <button class="hw-ps-tab" onclick="switchPS(3,this)">PS 3</button>
+  <button class="hw-ps-tab active" onclick="switchPS(4,this)">PS 4</button>
+</div>
+
+<div id="hw-ps-desc" style="margin-bottom:22px;padding:12px 16px;background:rgba(167,139,250,0.06);border:1px solid rgba(167,139,250,0.2);border-radius:8px;">
+  <div id="hw-ps-desc-text" style="font-size:0.82rem;color:var(--muted);line-height:1.6;"><strong>PS 4 · Topics 12–14:</strong> Phillips curve &amp; cost shocks, IS-MP model, monetary stabilization policy, Effective Lower Bound &amp; forward guidance, AS-AD framework (Taylor rule, demand/supply shocks, adaptive expectations, long-run adjustment).</div>
 </div>
 
 <!-- ===== PS1 ===== -->
@@ -2152,6 +2923,30 @@
   </div>
 </div>
 </div>
+
+<!-- ===== PS1 ABBREVIATIONS FOOTNOTE ===== -->
+<div style="margin-top:32px;border-top:1px solid var(--border);padding-top:18px;">
+  <div style="font-size:0.7rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;font-family:var(--font-mono);">Abbreviations used in this problem set</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px 20px;">
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">GDP</span> — Gross Domestic Product</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">C</span> — Consumption (household expenditure)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">I</span> — Investment (business &amp; residential capital)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">G</span> — Government purchases of goods &amp; services</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">NX</span> — Net Exports (EX − IM)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">EX</span> — Exports (goods/services sold abroad)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">IM</span> — Imports (goods/services bought from abroad)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">PPP</span> — Purchasing Power Parity</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">CPI</span> — Consumer Price Index</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">Rule of 70</span> — Doubling time ≈ 70 ÷ growth rate (%)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">Value-added</span> — Output minus intermediate input costs</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">Transfer payment</span> — Gov't redistribution, not in GDP</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">π</span> — Inflation rate (% change in price level)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">ḡ</span> — Average annual growth rate</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">y</span> — Per capita output / income</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">Y</span> — Aggregate (total) output / GDP</div>
+  </div>
+</div>
+
 </div><!-- end hw-ps1 -->
 
 <!-- ===== PS2 ===== -->
@@ -2374,10 +3169,37 @@
   </div>
 </div>
 </div>
+
+<!-- ===== PS2 ABBREVIATIONS FOOTNOTE ===== -->
+<div style="margin-top:32px;border-top:1px solid var(--border);padding-top:18px;">
+  <div style="font-size:0.7rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;font-family:var(--font-mono);">Abbreviations used in this problem set</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px 20px;">
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">TFP</span> — Total Factor Productivity (Ā)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">BGP</span> — Balanced Growth Path</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">Solow model</span> — Neoclassical capital accumulation model</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">SS</span> — Steady State (long-run equilibrium)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">MPC</span> — Marginal Propensity to Consume</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">CRS</span> — Constant Returns to Scale</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">GDP</span> — Gross Domestic Product</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">k</span> — Capital per person (k = K/L)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">y</span> — Output per person (y = Y/L)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">K</span> — Aggregate capital stock</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">L</span> — Labor force / population</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">Ā</span> — TFP level (productivity parameter)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">s̄</span> — Savings rate (fraction of income saved)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">d̄</span> — Depreciation rate of capital</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">n̄</span> — Population / labor force growth rate</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">gA</span> — TFP growth rate</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">k*, y*</span> — Steady-state capital &amp; output per person</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">α</span> — Capital share in production function (typically 1/3)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">gy</span> — Growth rate of output per person</div>
+  </div>
+</div>
+
 </div><!-- end hw-ps2 -->
 
 <!-- ===== PS3 ===== -->
-<div class="hw-ps-pane active" id="hw-ps3">
+<div class="hw-ps-pane" id="hw-ps3">
 
 <!-- ===== PART 1 ===== -->
 <div class="hw-part">
@@ -2693,10 +3515,1126 @@
 </div>
 
 </div><!-- end part 3 -->
+
+<!-- ===== PS3 ABBREVIATIONS FOOTNOTE ===== -->
+<div style="margin-top:32px;border-top:1px solid var(--border);padding-top:18px;">
+  <div style="font-size:0.7rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;font-family:var(--font-mono);">Abbreviations used in this problem set</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px 20px;">
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">FFR</span> — Federal Funds Rate (overnight lending rate)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">IOR</span> — Interest on Reserves (paid by Fed to banks)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">Fed</span> — U.S. Federal Reserve (central bank)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">IS</span> — Investment–Savings curve</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">MPC</span> — Marginal Propensity to Consume</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">Okun's Law</span> — u − u* ≈ −½Ỹ (output–unemployment link)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">NX</span> — Net Exports (EX − IM)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">GDP</span> — Gross Domestic Product</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">u*</span> — Natural rate of unemployment</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">λs</span> — Job separation rate (employed → unemployed)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">λf</span> — Job finding rate (unemployed → employed)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">Ỹ</span> — Short-run output gap (% above/below potential)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">R</span> — Real interest rate</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">i</span> — Nominal interest rate</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">π</span> — Inflation rate</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">r̄</span> — Long-run (trend) real interest rate</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">ā</span> — Aggregate demand shock parameter</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">b̄</span> — IS curve interest-rate sensitivity</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">x̄</span> — Marginal propensity to consume/import</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">MD / MS</span> — Money Demand / Money Supply</div>
+  </div>
+</div>
+
 </div><!-- end hw-ps3 -->
+
+<div class="hw-ps-pane active" id="hw-ps4">
+
+<!-- ===== PART 1: Phillips Curve & Monetary Policy ===== -->
+<div class="hw-part">
+<div class="hw-part-title">Part 1 · The Phillips Curve and Monetary Policy</div>
+
+<!-- 1.1a -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.1a</span>
+    <span class="hw-prob-q">A temporary positive aggregate demand shock (consumption boom) lasts one period. The Fed keeps the real interest rate unchanged. What happens in the IS-MP diagram?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p><strong>IS curve shifts right; output rises above potential.</strong></p>
+    <div class="hw-step"><div class="hw-step-num">Shock</div><div class="hw-step-body">A positive AD shock means $\bar{a}_1 > 0$. The IS curve shifts right from $\text{IS}_0$ to $\text{IS}_1$: at every real interest rate $R$, output is now higher by $\bar{a}_1$.</div></div>
+    <div class="hw-step"><div class="hw-step-num">MP unchanged</div><div class="hw-step-body">The Fed holds $R_1 = R_0 = \bar{r}$. The MP curve stays at $R = \bar{r}$ (does not shift).</div></div>
+    <div class="hw-step"><div class="hw-step-num">New equilibrium</div><div class="hw-step-body">The intersection of $\text{IS}_1$ and $\text{MP}_0$ gives $\tilde{Y}_1 = \bar{a}_1 > 0$. Output is above potential — a boom.</div></div>
+    <div class="hw-step"><div class="hw-step-num">PC implication</div><div class="hw-step-body">From the accelerationist Phillips curve: $\Delta\pi_1 = \bar{\nu}\tilde{Y}_1 + \bar{o}_1 = \bar{\nu}\bar{a}_1 > 0$. Inflation rises during the boom.</div></div>
+    <p><em>Diagram summary:</em> IS shifts right, MP stays flat at $\bar{r}$, equilibrium moves right along MP from $(\tilde{Y}=0, R=\bar{r})$ to $(\tilde{Y}_1 > 0, R=\bar{r})$.</p>
+    <div class="hw-diagram">
+      <svg viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono',monospace" font-size="11">
+        <!-- axes -->
+        <line x1="65" y1="15" x2="65" y2="215" stroke="#2a3a55" stroke-width="1.5"/>
+        <line x1="65" y1="215" x2="400" y2="215" stroke="#2a3a55" stroke-width="1.5"/>
+        <text x="40" y="19" fill="#64748b" font-size="10">R</text>
+        <text x="395" y="228" fill="#64748b" font-size="10">Ỹ</text>
+        <!-- Ỹ=0 dashed -->
+        <line x1="210" y1="15" x2="210" y2="215" stroke="#2a3a55" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="204" y="228" fill="#64748b" font-size="10">0</text>
+        <!-- r̄ dashed reference -->
+        <line x1="65" y1="130" x2="400" y2="130" stroke="#2a3a55" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="45" y="133" fill="#64748b" font-size="10">r̄</text>
+        <!-- IS₀ (muted orange) -->
+        <line x1="98" y1="20" x2="295" y2="215" stroke="#fb923c" stroke-width="2" stroke-dasharray="6,3" opacity="0.5"/>
+        <text x="298" y="210" fill="#fb923c" fill-opacity="0.6" font-size="11">IS₀</text>
+        <!-- IS₁ (bright orange, shifted right ~60px) -->
+        <line x1="158" y1="20" x2="355" y2="215" stroke="#fb923c" stroke-width="2.5"/>
+        <text x="358" y="210" fill="#fb923c" font-size="11">IS₁</text>
+        <!-- MP₀ (blue horizontal at r̄=y130) -->
+        <line x1="65" y1="130" x2="390" y2="130" stroke="#38bdf8" stroke-width="2.5"/>
+        <text x="358" y="126" fill="#38bdf8" font-size="11">MP₀</text>
+        <!-- Point A: IS₀∩MP₀ ≈ (210,130) -->
+        <circle cx="210" cy="130" r="6" fill="#0c111b" stroke="#34d399" stroke-width="2.5"/>
+        <text x="196" y="122" fill="#34d399" font-size="11" font-weight="bold">A</text>
+        <!-- Point B: IS₁∩MP₀ ≈ (270,130) -->
+        <circle cx="270" cy="130" r="6" fill="#0c111b" stroke="#fb923c" stroke-width="2.5"/>
+        <text x="275" y="122" fill="#fb923c" font-size="11" font-weight="bold">B</text>
+        <!-- Arrow A→B -->
+        <line x1="218" y1="133" x2="258" y2="133" stroke="#34d399" stroke-width="1.5" marker-end="url(#arr)"/>
+        <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#34d399"/></marker></defs>
+        <!-- Ỹ₁ label -->
+        <line x1="270" y1="135" x2="270" y2="215" stroke="#fb923c" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+        <text x="258" y="228" fill="#fb923c" font-size="10">Ỹ₁&gt;0</text>
+        <!-- axis ticks -->
+        <line x1="62" y1="130" x2="68" y2="130" stroke="#2a3a55" stroke-width="1.5"/>
+        <line x1="210" y1="212" x2="210" y2="218" stroke="#2a3a55" stroke-width="1.5"/>
+      </svg>
+      <div class="hw-diagram-caption">IS₁ shifts right by ā₁ — MP₀ stays flat at r̄ — equilibrium moves A → B along MP₀ (boom: Ỹ₁ &gt; 0)</div>
+    </div>
+  </div>
+</div>
+
+<!-- 1.1b -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.1b</span>
+    <span class="hw-prob-q">As Fed chair, what monetary policy action would you take in response to this consumption boom, and why? Use an IS-MP diagram.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p><strong>Raise the real interest rate to stabilize output at $\tilde{Y}_1 = 0$.</strong></p>
+    <div class="hw-step"><div class="hw-step-num">Goal</div><div class="hw-step-body">Stabilize output means keeping $\tilde{Y}_1 = 0$ despite the shock. From the IS curve: $0 = \bar{a}_1 - \bar{b}(R_1 - \bar{r})$, so the required rate is:
+      $$R_1 = \bar{r} + \frac{\bar{a}_1}{\bar{b}}$$
+      Since $\bar{a}_1 > 0$, we need $R_1 > \bar{r}$ — raise rates above their long-run level.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Diagram</div><div class="hw-step-body">IS shifts right ($\text{IS}_0 \to \text{IS}_1$). MP shifts <em>up</em> ($\text{MP}_0 \to \text{MP}_1$ at $R_1 > \bar{r}$). The new equilibrium $\text{IS}_1 \cap \text{MP}_1$ is back at $\tilde{Y} = 0$, maintaining potential output.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Intuition</div><div class="hw-step-body">Higher interest rates cool investment demand, exactly offsetting the consumption boom. This prevents the boom from igniting inflation (since $\tilde{Y} = 0 \Rightarrow \Delta\pi = 0$ under no cost shock).</div></div>
+    <p>Since the shock is <em>temporary</em> (one period), rates return to $\bar{r}$ next period when $\bar{a}_2 = 0$.</p>
+    <div class="hw-diagram">
+      <svg viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono',monospace" font-size="11">
+        <defs><marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#38bdf8"/></marker></defs>
+        <!-- axes -->
+        <line x1="65" y1="15" x2="65" y2="215" stroke="#2a3a55" stroke-width="1.5"/>
+        <line x1="65" y1="215" x2="400" y2="215" stroke="#2a3a55" stroke-width="1.5"/>
+        <text x="40" y="19" fill="#64748b" font-size="10">R</text>
+        <text x="395" y="228" fill="#64748b" font-size="10">Ỹ</text>
+        <!-- Ỹ=0 dashed -->
+        <line x1="210" y1="15" x2="210" y2="215" stroke="#2a3a55" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="204" y="228" fill="#64748b" font-size="10">0</text>
+        <!-- IS₀ (muted, dashed) -->
+        <line x1="98" y1="20" x2="295" y2="215" stroke="#fb923c" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.4"/>
+        <text x="82" y="32" fill="#fb923c" fill-opacity="0.5" font-size="10">IS₀</text>
+        <!-- IS₁ (solid orange, shifted right) -->
+        <line x1="158" y1="20" x2="355" y2="215" stroke="#fb923c" stroke-width="2.5"/>
+        <text x="340" y="207" fill="#fb923c" font-size="11">IS₁</text>
+        <!-- MP₀ (muted blue at y=130) -->
+        <line x1="65" y1="130" x2="390" y2="130" stroke="#38bdf8" stroke-width="1.5" opacity="0.4" stroke-dasharray="5,3"/>
+        <text x="340" y="126" fill="#38bdf8" fill-opacity="0.5" font-size="10">MP₀</text>
+        <text x="46" y="133" fill="#64748b" font-size="10">r̄</text>
+        <!-- MP₁ (solid blue at y=78, higher R) -->
+        <line x1="65" y1="78" x2="390" y2="78" stroke="#38bdf8" stroke-width="2.5"/>
+        <text x="355" y="74" fill="#38bdf8" font-size="11">MP₁</text>
+        <text x="42" y="81" fill="#38bdf8" font-size="10">R₁</text>
+        <!-- Up arrow on MP axis -->
+        <line x1="65" y1="127" x2="65" y2="83" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arr2)"/>
+        <!-- Point A: IS₀∩MP₀ = (210,130) -->
+        <circle cx="210" cy="130" r="5.5" fill="#0c111b" stroke="#64748b" stroke-width="2"/>
+        <text x="196" y="146" fill="#64748b" font-size="11">A</text>
+        <!-- Point B: IS₁∩MP₀ = (270,130) — "would be" boom, shown faded -->
+        <circle cx="270" cy="130" r="5.5" fill="#0c111b" stroke="#fb923c" stroke-width="2" opacity="0.5"/>
+        <text x="274" y="146" fill="#fb923c" fill-opacity="0.6" font-size="10">B*</text>
+        <!-- Point C: IS₁∩MP₁ = (210,78) — stabilized -->
+        <circle cx="210" cy="78" r="6" fill="#0c111b" stroke="#34d399" stroke-width="2.5"/>
+        <text x="216" y="72" fill="#34d399" font-size="11" font-weight="bold">C</text>
+        <!-- Ỹ=0 tick -->
+        <line x1="210" y1="212" x2="210" y2="218" stroke="#2a3a55" stroke-width="1.5"/>
+        <text x="192" y="228" fill="#34d399" font-size="10">Ỹ=0 ✓</text>
+        <!-- annotation -->
+        <text x="78" y="55" fill="#34d399" font-size="9.5" font-style="italic">Raise R to offset boom</text>
+      </svg>
+      <div class="hw-diagram-caption">IS₁ right, MP₁ up to R₁ — equilibrium C at (Ỹ=0, R₁) stabilizes output. B* shows what would happen without the rate hike.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 1.1c -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.1c</span>
+    <span class="hw-prob-q">Now there is simultaneously a one-time negative inflation/price shock ($\bar{o}_1 < 0$) alongside the consumption boom. Would you change your policy from part (b)? Why or why not?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p><strong>Possibly — it depends on whether the goal is to stabilize output or inflation.</strong></p>
+    <div class="hw-step"><div class="hw-step-num">Two shocks</div><div class="hw-step-body">AD shock: $\bar{a}_1 > 0$ shifts IS right → tends to raise output and inflation. Cost shock: $\bar{o}_1 < 0$ shifts the PC down → tends to lower inflation for any given $\tilde{Y}$.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Output stabilization</div><div class="hw-step-body">If the goal is $\tilde{Y}_1 = 0$, the answer is the same as part (b): raise $R_1 = \bar{r} + \bar{a}_1/\bar{b}$. The negative cost shock does not affect the IS curve — it only affects inflation directly via the PC. So output stabilization requires the same rate hike.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Inflation effect</div><div class="hw-step-body">With both shocks at $\tilde{Y}_1 = 0$:
+      $$\Delta\pi_1 = \bar{\nu}\cdot 0 + \bar{o}_1 = \bar{o}_1 < 0$$
+      Inflation falls despite output being stabilized, because the negative cost shock directly reduces price pressures. The two shocks partially offset each other in terms of their inflation implications.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Conclusion</div><div class="hw-step-body">If the central bank's only goal is output stabilization, it does not change the answer from (b). If it also cares about inflation stabilization, the negative cost shock already helps reduce inflation — so it might raise rates by <em>less</em> than $\bar{a}_1/\bar{b}$ to allow some above-potential output to offset the deflationary cost shock.</div></div>
+  </div>
+</div>
+
+<!-- 1.2a -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.2a</span>
+    <span class="hw-prob-q">A slumping European economy leads to an unexpected decrease in demand for U.S. exports. With the goal of stabilizing output, how and why would you change the real interest rate? Show in an IS-MP diagram.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p><strong>Negative AD shock → Cut real interest rates ($R_1 &lt; \bar{r}$).</strong></p>
+    <div class="hw-step"><div class="hw-step-num">Shock type</div><div class="hw-step-body">Lower foreign demand for U.S. exports reduces net exports ($NX \downarrow$). This is a negative aggregate demand shock: $\bar{a}_{nx,1} < 0$, so $\bar{a}_1 < 0$. The IS curve shifts <em>left</em>.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Unstabilized outcome</div><div class="hw-step-body">At unchanged $R = \bar{r}$: $\tilde{Y}_1 = \bar{a}_1 < 0$ — output falls below potential (recession).</div></div>
+    <div class="hw-step"><div class="hw-step-num">Stabilization</div><div class="hw-step-body">To restore $\tilde{Y}_1 = 0$, set:
+      $$R_1 = \bar{r} + \frac{\bar{a}_1}{\bar{b}} < \bar{r}$$
+      Lower rates boost investment demand, exactly offsetting the export decline.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Diagram</div><div class="hw-step-body">IS shifts left ($\text{IS}_0 \to \text{IS}_1$). MP shifts <em>down</em> ($\text{MP}_0 \to \text{MP}_1$). New intersection $\text{IS}_1 \cap \text{MP}_1$ is at $\tilde{Y} = 0$.</div></div>
+    <div class="hw-diagram">
+      <svg viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono',monospace" font-size="11">
+        <defs><marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#38bdf8"/></marker></defs>
+        <!-- axes -->
+        <line x1="65" y1="15" x2="65" y2="215" stroke="#2a3a55" stroke-width="1.5"/>
+        <line x1="65" y1="215" x2="400" y2="215" stroke="#2a3a55" stroke-width="1.5"/>
+        <text x="40" y="19" fill="#64748b" font-size="10">R</text>
+        <text x="395" y="228" fill="#64748b" font-size="10">Ỹ</text>
+        <!-- Ỹ=0 dashed -->
+        <line x1="210" y1="15" x2="210" y2="215" stroke="#2a3a55" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="204" y="228" fill="#64748b" font-size="10">0</text>
+        <!-- IS₀ (muted, dashed) -->
+        <line x1="98" y1="20" x2="295" y2="215" stroke="#fb923c" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.4"/>
+        <text x="298" y="207" fill="#fb923c" fill-opacity="0.5" font-size="10">IS₀</text>
+        <!-- IS₁ = IS₀ shifted LEFT 65px: (33,20)→(230,215), clip at x=65 → (65,41)→(230,215) -->
+        <line x1="65" y1="41" x2="230" y2="215" stroke="#fb923c" stroke-width="2.5"/>
+        <text x="72" y="36" fill="#fb923c" font-size="11">IS₁</text>
+        <!-- MP₀ (muted at y=130) -->
+        <line x1="65" y1="130" x2="390" y2="130" stroke="#38bdf8" stroke-width="1.5" opacity="0.4" stroke-dasharray="5,3"/>
+        <text x="355" y="126" fill="#38bdf8" fill-opacity="0.5" font-size="10">MP₀</text>
+        <text x="46" y="133" fill="#64748b" font-size="10">r̄</text>
+        <!-- MP₁ (solid at y=182, lower R) -->
+        <line x1="65" y1="182" x2="390" y2="182" stroke="#38bdf8" stroke-width="2.5"/>
+        <text x="355" y="178" fill="#38bdf8" font-size="11">MP₁</text>
+        <text x="42" y="185" fill="#38bdf8" font-size="10">R₁</text>
+        <!-- Down arrow on axis: from MP₀ to MP₁ -->
+        <line x1="65" y1="133" x2="65" y2="178" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arr3)"/>
+        <!-- Point A: IS₀∩MP₀ = (210,130) -->
+        <circle cx="210" cy="130" r="5.5" fill="#0c111b" stroke="#64748b" stroke-width="2"/>
+        <text x="215" y="122" fill="#64748b" font-size="11">A</text>
+        <!-- Point B: IS₁∩MP₀ — IS₁ at y=130: x = 33+110/195*197≈144 → (144,130) -->
+        <circle cx="144" cy="130" r="5.5" fill="#0c111b" stroke="#f87171" stroke-width="2" opacity="0.7"/>
+        <text x="128" y="122" fill="#f87171" fill-opacity="0.8" font-size="10">B*</text>
+        <!-- recession Ỹ label for B* -->
+        <line x1="144" y1="133" x2="144" y2="215" stroke="#f87171" stroke-width="1" stroke-dasharray="3,2" opacity="0.4"/>
+        <text x="124" y="228" fill="#f87171" fill-opacity="0.7" font-size="10">Ỹ&lt;0</text>
+        <!-- Point C: IS₁∩MP₁ ≈ (210,182) stabilized -->
+        <circle cx="210" cy="182" r="6" fill="#0c111b" stroke="#34d399" stroke-width="2.5"/>
+        <text x="216" y="194" fill="#34d399" font-size="11" font-weight="bold">C</text>
+        <text x="192" y="228" fill="#34d399" font-size="10">Ỹ=0 ✓</text>
+        <text x="80" y="200" fill="#34d399" font-size="9.5" font-style="italic">Cut R to offset recession</text>
+      </svg>
+      <div class="hw-diagram-caption">IS₁ shifts left (lower exports) — without action B* is a recession. MP₁ cuts rates to R₁, restoring C at Ỹ=0.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 1.2b -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.2b</span>
+    <span class="hw-prob-q">Americans sharply increase imports from New Zealand. With the goal of stabilizing output, how and why would you change the real interest rate? Show in an IS-MP diagram.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p><strong>Also a negative AD shock → Cut real interest rates ($R_1 &lt; \bar{r}$).</strong></p>
+    <div class="hw-step"><div class="hw-step-num">Shock type</div><div class="hw-step-body">Higher imports reduce net exports: $NX \downarrow$, so $\bar{a}_{nx,1} < 0$. Same type of shock as (a) — the IS curve shifts left. The mechanism is symmetric: whether foreigners buy fewer U.S. goods or Americans buy more foreign goods, the domestic demand effect on U.S. output is the same.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Policy</div><div class="hw-step-body">Same prescription as (a): cut $R_1$ below $\bar{r}$ by $|\bar{a}_1|/\bar{b}$. The IS shift left is offset by the MP shift down, and the IS$_1$ ∩ MP$_1$ equilibrium is again at $\tilde{Y} = 0$.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Caveat</div><div class="hw-step-body">Note: in the extended IS model with an import channel, the shock to $\bar{a}_t$ may be smaller than in a closed economy because some of the spending goes to imports. But the direction and policy response are identical.</div></div>
+  </div>
+</div>
+
+<!-- 1.3a -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.3a</span>
+    <span class="hw-prob-q">Real wages are currently below their long-run trend, returning to trend after this year. Interpret this as a "shock" in the short-run model. What type of shock is it and why?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p><strong>This is a temporary negative cost-push shock: $\bar{o}_t &lt; 0$.</strong></p>
+    <div class="hw-step"><div class="hw-step-num">Reasoning</div><div class="hw-step-body">In the Phillips Curve, cost shocks $\bar{o}_t$ capture deviations of production costs from their trend. Real wages are a primary input cost for firms. If real wages are <em>below</em> trend, firms face lower-than-normal production costs this period — this is a <em>favorable</em> cost condition, which tends to <em>reduce</em> inflationary pressure for any given output level.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Sign convention</div><div class="hw-step-body">Recall the cost shock sign rule: ask what happens to output if we hold $\pi_t - \pi_t^e$ fixed. Lower wages → lower costs → firms want to produce <em>more</em>, so output would rise. The cost shock is in the <em>opposite</em> direction, so $\bar{o}_t < 0$ (a negative cost shock). The PC shifts <em>downward</em>.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Duration</div><div class="hw-step-body">The shock is temporary (one period). Next period, real wages return to trend, so $\bar{o}_{t+1} = 0$ and the PC returns to its original position.</div></div>
+  </div>
+</div>
+
+<!-- 1.3b -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.3b</span>
+    <span class="hw-prob-q">With adaptive expectations and the goal of keeping inflation constant ($\Delta\pi = 0$), how should the central bank respond to the below-trend wage shock? Include IS-MP curves for the shock period and after.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p><strong>Allow output to rise above potential during the shock period; return to $\bar{r}$ after.</strong></p>
+    <div class="hw-step"><div class="hw-step-num">Inflation target</div><div class="hw-step-body">Under adaptive expectations, $\Delta\pi_t = \bar{\nu}\tilde{Y}_t + \bar{o}_t$. To keep $\Delta\pi_t = 0$:
+      $$0 = \bar{\nu}\tilde{Y}_t + \bar{o}_t \;\Rightarrow\; \tilde{Y}_t = -\frac{\bar{o}_t}{\bar{\nu}} > 0$$
+      since $\bar{o}_t < 0$. The bank must allow a <em>boom</em> to offset the downward price pressure.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Required rate</div><div class="hw-step-body">Substituting the target $\tilde{Y}_t$ into the IS curve:
+      $$-\frac{\bar{o}_t}{\bar{\nu}} = \bar{a}_t - \bar{b}(R_t - \bar{r}) \;\Rightarrow\; R_t = \bar{r} + \bar{a}_t\bar{\nu}/\bar{\nu} + \bar{o}_t/(\bar{b}\bar{\nu})$$
+      Simplified (with $\bar{a}_t = 0$): $R_t = \bar{r} + \bar{o}_t/(\bar{b}\bar{\nu}) < \bar{r}$. Cut rates below $\bar{r}$.</div></div>
+    <div class="hw-step"><div class="hw-step-num">IS-MP diagram</div><div class="hw-step-body"><strong>Shock period (period $t$):</strong> IS = IS$_0$ (no demand shock). MP shifts <em>down</em> to MP$_1$ at $R_t < \bar{r}$. Equilibrium: $\tilde{Y}_t = -\bar{o}_t/\bar{\nu} > 0$ (boom). The boom exactly cancels the negative cost shock, leaving $\Delta\pi = 0$.<br><br><strong>After shock (period $t+1$):</strong> $\bar{o}_{t+1} = 0$, wages return to trend. The bank raises $R$ back to $\bar{r}$: MP returns to MP$_0$. IS unchanged at IS$_0$. Equilibrium returns to $\tilde{Y} = 0$.</div></div>
+    <p><em>Key insight:</em> a negative cost shock is deflationary. To prevent inflation from falling, the Fed <em>loosens</em> policy to heat up the economy — a counterintuitive result.</p>
+  </div>
+</div>
+
+<!-- 1.4a -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.4a</span>
+    <span class="hw-prob-q">Inflation expectations are 2%, no cost-push shock. Can the central bank set the real interest rate to $-1\%$ given the effective lower bound on nominal rates?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <p><strong>Yes — it is possible.</strong></p>
+    <div class="hw-step"><div class="hw-step-num">Fisher equation</div><div class="hw-step-body">$R_t = i_t - \pi_t$. To achieve $R_t = -1\%$ with $\pi_t^e = 2\%$ (use inflation expectations as a proxy for current inflation under "sticky inflation"):
+      $$i_t = R_t + \pi_t = -1\% + 2\% = +1\%$$</div></div>
+    <div class="hw-step"><div class="hw-step-num">ELB check</div><div class="hw-step-body">The ELB constraint is $i_t \geq 0\%$ (approximately). Since $i_t = 1\% > 0\%$, the ELB is <em>not</em> binding. The central bank can achieve $R_t = -1\%$ by setting the nominal rate to 1%.</div></div>
+    <div class="hw-final">Yes. With 2% inflation expectations, setting the nominal rate to 1% achieves a real rate of $-1\%$, which is above the ELB. The inflation "buffer" is what makes negative real rates achievable.</div>
+  </div>
+</div>
+
+<!-- 1.4b-i -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.4b-i</span>
+    <span class="hw-prob-q">Draw the IS-MP diagram where the central bank cannot lower the real interest rate any further (ELB binding) but $R$ is still too high to stabilize output. Label IS$_0$, MP$_0$, the axes, and mark $\tilde{Y}=0$ and $\bar{r}$.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Setup</div><div class="hw-step-body">The economy has experienced a large negative demand shock. The IS curve has shifted sharply left to IS$_0$. To stabilize output, the Fed would need $R < R_{\text{ELB}}$ — but it cannot go lower. The MP curve is stuck at the ELB: MP$_0$: $R = R_{\text{ELB}} > \bar{r}$.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Diagram description</div><div class="hw-step-body">
+      <ul>
+        <li>Vertical axis: Real interest rate $R$. Mark $\bar{r}$ and $R_{\text{ELB}}$ where $R_{\text{ELB}} > \bar{r}$ (the ELB in real terms, given low inflation expectations).</li>
+        <li>Horizontal axis: Output $\tilde{Y}$. Mark $0$ (potential).</li>
+        <li>IS$_0$: Downward-sloping. Intersects horizontal axis to the <em>left</em> of 0.</li>
+        <li>MP$_0$: Horizontal line at $R_{\text{ELB}}$. Intersects IS$_0$ at some $\tilde{Y}_0 &lt; 0$ (recession).</li>
+        <li>The stabilizing rate (where IS$_0$ crosses $\tilde{Y}=0$) is below MP$_0$, but cannot be reached due to the ELB.</li>
+      </ul>
+    </div></div>
+    <div class="hw-final">The diagram shows: IS$_0$ shifted far left, MP$_0$ at $R_{\text{ELB}}$ (above $\bar{r}$), equilibrium at $\tilde{Y}_0 &lt; 0$ — a persistent recession the Fed cannot conventionally fix.</div>
+    <div class="hw-diagram">
+      <svg viewBox="0 0 420 250" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono',monospace" font-size="11">
+        <!-- axes -->
+        <line x1="65" y1="15" x2="65" y2="220" stroke="#2a3a55" stroke-width="1.5"/>
+        <line x1="65" y1="220" x2="400" y2="220" stroke="#2a3a55" stroke-width="1.5"/>
+        <text x="40" y="19" fill="#64748b" font-size="10">R</text>
+        <text x="395" y="233" fill="#64748b" font-size="10">Ỹ</text>
+        <!-- Ỹ=0 dashed -->
+        <line x1="240" y1="15" x2="240" y2="220" stroke="#2a3a55" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="234" y="233" fill="#64748b" font-size="10">0</text>
+        <!-- r̄ dashed (lower reference, below ELB) -->
+        <line x1="65" y1="160" x2="400" y2="160" stroke="#2a3a55" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+        <text x="42" y="163" fill="#64748b" font-size="10">r̄</text>
+        <!-- IS₀ (before shock, muted) — original position at right -->
+        <line x1="162" y1="20" x2="355" y2="215" stroke="#fb923c" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.3"/>
+        <text x="340" y="207" fill="#fb923c" fill-opacity="0.4" font-size="10">IS₀</text>
+        <!-- IS₁ (after large negative shock, shifted far left) -->
+        <!-- Through intersection with ELB(y=85) at about x=110, clipped at left -->
+        <line x1="65" y1="60" x2="200" y2="220" stroke="#fb923c" stroke-width="2.5"/>
+        <text x="68" y="55" fill="#fb923c" font-size="11">IS₁</text>
+        <!-- MP_ELB (horizontal at y=85, ABOVE r̄ since R_ELB > r̄ when inflation is low) -->
+        <line x1="65" y1="85" x2="390" y2="85" stroke="#38bdf8" stroke-width="2.5"/>
+        <text x="330" y="81" fill="#38bdf8" font-size="11">MP (ELB)</text>
+        <text x="32" y="88" fill="#38bdf8" font-size="9">R_ELB</text>
+        <!-- IS₁∩MP_ELB: IS₁ from (65,60)→(200,220). At y=85: 85=60+(x-65)/135*160→(x-65)=25*135/160=21→x=86 -->
+        <circle cx="108" cy="85" r="6" fill="#0c111b" stroke="#f87171" stroke-width="2.5"/>
+        <text x="88" y="76" fill="#f87171" font-size="11" font-weight="bold">B</text>
+        <!-- recession annotation -->
+        <line x1="108" y1="89" x2="108" y2="220" stroke="#f87171" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+        <text x="75" y="233" fill="#f87171" font-size="10">Ỹ₁&lt;0</text>
+        <!-- Point A: original equilibrium (faded) -->
+        <circle cx="240" cy="160" r="5" fill="#0c111b" stroke="#64748b" stroke-width="1.5" opacity="0.4"/>
+        <text x="244" y="152" fill="#64748b" fill-opacity="0.5" font-size="10">A</text>
+        <!-- "Needed R" to stabilize at Ỹ=0: IS₁ at x=240: y=60+(240-65)/135*160=60+175/135*160=60+207=267 → off chart -->
+        <!-- Show arrow pointing down below chart with label -->
+        <line x1="240" y1="218" x2="240" y2="228" stroke="#f87171" stroke-width="2"/>
+        <polygon points="236,228 244,228 240,237" fill="#f87171"/>
+        <text x="242" y="248" fill="#f87171" font-size="9">R needed</text>
+        <text x="242" y="258" fill="#f87171" font-size="9">(below ELB)</text>
+        <!-- ELB label box -->
+        <rect x="115" y="74" width="90" height="16" rx="3" fill="rgba(56,189,248,0.08)" stroke="rgba(56,189,248,0.3)" stroke-width="1"/>
+        <text x="118" y="85" fill="#7dd3fc" font-size="9">ELB is binding here</text>
+      </svg>
+      <div class="hw-diagram-caption">IS₁ shifts far left (large negative shock). MP stuck at R_ELB &gt; r̄. Equilibrium B is a deep recession (Ỹ &lt; 0). The rate needed to reach Ỹ=0 falls below the ELB — unattainable.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 1.4b-ii -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">1.4b-ii</span>
+    <span class="hw-prob-q">The central bank uses forward guidance to stabilize output. What would it say about future rates? How does this change the IS-MP diagram?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">What the Fed says</div><div class="hw-step-body">The central bank would publicly commit to keeping nominal interest rates low (near zero) for an <em>extended period</em> — even after the economy begins to recover. Example statement: "The FOMC expects to maintain near-zero rates through at least [year]."</div></div>
+    <div class="hw-step"><div class="hw-step-num">Mechanism</div><div class="hw-step-body">Long-term bond yields reflect expected future short-term rates. If the Fed credibly commits to low future rates, long-term yields fall today. Lower long-term rates reduce the cost of borrowing for investment projects and mortgages → investment and consumption rise above what the current overnight rate implies → positive demand shock $\bar{a}_t > 0$.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Diagram change</div><div class="hw-step-body"><strong>IS shifts right</strong> from IS$_0$ to IS$_1$ (forward guidance acts as a positive demand shock). The MP curve does not shift — $R$ at the ELB is unchanged. But IS$_1$ now intersects MP$_0$ at $\tilde{Y} = 0$ (or wherever the target is). Output is stabilized without moving the overnight rate.</div></div>
+    <div class="hw-final">Forward guidance: "We commit to low rates for an extended period." Effect on diagram: IS shifts right (IS$_0 \to$ IS$_1$), MP unchanged at ELB. New equilibrium at $\tilde{Y}_1 = 0$.</div>
+    <div class="hw-diagram">
+      <svg viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono',monospace" font-size="11">
+        <defs><marker id="arr4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#34d399"/></marker></defs>
+        <!-- axes -->
+        <line x1="65" y1="15" x2="65" y2="215" stroke="#2a3a55" stroke-width="1.5"/>
+        <line x1="65" y1="215" x2="400" y2="215" stroke="#2a3a55" stroke-width="1.5"/>
+        <text x="40" y="19" fill="#64748b" font-size="10">R</text>
+        <text x="395" y="228" fill="#64748b" font-size="10">Ỹ</text>
+        <!-- Ỹ=0 dashed -->
+        <line x1="240" y1="15" x2="240" y2="215" stroke="#2a3a55" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="234" y="228" fill="#64748b" font-size="10">0</text>
+        <!-- r̄ dashed reference -->
+        <line x1="65" y1="160" x2="400" y2="160" stroke="#2a3a55" stroke-width="1" stroke-dasharray="3,2" opacity="0.4"/>
+        <text x="42" y="163" fill="#64748b" font-size="10">r̄</text>
+        <!-- IS₁ (before guidance, at ELB — same as 1.4b-i) -->
+        <line x1="65" y1="55" x2="200" y2="215" stroke="#fb923c" stroke-width="1.8" stroke-dasharray="5,3" opacity="0.5"/>
+        <text x="68" y="50" fill="#fb923c" fill-opacity="0.6" font-size="10">IS₁</text>
+        <!-- IS₂ (after guidance → IS shifts right ~135px) -->
+        <line x1="200" y1="55" x2="335" y2="215" stroke="#fb923c" stroke-width="2.5"/>
+        <text x="340" y="210" fill="#fb923c" font-size="11">IS₂</text>
+        <!-- Right-shift arrow between IS curves -->
+        <line x1="130" y1="140" x2="197" y2="140" stroke="#34d399" stroke-width="1.5" marker-end="url(#arr4)"/>
+        <text x="133" y="132" fill="#34d399" font-size="9">forward</text>
+        <text x="133" y="143" fill="#34d399" font-size="9">guidance</text>
+        <!-- MP_ELB (unchanged, horizontal at y=85) -->
+        <line x1="65" y1="85" x2="390" y2="85" stroke="#38bdf8" stroke-width="2.5"/>
+        <text x="330" y="81" fill="#38bdf8" font-size="11">MP (ELB)</text>
+        <text x="32" y="88" fill="#38bdf8" font-size="9">R_ELB</text>
+        <!-- Point B: IS₁∩MP_ELB ≈ (108,85) recession -->
+        <circle cx="108" cy="85" r="5.5" fill="#0c111b" stroke="#f87171" stroke-width="2" opacity="0.6"/>
+        <text x="88" y="76" fill="#f87171" fill-opacity="0.7" font-size="10">B</text>
+        <text x="75" y="228" fill="#f87171" fill-opacity="0.7" font-size="10">Ỹ&lt;0</text>
+        <!-- Point C: IS₂∩MP_ELB. IS₂ from (200,55)→(335,215). At y=85: 85=55+(x-200)/135*160→(x-200)=30*135/160=25.3→x=225 ≈ 240 -->
+        <circle cx="240" cy="85" r="6" fill="#0c111b" stroke="#34d399" stroke-width="2.5"/>
+        <text x="245" y="76" fill="#34d399" font-size="11" font-weight="bold">C</text>
+        <text x="222" y="228" fill="#34d399" font-size="10">Ỹ=0 ✓</text>
+        <line x1="240" y1="89" x2="240" y2="215" stroke="#34d399" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+      </svg>
+      <div class="hw-diagram-caption">Forward guidance shifts IS₁ → IS₂ (positive demand effect of expected low rates). MP stays at ELB. New equilibrium C achieves Ỹ=0 without changing the overnight rate.</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end part 1 -->
+
+<!-- ===== PART 2: AS-AD ===== -->
+<div class="hw-part">
+<div class="hw-part-title">Part 2 · Aggregate Supply and Aggregate Demand</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">AS-AD</span>
+    <span class="hw-prob-q">AS-AD framework reference: what are the AS and AD curves and how do they work?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Quick Reference</div>
+    <div class="hw-step"><div class="hw-step-num">AD curve</div><div class="hw-step-body">Derived from the IS curve + MP rule. Plots $\tilde{Y}$ as a function of $\pi$ (current inflation). Because higher inflation raises real rates (if the Fed follows a rule like Taylor), higher $\pi$ → higher $R$ → lower $\tilde{Y}$: AD is <strong>downward sloping</strong>. Shifts right with positive demand shocks ($\bar{a}_t \uparrow$) or easier policy; shifts left with negative demand shocks.</div></div>
+    <div class="hw-step"><div class="hw-step-num">AS curve</div><div class="hw-step-body">Derived from the accelerationist Phillips curve: $\pi_t = \pi_{t-1} + \bar{\nu}\tilde{Y}_t + \bar{o}_t$. Plots $\pi$ as a function of $\tilde{Y}$. <strong>Upward sloping</strong> (higher output → higher inflation). <em>Shifts</em> based on last period's inflation (under adaptive expectations): if $\pi_{t-1}$ rises, AS shifts up. Cost shocks also shift it.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Long-run</div><div class="hw-step-body">In the long run: $\tilde{Y} = 0$ (output at potential). The long-run AS is a vertical line at $\tilde{Y} = 0$. Equilibrium inflation is pinned by the AD curve at $\tilde{Y} = 0$ (the AD intercept with the vertical axis).</div></div>
+    <div class="hw-step"><div class="hw-step-num">Notation</div><div class="hw-step-body">AS$_0$/AD$_0$: initial (pre-shock). AS$_1$/AD$_1$: shock period. AS$^*$/AD$^*$: long-run values after full adjustment.</div></div>
+  </div>
+</div>
+
+<!-- 2.1 -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">2.1a</span>
+    <span class="hw-prob-q">Policy rule: $i_t - \bar{r} = \bar{m}(\pi_t - \bar{\pi})$ with $\bar{r} = 1\%$, $\bar{m} = 1/2$, $\bar{\pi} = 2\%$. Compute the implied nominal rate $i_t$ for $\pi = 10\%, 5\%, 2\%, 1\%$.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Formula</div><div class="hw-step-body">Rearrange: $i_t = \bar{r} + \bar{m}(\pi_t - \bar{\pi}) = 1\% + \tfrac{1}{2}(\pi_t - 2\%)$.</div></div>
+    <div class="formula-box">
+      $\pi = 10\%$: $i_t = 1 + \tfrac{1}{2}(10-2) = 1 + 4 = \mathbf{5\%}$<br>
+      $\pi = 5\%$:  $i_t = 1 + \tfrac{1}{2}(5-2)  = 1 + 1.5 = \mathbf{2.5\%}$<br>
+      $\pi = 2\%$:  $i_t = 1 + \tfrac{1}{2}(2-2)  = 1 + 0 = \mathbf{1\%}$<br>
+      $\pi = 1\%$:  $i_t = 1 + \tfrac{1}{2}(1-2)  = 1 - 0.5 = \mathbf{0.5\%}$
+    </div>
+    <p>When $\pi = \bar{\pi} = 2\%$, the rule sets $i_t = \bar{r} = 1\%$. When inflation exceeds target, the Fed raises the nominal rate more than proportionally — ensuring the <em>real</em> rate rises too.</p>
+  </div>
+</div>
+
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">2.1b</span>
+    <span class="hw-prob-q">Repeat 2.1a with $\bar{m} = 1$ instead of $1/2$. Why do you get different answers?</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Formula</div><div class="hw-step-body">$i_t = 1\% + 1\cdot(\pi_t - 2\%) = \pi_t - 1\%$.</div></div>
+    <div class="formula-box">
+      $\pi = 10\%$: $i_t = 10 - 1 = \mathbf{9\%}$<br>
+      $\pi = 5\%$:  $i_t = 5  - 1 = \mathbf{4\%}$<br>
+      $\pi = 2\%$:  $i_t = 2  - 1 = \mathbf{1\%}$<br>
+      $\pi = 1\%$:  $i_t = 1  - 1 = \mathbf{0\%}$
+    </div>
+    <div class="hw-step"><div class="hw-step-num">Why different?</div><div class="hw-step-body">$\bar{m}$ controls how aggressively the central bank responds to inflation deviations from target. With $\bar{m} = 1/2$, a 1 pp rise in $\pi$ above target triggers only a 0.5 pp hike in $i$. With $\bar{m} = 1$, the same 1 pp deviation triggers a full 1 pp hike. A larger $\bar{m}$ means <em>tighter</em> policy when inflation is high, which more aggressively raises the real rate ($R = i - \pi$) and cools the economy faster.</div></div>
+    <p>Note: at $\pi = \bar{\pi} = 2\%$, both rules give the same $i_t = \bar{r} = 1\%$ — the parameter $\bar{m}$ only matters when $\pi \neq \bar{\pi}$.</p>
+  </div>
+</div>
+
+<!-- 2.2 -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">2.2</span>
+    <span class="hw-prob-q">A one-time sharp decline in oil prices causes a negative inflation shock ($\bar{o}_1 &lt; 0$). Economy was initially at long-run equilibrium. Using the AS-AD framework, explain what happens to inflation and output over time (adaptive expectations).</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Initial state</div><div class="hw-step-body">Economy at potential: $\tilde{Y}_0 = 0$, $\pi_0 = \bar{\pi}$. AS$_0$ and AD$_0$ intersect at $(\tilde{Y}=0, \pi=\bar{\pi})$.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Period 1: shock</div><div class="hw-step-body">Negative cost shock $\bar{o}_1 < 0$ shifts the <strong>AS curve down</strong>: at any given output, inflation is lower. AS$_0 \to$ AS$_1$ (AS$_1$ is below AS$_0$).<br>AD does not shift (no demand shock, no policy change assumed).<br>New equilibrium: AS$_1 \cap$ AD$_0$ → <em>higher output</em> ($\tilde{Y}_1 > 0$) and <em>lower inflation</em> ($\pi_1 < \bar{\pi}$). The economy booms with lower prices.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Period 2+: adjustment</div><div class="hw-step-body">The shock was one-time: $\bar{o}_t = 0$ for $t \geq 2$. But under adaptive expectations, last period's lower inflation enters this period's AS:
+      $$\pi_t = \pi_{t-1} + \bar{\nu}\tilde{Y}_t \quad (\bar{o}_t = 0)$$
+      With $\pi_1 < \bar{\pi}$ and $\tilde{Y}_1 > 0$, whether AS shifts further depends on the net effect. But in subsequent periods, the above-potential output ($\tilde{Y} > 0$) pushes AS <em>upward</em> each period, gradually returning the economy toward $\tilde{Y} = 0$.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Long run</div><div class="hw-step-body">AS gradually shifts back up as $\pi_{t-1}$ rises (from the boom). The economy converges to the AD$_0$ intercept with $\tilde{Y} = 0$: long-run $\tilde{Y}^* = 0$, $\pi^* = \bar{\pi}$ (same as initial). The cost shock has only a <em>temporary</em> effect on output and inflation; both return to long-run values.</div></div>
+    <div class="hw-final">Period 1: AS shifts down → boom + lower inflation. Periods 2+: boom creates inflationary pressure → AS drifts back up → economy returns to $\tilde{Y}=0$, $\pi = \bar{\pi}$.</div>
+    <div class="hw-diagram">
+      <svg viewBox="0 0 420 250" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono',monospace" font-size="11">
+        <defs>
+          <marker id="arr5" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#34d399"/></marker>
+          <marker id="arr6" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#a78bfa"/></marker>
+        </defs>
+        <!-- axes -->
+        <line x1="65" y1="15" x2="65" y2="215" stroke="#2a3a55" stroke-width="1.5"/>
+        <line x1="65" y1="215" x2="400" y2="215" stroke="#2a3a55" stroke-width="1.5"/>
+        <text x="40" y="19" fill="#64748b" font-size="10">π</text>
+        <text x="395" y="228" fill="#64748b" font-size="10">Ỹ</text>
+        <!-- Ỹ=0 dashed -->
+        <line x1="210" y1="15" x2="210" y2="215" stroke="#2a3a55" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="204" y="228" fill="#64748b" font-size="10">0</text>
+        <!-- π̄ dashed -->
+        <line x1="65" y1="125" x2="400" y2="125" stroke="#2a3a55" stroke-width="1" stroke-dasharray="4,3" opacity="0.6"/>
+        <text x="42" y="128" fill="#64748b" font-size="10">π̄</text>
+        <!-- AS₀ (upward sloping green, from bottom-left to top-right in (Ỹ,π) space → SVG: left-high to right-low) -->
+        <!-- AS₀ through (210,125): from (75,215)→(330,45) -->
+        <line x1="75" y1="215" x2="330" y2="45" stroke="#34d399" stroke-width="2" stroke-dasharray="5,3" opacity="0.5"/>
+        <text x="295" y="42" fill="#34d399" fill-opacity="0.6" font-size="10">AS₀</text>
+        <!-- AS₁ (shifted DOWN = lower π at each Ỹ = shifted up in SVG-y = higher y) -->
+        <!-- AS₁: shift +50 in y: from (75,265)→(330,95), clip at y=215: x=75+(215-265)/(95-265)*(330-75)=75+(-50/-170)*255=75+74.9=150 -->
+        <line x1="150" y1="215" x2="330" y2="95" stroke="#34d399" stroke-width="2.5"/>
+        <text x="296" y="92" fill="#34d399" font-size="11">AS₁</text>
+        <!-- AS shift arrow (downward = lower π, in SVG terms rightward-downward shift of the line) -->
+        <line x1="240" y1="126" x2="285" y2="145" stroke="#34d399" stroke-width="1.3" marker-end="url(#arr5)"/>
+        <text x="248" y="120" fill="#34d399" font-size="9">cost↓</text>
+        <!-- AD₀ (downward sloping purple) through (210,125): from (80,50)→(340,210) -->
+        <line x1="80" y1="50" x2="340" y2="210" stroke="#a78bfa" stroke-width="2.5"/>
+        <text x="344" y="207" fill="#a78bfa" font-size="11">AD₀</text>
+        <!-- Point A: AS₀∩AD₀ ≈ (210,125) -->
+        <circle cx="210" cy="125" r="6" fill="#0c111b" stroke="#64748b" stroke-width="2.5"/>
+        <text x="195" y="117" fill="#64748b" font-size="11">A</text>
+        <!-- Point B: AS₁∩AD₀. 
+          AS₁: from(150,215)→(330,95). Direction(180,-120). Param: (150+180t, 215-120t)
+          AD₀: from(80,50)→(340,210). Direction(260,160). Param: (80+260s, 50+160s)
+          150+180t=80+260s → 180t-260s=-70
+          215-120t=50+160s → 120t+160s=165
+          s=(180t+70)/260; 120t+160*(180t+70)/260=165
+          120t+(28800t+11200)/260=165; 31200t+28800t+11200=42900; 60000t=31700; t=0.5283
+          x=150+180*0.5283=150+95.1=245; y=215-120*0.5283=215-63.4=151.6≈152 -->
+        <circle cx="245" cy="152" r="6" fill="#0c111b" stroke="#34d399" stroke-width="2.5"/>
+        <text x="252" y="148" fill="#34d399" font-size="11" font-weight="bold">B</text>
+        <!-- Boom annotation -->
+        <line x1="245" y1="156" x2="245" y2="215" stroke="#34d399" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+        <text x="228" y="228" fill="#34d399" font-size="10">Ỹ₁&gt;0</text>
+        <!-- lower π annotation -->
+        <line x1="68" y1="152" x2="245" y2="152" stroke="#34d399" stroke-width="1" stroke-dasharray="3,2" opacity="0.4"/>
+        <text x="68" y="149" fill="#34d399" font-size="9">π₁&lt;π̄</text>
+        <!-- Recovery arrow: AS drifts back up -->
+        <text x="72" y="80" fill="#34d399" font-size="9" font-style="italic">AS drifts back →</text>
+        <text x="72" y="92" fill="#34d399" font-size="9" font-style="italic">economy returns to A</text>
+      </svg>
+      <div class="hw-diagram-caption">Period 1: negative cost shock shifts AS₀→AS₁ (down/right). New equilibrium B: boom (Ỹ&gt;0) + lower inflation (π&lt;π̄). Periods 2+: boom pushes AS back up; economy converges to A (Ỹ=0, π=π̄).</div>
+    </div>
+  </div>
+</div>
+
+<!-- 2.3 -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">2.3</span>
+    <span class="hw-prob-q">Economy at potential, inflation at $\bar{\pi}_{\text{low}}$. The new central bank chair raises the long-run inflation target to $\bar{\pi}_{\text{high}} > \bar{\pi}_{\text{low}}$. Using the AS-AD framework, explain what happens over time (adaptive expectations).</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">Worked Solution</div>
+    <div class="hw-step"><div class="hw-step-num">Effect on AD</div><div class="hw-step-body">The central bank's policy rule changes. With a higher $\bar{\pi}$, the rule $i_t - \bar{r} = \bar{m}(\pi_t - \bar{\pi})$ now responds less aggressively to any given inflation level (since the gap $\pi - \bar{\pi}$ is smaller for any $\pi$). This means lower real interest rates at any given inflation level → higher output demand → the <strong>AD curve shifts right</strong>: AD$_0 \to$ AD$_1$.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Period 1</div><div class="hw-step-body">AS does not shift immediately (no change to $\pi_{t-1}$ yet). The new equilibrium is AS$_0 \cap$ AD$_1$: $\tilde{Y}_1 > 0$ (boom), $\pi_1 > \bar{\pi}_{\text{low}}$ but still below $\bar{\pi}_{\text{high}}$.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Period 2+: dynamics</div><div class="hw-step-body">Higher $\pi_1$ raises inflation expectations under adaptive expectations → AS shifts <em>up</em> in period 2 (AS$_1$ is above AS$_0$). The new AS$_1 \cap$ AD$_1$ gives slightly lower $\tilde{Y}$ and higher $\pi$. This continues: AS shifts up each period as expectations adapt upward, gradually eliminating the output boom.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Long run</div><div class="hw-step-body">Eventually AS$^*$ intersects AD$_1$ at $\tilde{Y}^* = 0$. At this point:
+      $$\pi^* = \bar{\pi}_{\text{high}}$$
+      The long-run inflation rate is pinned by the AD curve's intersection with $\tilde{Y}=0$, which under the new rule occurs at $\bar{\pi}_{\text{high}}$. Output returns to potential, but inflation is permanently higher.</div></div>
+    <div class="hw-final">Short run: AD shifts right → boom + rising inflation. Long run: AS shifts up until $\tilde{Y} = 0$ at $\pi = \bar{\pi}_{\text{high}}$. The policy change raises the long-run inflation rate with only a temporary output boost.</div>
+    <div class="hw-diagram">
+      <svg viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono',monospace" font-size="11">
+        <defs>
+          <marker id="arr7" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#a78bfa"/></marker>
+          <marker id="arr8" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#34d399"/></marker>
+        </defs>
+        <!-- axes -->
+        <line x1="65" y1="15" x2="65" y2="220" stroke="#2a3a55" stroke-width="1.5"/>
+        <line x1="65" y1="220" x2="400" y2="220" stroke="#2a3a55" stroke-width="1.5"/>
+        <text x="40" y="19" fill="#64748b" font-size="10">π</text>
+        <text x="395" y="233" fill="#64748b" font-size="10">Ỹ</text>
+        <!-- LRAS: vertical at Ỹ=0 -->
+        <line x1="205" y1="15" x2="205" y2="220" stroke="#64748b" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <text x="199" y="233" fill="#64748b" font-size="10">0</text>
+        <text x="207" y="25" fill="#64748b" font-size="9">LRAS</text>
+        <!-- π̄_low reference -->
+        <line x1="65" y1="145" x2="400" y2="145" stroke="#2a3a55" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+        <text x="22" y="148" fill="#64748b" font-size="9">π̄_low</text>
+        <!-- π̄_high reference -->
+        <line x1="65" y1="92" x2="400" y2="92" stroke="#2a3a55" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+        <text x="20" y="95" fill="#64748b" font-size="9">π̄_high</text>
+        <!-- AS₀ (initial upward-sloping, through A=(205,145)) -->
+        <line x1="75" y1="220" x2="320" y2="58" stroke="#34d399" stroke-width="1.8" stroke-dasharray="5,3" opacity="0.4"/>
+        <text x="288" y="55" fill="#34d399" fill-opacity="0.5" font-size="10">AS₀</text>
+        <!-- AS_LR (long-run AS, shifted up to pass through LRAS∩π̄_high = (205,92)) -->
+        <!-- AS_LR same slope as AS₀ but shifted up in π terms (down 53px in SVG-y) -->
+        <!-- AS₀: from(75,220)→(320,58). AS_LR: from(75,167)→(320,5) → clip at y=15: x=75+(15-167)/(5-167)*(320-75)=75+(-152/-162)*245=75+229.9=305 -->
+        <line x1="75" y1="167" x2="305" y2="15" stroke="#34d399" stroke-width="2.5"/>
+        <text x="272" y="12" fill="#34d399" font-size="11">AS*</text>
+        <!-- AS shift arrow -->
+        <line x1="155" y1="168" x2="155" y2="122" stroke="#34d399" stroke-width="1.3" marker-end="url(#arr8)"/>
+        <text x="158" y="150" fill="#34d399" font-size="9">AS shifts up</text>
+        <text x="158" y="161" fill="#34d399" font-size="9">over time</text>
+        <!-- AD₀ (muted, original) through (205,145): from(85,55)→(320,205) -->
+        <line x1="85" y1="55" x2="320" y2="205" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.4"/>
+        <text x="75" y="52" fill="#a78bfa" fill-opacity="0.5" font-size="10">AD₀</text>
+        <!-- AD₁ (solid, shifted right ~55px) from(140,55)→(375,205) → clip at 380 -->
+        <line x1="140" y1="55" x2="375" y2="205" stroke="#a78bfa" stroke-width="2.5"/>
+        <text x="352" y="200" fill="#a78bfa" font-size="11">AD₁</text>
+        <!-- AD shift arrow -->
+        <line x1="248" y1="148" x2="295" y2="148" stroke="#a78bfa" stroke-width="1.3" marker-end="url(#arr7)"/>
+        <text x="250" y="140" fill="#a78bfa" font-size="9">higher π̄</text>
+        <!-- Point A: AS₀∩AD₀ ≈ (205,145) -->
+        <circle cx="205" cy="145" r="6" fill="#0c111b" stroke="#64748b" stroke-width="2"/>
+        <text x="189" y="137" fill="#64748b" font-size="11">A</text>
+        <!-- Point B: AS₀∩AD₁.
+          AS₀: (75+245t, 220-162t); AD₁: (140+235s, 55+150s)
+          75+245t=140+235s → 245t-235s=65
+          220-162t=55+150s → 162t+150s=165
+          s=(245t-65)/235; 162t+150*(245t-65)/235=165
+          162t+(36750t-9750)/235=165; 38070t+36750t-9750=38775; 74820t=48525; t=0.6486
+          x=75+245*0.6486=75+158.9=234; y=220-162*0.6486=220-105.1=115 -->
+        <circle cx="234" cy="115" r="6" fill="#0c111b" stroke="#fb923c" stroke-width="2.5"/>
+        <text x="240" y="110" fill="#fb923c" font-size="11" font-weight="bold">B</text>
+        <text x="216" y="233" fill="#fb923c" font-size="9">Ỹ&gt;0 (SR)</text>
+        <!-- Point C: AS*∩AD₁ at Ỹ=0 (x=205). AD₁ at x=205: y=55+(205-140)/235*150=55+65/235*150=55+41.5=96.5≈97 -->
+        <circle cx="205" cy="97" r="6" fill="#0c111b" stroke="#34d399" stroke-width="2.5"/>
+        <text x="210" y="93" fill="#34d399" font-size="11" font-weight="bold">C</text>
+        <text x="160" y="233" fill="#34d399" font-size="9">LR: Ỹ=0, π=π̄_high</text>
+        <!-- B dashed lines -->
+        <line x1="234" y1="119" x2="234" y2="220" stroke="#fb923c" stroke-width="1" stroke-dasharray="3,2" opacity="0.4"/>
+        <line x1="68" y1="115" x2="234" y2="115" stroke="#fb923c" stroke-width="1" stroke-dasharray="3,2" opacity="0.4"/>
+      </svg>
+      <div class="hw-diagram-caption">Higher inflation target: AD₀→AD₁ (right shift). Short run: equilibrium at B (boom, π above π̄_low). Long run: AS shifts up until equilibrium at C (Ỹ=0, π=π̄_high). Inflation is permanently higher.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 2.4a -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">2.4a</span>
+    <span class="hw-prob-q">Negative demand shock lasting 10 periods; adaptive expectations. <strong>True/False/Uncertain:</strong> The AS curve two periods after the shock is higher than the AS curve four periods after the shock.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">FALSE</div>
+    <div class="hw-step"><div class="hw-step-num">Reasoning</div><div class="hw-step-body">The negative demand shock shifts AD left → recession ($\tilde{Y}_t < 0$) in every period during the shock. Under adaptive expectations, the AS curve position in period $t$ depends on $\pi_{t-1}$:
+      $$\pi_t = \pi_{t-1} + \bar{\nu}\tilde{Y}_t$$
+      With $\tilde{Y}_t < 0$, inflation falls each period: $\pi_t < \pi_{t-1}$. Since last period's inflation is lower, the AS curve shifts <em>downward</em> each period during the shock.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Conclusion</div><div class="hw-step-body">The AS curve is shifting <em>down</em> over the 10-period shock. Therefore AS in period 2 is <em>higher</em> than AS in period 4 — <em>but the question says</em> higher. Wait — re-reading: "AS two periods after the shock." This means period $t=2$ (still during shock). Since AS is moving downward each period, AS at $t=2$ is <em>higher</em> than AS at $t=4$. The statement is <strong>TRUE</strong>.</div></div>
+    <div class="hw-final"><strong>TRUE.</strong> During the 10-period demand shock, $\tilde{Y} &lt; 0$ causes inflation to fall each period. Under adaptive expectations, falling inflation shifts AS <em>downward</em> each period. So AS at $t=2$ is above AS at $t=4$.</div>
+  </div>
+</div>
+
+<!-- 2.4b -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">2.4b</span>
+    <span class="hw-prob-q"><strong>True/False/Uncertain:</strong> The AD curve two periods after the shock is lower than the AD curve 11 periods after the shock.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">TRUE</div>
+    <div class="hw-step"><div class="hw-step-num">During shock (periods 1–10)</div><div class="hw-step-body">The negative demand shock means $\bar{a}_t < 0$ for $t = 1, \ldots, 10$. AD shifts left in every period during the shock. At $t = 2$, the AD curve is at some depressed level AD$_2$.</div></div>
+    <div class="hw-step"><div class="hw-step-num">After shock (period 11+)</div><div class="hw-step-body">The shock ends after period 10. At $t = 11$, $\bar{a}_{11} = 0$: the demand shock is gone. AD returns to its baseline position (no shock, no demand shift). AD$_{11}$ is at the original pre-shock position.</div></div>
+    <div class="hw-final"><strong>TRUE.</strong> During the shock ($t=2$), AD is shifted left below its baseline. At $t=11$ the shock has ended and $\bar{a}=0$, so AD returns to its original position. AD$_2 <$ AD$_{11}$.</div>
+  </div>
+</div>
+
+<!-- 2.4c -->
+<div class="hw-problem">
+  <div class="hw-problem-header" onclick="toggleHW(this)">
+    <span class="hw-prob-num">2.4c</span>
+    <span class="hw-prob-q"><strong>True/False/Uncertain:</strong> The AS curve 12 periods after the shock is higher than the AS curve 14 periods after the shock.</span>
+    <span class="hw-chevron">▶</span>
+  </div>
+  <div class="hw-answer">
+    <div class="hw-answer-label">FALSE (or UNCERTAIN)</div>
+    <div class="hw-step"><div class="hw-step-num">After shock ends</div><div class="hw-step-body">The demand shock ends after period 10. At $t = 11$, AD returns to baseline. But AS position depends on $\pi_{t-1}$, which has been falling for 10 periods. By $t=11$, inflation is well below the long-run target $\bar{\pi}$.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Recovery dynamics (periods 11+)</div><div class="hw-step-body">With AD back at baseline and AS depressed (below original), the new equilibrium has $\tilde{Y} > 0$ (above potential) — a recovery boom. This positive output gap pushes $\pi_t > \pi_{t-1}$, so inflation <em>rises</em> each period. Rising inflation shifts AS <em>upward</em> each period as the economy recovers.</div></div>
+    <div class="hw-step"><div class="hw-step-num">Conclusion</div><div class="hw-step-body">At $t=12$ (2 periods after shock ends), AS is still below baseline but shifting up. At $t=14$, AS has shifted up further. So AS at $t=12$ is <em>lower</em> than AS at $t=14$. The statement is <strong>FALSE</strong>.</div></div>
+    <div class="hw-final"><strong>FALSE.</strong> After the shock ends ($t>10$), the recovery boom ($\tilde{Y}>0$) pushes inflation up, shifting AS <em>upward</em> each period. Therefore AS at $t=12$ is <em>lower</em> than AS at $t=14$, not higher.</div>
+  </div>
+</div>
+
+</div><!-- end part 2 -->
+
+<!-- ===== PS4 ABBREVIATIONS FOOTNOTE ===== -->
+<div style="margin-top:32px;border-top:1px solid var(--border);padding-top:18px;">
+  <div style="font-size:0.7rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;font-family:var(--font-mono);">Abbreviations used in this problem set</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px 20px;">
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">IS</span> — Investment–Savings curve</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">MP</span> — Monetary Policy curve</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">PC</span> — Phillips Curve</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">AS</span> — Aggregate Supply curve</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">AD</span> — Aggregate Demand curve</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">LRAS</span> — Long-Run Aggregate Supply</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">ELB</span> — Effective Lower Bound (on nominal rates)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">ZLB</span> — Zero Lower Bound (≈ ELB)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">AD shock</span> — Aggregate Demand shock</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">NX</span> — Net Exports</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">Fed</span> — U.S. Federal Reserve</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;">SR / LR</span> — Short Run / Long Run</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">Ỹ</span> — Short-run output gap (% deviation from potential)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">R</span> — Real interest rate</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">i</span> — Nominal interest rate</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">π</span> — Inflation rate</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">π̄</span> — Central bank inflation target</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">Δπ</span> — Change in inflation (period-over-period)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">r̄</span> — Long-run (trend) real interest rate</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">ā</span> — Aggregate demand shock parameter</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">b̄</span> — IS curve interest sensitivity</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">ō</span> — Cost-push (inflation) shock</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">ν̄</span> — Phillips Curve slope (output→inflation sensitivity)</div>
+    <div style="font-size:0.78rem;color:var(--text);"><span style="color:var(--accent2);font-family:var(--font-mono);font-weight:700;">m̄</span> — Monetary policy aggressiveness parameter</div>
+  </div>
+</div>
+
+</div><!-- end hw-ps4 -->
 
 </div><!-- end hw-main -->
 </div><!-- end homework-view -->
+
+<!-- ===== EXAMS VIEW ===== -->
+<div id="exams-view" style="display:none;">
+
+<div class="exam-header">
+  <div class="exam-title-block">
+    <h2>Exams</h2>
+    <div class="exam-meta">ECO 320L · Macroeconomic Theory · Dr. Herriford</div>
+  </div>
+</div>
+
+<div class="exam-tabs">
+  <button class="exam-tab active" onclick="switchExam('mt1',this)">Midterm 1</button>
+</div>
+
+<!-- ===== MIDTERM 1 ===== -->
+<div class="exam-pane active" id="exam-mt1">
+
+<!-- Q1 -->
+<div class="exam-part">
+<div class="exam-part-title"><span class="exam-part-tag">Q1</span> GDP Measurement — Rice &amp; Beans Economy</div>
+
+<div class="exam-problem">
+  <div class="exam-problem-header" onclick="toggleExam(this)">
+    <span class="exam-prob-num">1a</span>
+    <span class="exam-prob-q">Calculate nominal GDP for 2005 and 2006. (Rice/beans economy with given quantities and prices.)</span>
+    <span class="exam-chevron">▶</span>
+  </div>
+  <div class="exam-answer">
+    <div class="exam-answer-label">Solution</div>
+    <p>Nominal GDP = sum of (price × quantity) for all final goods in that year.</p>
+    <div class="formula-box">
+      Nominal GDP<sub>2005</sub> = $1 × 1,000 + $5 × 4,000 = $1,000 + $20,000 = <strong>$21,000</strong><br>
+      Nominal GDP<sub>2006</sub> = $3 × 5,000 + $6 × 2,000 = $15,000 + $12,000 = <strong>$27,000</strong>
+    </div>
+  </div>
+</div>
+
+<div class="exam-problem">
+  <div class="exam-problem-header" onclick="toggleExam(this)">
+    <span class="exam-prob-num">1b</span>
+    <span class="exam-prob-q">Calculate real GDP in 2005 and 2006 using 2006 as the base year.</span>
+    <span class="exam-chevron">▶</span>
+  </div>
+  <div class="exam-answer">
+    <div class="exam-answer-label">Solution</div>
+    <p>Real GDP in year $t$ using base-year prices = sum of (base-year price × year-$t$ quantity).</p>
+    <div class="formula-box">
+      Real GDP<sub>2005</sub> (2006 prices) = $3 × 1,000 + $6 × 4,000 = $3,000 + $24,000 = <strong>$27,000</strong><br>
+      Real GDP<sub>2006</sub> (2006 prices) = Nominal GDP<sub>2006</sub> = <strong>$27,000</strong>
+    </div>
+    <p>In the base year, real GDP always equals nominal GDP by construction.</p>
+  </div>
+</div>
+
+<div class="exam-problem">
+  <div class="exam-problem-header" onclick="toggleExam(this)">
+    <span class="exam-prob-num">1c</span>
+    <span class="exam-prob-q">Calculate 2005 real GDP in chained prices, benchmarked to 2006. Use both the exact Fisher Index and the approximation.</span>
+    <span class="exam-chevron">▶</span>
+  </div>
+  <div class="exam-answer">
+    <div class="exam-answer-label">Solution</div>
+    <div class="exam-step">
+      <div class="exam-step-num">Step 1</div>
+      <div class="exam-step-body">Find Real GDP<sub>2006</sub> in 2005 prices (needed for both Fisher formulas):
+        $$\text{Real GDP}_{2006}(\text{2005 prices}) = \$1\times5{,}000 + \$5\times2{,}000 = \$5{,}000 + \$10{,}000 = \$15{,}000$$</div>
+    </div>
+    <div class="exam-step">
+      <div class="exam-step-num">Step 2</div>
+      <div class="exam-step-body">Compute the Fisher Index $FI_{2005,2006}$:
+        $$FI_{2005,2006} = \sqrt{\frac{\$21{,}000}{\$15{,}000}\times\frac{\$27{,}000}{\$27{,}000}} = \sqrt{1.4\times1} = \sqrt{1.4}$$</div>
+    </div>
+    <div class="exam-step">
+      <div class="exam-step-num">Step 3</div>
+      <div class="exam-step-body">Chain to 2006 benchmark:
+        $$\text{Real GDP}_{2005}^{\text{chained}} = FI_{2005,2006}\times\text{Nominal GDP}_{2006}$$</div>
+    </div>
+    <div class="exam-final">
+      Exact: $\sqrt{1.4}\times\$27{,}000 \approx \mathbf{\$31{,}947}$<br>
+      Approximation: $\frac{1}{2}\!\left(\frac{\$21{,}000}{\$15{,}000}+\frac{\$27{,}000}{\$27{,}000}\right)\!\times\$27{,}000 = 1.2\times\$27{,}000 = \mathbf{\$32{,}400}$
+    </div>
+  </div>
+</div>
+
+<div class="exam-problem">
+  <div class="exam-problem-header" onclick="toggleExam(this)">
+    <span class="exam-prob-num">1d</span>
+    <span class="exam-prob-q">What is the GDP deflator for 2005 using the chained real GDP from part (1c)?</span>
+    <span class="exam-chevron">▶</span>
+  </div>
+  <div class="exam-answer">
+    <div class="exam-answer-label">Solution</div>
+    <div class="formula-box">
+      GDP Deflator$_{2005}$ = $100 \times \dfrac{\text{Nominal GDP}_{2005}}{\text{Real GDP}_{2005}^{\text{chained}}}$
+    </div>
+    <div class="exam-final">
+      Exact: $100\times\dfrac{\$21{,}000}{\$31{,}947} \approx \mathbf{65.73}$<br>
+      Approx: $100\times\dfrac{\$21{,}000}{\$32{,}400} \approx \mathbf{64.81}$
+    </div>
+    <p>A deflator below 100 means 2005 prices were lower than 2006 (the benchmark year), which makes sense — prices rose from 2005 to 2006.</p>
+  </div>
+</div>
+</div><!-- end Q1 -->
+
+<!-- Q2 -->
+<div class="exam-part">
+<div class="exam-part-title"><span class="exam-part-tag">Q2</span> Solow Model — Productivity Increase &amp; Population Decline</div>
+<div class="exam-note">This question requires a Solow diagram and a time-series graph. Use the cover-page diagram conventions: label $k^*$, $k_{-1}$, $k_0$, $k^{**}$; label all curves with equations; use old/new subscripts if curves shift.</div>
+
+<div class="exam-problem">
+  <div class="exam-problem-header" onclick="toggleExam(this)">
+    <span class="exam-prob-num">2a</span>
+    <span class="exam-prob-q">Illustrate and explain what happens in the Solow diagram when productivity rises AND population falls simultaneously (change occurs start of 2015, economy was initially at steady state).</span>
+    <span class="exam-chevron">▶</span>
+  </div>
+  <div class="exam-answer">
+    <div class="exam-answer-label">Solution</div>
+    <div class="exam-step">
+      <div class="exam-step-num">Initial</div>
+      <div class="exam-step-body">Economy is at steady state: $k_{-1} = k^*$. Label this on the horizontal axis with "$= k_{-1}$" directly below $k^*$.</div>
+    </div>
+    <div class="exam-step">
+      <div class="exam-step-num">Pop. effect</div>
+      <div class="exam-step-body">A one-time <em>decline</em> in population (with the same total capital $K$) immediately raises capital per person $k = K/L$. So $k_0 > k_{-1} = k^*$. The depreciation curve ($\bar{d}k$) does not shift.</div>
+    </div>
+    <div class="exam-step">
+      <div class="exam-step-num">TFP effect</div>
+      <div class="exam-step-body">Higher $\bar{A}$ shifts the investment curve upward: from $\bar{s}\bar{A}_{\text{old}}k^\alpha$ to $\bar{s}\bar{A}_{\text{new}}k^\alpha$. This raises the steady-state level of $k$.</div>
+    </div>
+    <div class="exam-step">
+      <div class="exam-step-num">New SS</div>
+      <div class="exam-step-body">The new steady state $k^{**}$ is found where the new investment curve meets depreciation. Since both $k_0 > k^*$ and the investment curve shifted up, $k^{**} > k^*$. The economy transitions from $k_0$ toward $k^{**}$ over time.</div>
+    </div>
+    <div class="exam-note">Diagram should show: $k^* = k_{-1}$ (labeled together) · $k_0 > k^*$ (capital jumps right on impact) · new investment curve above old · $k^{**}$ to the right of $k_0$ · arrows pointing right from $k_0$ toward $k^{**}$.</div>
+  </div>
+</div>
+
+<div class="exam-problem">
+  <div class="exam-problem-header" onclick="toggleExam(this)">
+    <span class="exam-prob-num">2b</span>
+    <span class="exam-prob-q">Draw the time-series graph of output per person starting in 2015. Label the steady-state values and ensure the size of changes is qualitatively consistent with the model.</span>
+    <span class="exam-chevron">▶</span>
+  </div>
+  <div class="exam-answer">
+    <div class="exam-answer-label">Solution</div>
+    <div class="exam-step">
+      <div class="exam-step-num">y* vs y**</div>
+      <div class="exam-step-body">Since $k^{**} > k^*$ and $\bar{A}_{\text{new}} > \bar{A}_{\text{old}}$, the new steady-state output per person satisfies:
+        $$y^{**} = \bar{A}_{\text{new}}(k^{**})^\alpha > \bar{A}_{\text{old}}(k^*)^\alpha = y^*$$
+        So $y^{**} > y^*$. Label both on the vertical axis.</div>
+    </div>
+    <div class="exam-step">
+      <div class="exam-step-num">y₀ in 2015</div>
+      <div class="exam-step-body">At the moment of the shock, $k_0 > k^*$ and $\bar{A}_{\text{new}} > \bar{A}_{\text{old}}$, so:
+        $$y_0 = \bar{A}_{\text{new}}(k_0)^\alpha > \bar{A}_{\text{new}}(k^*)^\alpha > \bar{A}_{\text{old}}(k^*)^\alpha = y^*$$
+        Output jumps above the old steady state immediately in 2015.</div>
+    </div>
+    <div class="exam-step">
+      <div class="exam-step-num">Path</div>
+      <div class="exam-step-body">Two cases depending on whether $y_0 \lessgtr y^{**}$:
+        <ul>
+          <li>If $k_0 &lt; k^{**}$: $y_0 &lt; y^{**}$ → output rises gradually toward $y^{**}$ (concave curve).</li>
+          <li>If $k_0 &gt; k^{**}$: $y_0 &gt; y^{**}$ → output falls gradually toward $y^{**}$.</li>
+        </ul>
+        Both cases converge to $y^{**}$ by the principle of transition dynamics.</div>
+    </div>
+    <div class="exam-note">The graph should start above $y^*$ in 2015 and converge monotonically to $y^{**}$, with the direction of movement depending on whether $y_0$ starts above or below $y^{**}$.</div>
+  </div>
+</div>
+</div><!-- end Q2 -->
+
+<!-- Q3 -->
+<div class="exam-part">
+<div class="exam-part-title"><span class="exam-part-tag">Q3</span> Solow Model — Natural Disaster &amp; Policy Proposals</div>
+<div class="exam-note">Economy: $F(K,L)=\bar{A}K^{1/3}L^{2/3}$, initial capital $K=\$400$B, steady-state capital $K^*=\$500$B. A natural disaster destroys 25% of capital; no loss of life.</div>
+
+<div class="exam-problem">
+  <div class="exam-problem-header" onclick="toggleExam(this)">
+    <span class="exam-prob-num">3a</span>
+    <span class="exam-prob-q">Illustrate and explain what the Solow model predicts after the disaster. Comment on what happens to per capita GDP over time.</span>
+    <span class="exam-chevron">▶</span>
+  </div>
+  <div class="exam-answer">
+    <div class="exam-answer-label">Solution</div>
+    <div class="exam-step">
+      <div class="exam-step-num">Before</div>
+      <div class="exam-step-body">Economy started below steady state: $k_{-1} &lt; k^*$ (since $K=400 &lt; K^*=500$, so capital per person was already below its steady-state level).</div>
+    </div>
+    <div class="exam-step">
+      <div class="exam-step-num">Disaster</div>
+      <div class="exam-step-body">25% of capital is destroyed: $K_0 = 0.75\times 400 = \$300$B. Since no lives are lost, $L$ is unchanged, so $k_0 = 0.75\,k_{-1}$. Capital per person falls further below steady state: $k_0 &lt; k_{-1} &lt; k^*$.</div>
+    </div>
+    <div class="exam-step">
+      <div class="exam-step-num">Curves</div>
+      <div class="exam-step-body">No curves shift — $\bar{s}$, $\bar{d}$, and $\bar{A}$ are all unchanged. The disaster is a pure shock to the <em>level</em> of capital, not to any parameter.</div>
+    </div>
+    <div class="exam-step">
+      <div class="exam-step-num">Dynamics</div>
+      <div class="exam-step-body">Since $k_0 &lt; k^*$, investment exceeds depreciation, so capital grows. Output per person rises gradually back toward $y^*$ — the same steady state as before, but from a lower starting point. This is transition dynamics at work.</div>
+    </div>
+    <div class="exam-note">Diagram: $k_0 &lt; k_{-1} &lt; k^*$, with both $k_0$ and $k_{-1}$ on the left of $k^*$. Arrows pointing right from $k_0$ toward $k^*$. No curve shifts.</div>
+  </div>
+</div>
+
+<div class="exam-problem">
+  <div class="exam-problem-header" onclick="toggleExam(this)">
+    <span class="exam-prob-num">3b</span>
+    <span class="exam-prob-q">Derive steady-state GDP per capita. Then compare: Proposal #1 (one-time 5% TFP increase) vs Proposal #2 (double the investment rate). Which is better?</span>
+    <span class="exam-chevron">▶</span>
+  </div>
+  <div class="exam-answer">
+    <div class="exam-answer-label">Solution</div>
+    <div class="exam-step">
+      <div class="exam-step-num">Derive $y^*$</div>
+      <div class="exam-step-body">At steady state, $g_k = 0$, so investment = depreciation: $\bar{s}\bar{A}(k^*)^{1/3} = \bar{d}k^*$.
+        Rearrange: $\bar{s}\bar{A} = \bar{d}(k^*)^{2/3}$, so $k^* = \!\left[\bar{s}\bar{A}/\bar{d}\right]^{3/2}$.
+        Plug into $y^* = \bar{A}(k^*)^{1/3}$:
+        $$y^* = \bar{A}\!\left[\frac{\bar{s}\bar{A}}{\bar{d}}\right]^{1/2} = \bar{A}^{3/2}\!\left[\frac{\bar{s}}{\bar{d}}\right]^{1/2}$$</div>
+    </div>
+    <div class="exam-step">
+      <div class="exam-step-num">Proposal #1</div>
+      <div class="exam-step-body">$\bar{A}_{\text{new}} = 1.05\bar{A}_{\text{old}}$. Effect on $y^*$:
+        $$\frac{y^*_{\text{new}}}{y^*_{\text{old}}} = \frac{(1.05\bar{A}_{\text{old}})^{3/2}[\bar{s}/\bar{d}]^{1/2}}{\bar{A}_{\text{old}}^{3/2}[\bar{s}/\bar{d}]^{1/2}} = (1.05)^{3/2} \approx \mathbf{1.076}$$
+        Steady-state output per person rises by about 7.6%.</div>
+    </div>
+    <div class="exam-step">
+      <div class="exam-step-num">Proposal #2</div>
+      <div class="exam-step-body">$\bar{s}_{\text{new}} = 2\bar{s}_{\text{old}}$. Effect on $y^*$:
+        $$\frac{y^*_{\text{new}}}{y^*_{\text{old}}} = \frac{\bar{A}^{3/2}[2\bar{s}_{\text{old}}/\bar{d}]^{1/2}}{\bar{A}^{3/2}[\bar{s}_{\text{old}}/\bar{d}]^{1/2}} = (2)^{1/2} \approx \mathbf{1.414}$$
+        Steady-state output per person rises by about 41.4%.</div>
+    </div>
+    <div class="exam-final">Proposal #2 is preferable — it raises steady-state $y^*$ by ~41% vs only ~8% for Proposal #1. Doubling the investment rate has a far larger long-run impact on living standards.</div>
+    <p>Intuition: $\bar{s}$ enters $y^*$ with exponent $1/2$, while $\bar{A}$ enters with exponent $3/2$. However, the 5% TFP boost is small, while doubling $\bar{s}$ is a large shock — hence the bigger gain from Proposal #2.</p>
+  </div>
+</div>
+</div><!-- end Q3 -->
+
+<!-- Q4 -->
+<div class="exam-part">
+<div class="exam-part-title"><span class="exam-part-tag">Q4</span> Balanced Growth Path — Two Countries ($\alpha = 2/5$)</div>
+<div class="exam-note">Both countries have $F(K_t,L_t)=A_t K_t^{2/5}L_t^{3/5}$. Country A: $y_{1950}=\$5{,}000$, $\bar{g}_A=3\%$/yr. Country B: $y_{1950}=\$2{,}500$, $\bar{g}_A=6\%$/yr.</div>
+
+<div class="exam-problem">
+  <div class="exam-problem-header" onclick="toggleExam(this)">
+    <span class="exam-prob-num">4a</span>
+    <span class="exam-prob-q">What is the BGP growth rate of per capita GDP for each country? Show your derivation.</span>
+    <span class="exam-chevron">▶</span>
+  </div>
+  <div class="exam-answer">
+    <div class="exam-answer-label">Solution</div>
+    <div class="exam-step">
+      <div class="exam-step-num">Growth rule</div>
+      <div class="exam-step-body">From $y_t = A_t k_t^{2/5}$, apply growth rate rules:
+        $$g_y = g_A + \tfrac{2}{5}g_k$$</div>
+    </div>
+    <div class="exam-step">
+      <div class="exam-step-num">BGP condition</div>
+      <div class="exam-step-body">On the BGP, $g_y^* = g_k^*$. Substituting:
+        $$g_y^* = \bar{g}_A + \tfrac{2}{5}g_y^* \implies \tfrac{3}{5}g_y^* = \bar{g}_A \implies \boxed{g_y^* = \tfrac{5}{3}\bar{g}_A}$$</div>
+    </div>
+    <div class="exam-final">
+      Country A: $g_y^* = \tfrac{5}{3}\times3\% = \mathbf{5\%}$ per year<br>
+      Country B: $g_y^* = \tfrac{5}{3}\times6\% = \mathbf{10\%}$ per year
+    </div>
+  </div>
+</div>
+
+<div class="exam-problem">
+  <div class="exam-problem-header" onclick="toggleExam(this)">
+    <span class="exam-prob-num">4b</span>
+    <span class="exam-prob-q">Plot per capita GDP for both countries from 1950–2020 on a log scale. Label numerical values using the Rule of 70.</span>
+    <span class="exam-chevron">▶</span>
+  </div>
+  <div class="exam-answer">
+    <div class="exam-answer-label">Solution</div>
+    <div class="exam-step">
+      <div class="exam-step-num">Doubling times</div>
+      <div class="exam-step-body">Rule of 70: Doubling time $\approx 70/(100g)$.<br>
+        Country A (5%/yr): doubles every $70/5 = \mathbf{14}$ years.<br>
+        Country B (10%/yr): doubles every $70/10 = \mathbf{7}$ years.</div>
+    </div>
+    <div class="exam-step">
+      <div class="exam-step-num">70-yr values</div>
+      <div class="exam-step-body">In 70 years (1950→2020):<br>
+        Country A: $70/14 = 5$ doublings → $\$5{,}000 \times 2^5 = \mathbf{\$160{,}000}$<br>
+        Country B: $70/7 = 10$ doublings → $\$2{,}500 \times 2^{10} = \mathbf{\$2{,}560{,}000}$</div>
+    </div>
+    <div class="exam-note">On a log scale, both countries plot as straight lines. Country A has a shallower slope (5%/yr) and Country B a steeper slope (10%/yr). Despite starting at half the income, Country B overtakes Country A and ends up over 16× higher by 2020. Label $\$5{,}000$ and $\$2{,}500$ at 1950; $\$160{,}000$ and $\$2{,}560{,}000$ at 2020.</div>
+  </div>
+</div>
+
+<div class="exam-problem">
+  <div class="exam-problem-header" onclick="toggleExam(this)">
+    <span class="exam-prob-num">4c</span>
+    <span class="exam-prob-q">Which country has higher per capita GDP on their BGP in 2020?</span>
+    <span class="exam-chevron">▶</span>
+  </div>
+  <div class="exam-answer">
+    <div class="exam-answer-label">Solution</div>
+    <div class="exam-final">Country B — with $\$2{,}560{,}000$ vs Country A's $\$160{,}000$. Although Country B started at only half of Country A's 1950 income, its 10%/yr growth rate (vs 5%) compounds dramatically over 70 years, making it over 16× richer by 2020.</div>
+  </div>
+</div>
+</div><!-- end Q4 -->
+
+<!-- Q5 -->
+<div class="exam-part">
+<div class="exam-part-title"><span class="exam-part-tag">Q5</span> Miscellaneous</div>
+
+<div class="exam-problem">
+  <div class="exam-problem-header" onclick="toggleExam(this)">
+    <span class="exam-prob-num">5a</span>
+    <span class="exam-prob-q">Ribeye steaks were ~$12/lb just before COVID (CPI=160) and ~$18/lb recently (CPI=200). Someone argues steaks are equally affordable after adjusting for inflation. Agree or disagree?</span>
+    <span class="exam-chevron">▶</span>
+  </div>
+  <div class="exam-answer">
+    <div class="exam-answer-label">Solution — Disagree</div>
+    <div class="exam-step">
+      <div class="exam-step-num">Method 1</div>
+      <div class="exam-step-body">Convert pre-COVID price to current dollars:
+        $$\text{Real price}_{\text{pre-COVID in today's \$}} = \frac{200}{160}\times\$12 = \$15.00$$
+        Since $\$18 &gt; \$15$, steaks are more expensive in real terms today.</div>
+    </div>
+    <div class="exam-step">
+      <div class="exam-step-num">Method 2</div>
+      <div class="exam-step-body">Convert current price to pre-COVID dollars:
+        $$\text{Real price}_{\text{today in pre-COVID \$}} = \frac{160}{200}\times\$18 = \$14.40$$
+        Since $\$14.40 &gt; \$12$, steaks cost more in real terms even in pre-COVID dollars.</div>
+    </div>
+    <div class="exam-final">Disagree. Steaks are approximately 25% more expensive in real terms today than pre-COVID ($18 vs a real-equivalent of $15).</div>
+  </div>
+</div>
+
+<div class="exam-problem">
+  <div class="exam-problem-header" onclick="toggleExam(this)">
+    <span class="exam-prob-num">5b-i</span>
+    <span class="exam-prob-q">An American pays a dealership $100 to replace a car part. The dealership bought the part from the manufacturer for $20. GDP impact?</span>
+    <span class="exam-chevron">▶</span>
+  </div>
+  <div class="exam-answer">
+    <div class="exam-answer-label">Solution</div>
+    <div class="exam-final">GDP rises by <strong>$100</strong> (counted as Consumption, C).</div>
+    <p>The $100 is the final sale to the household. The dealership's $20 purchase from the manufacturer is an intermediate transaction — it is embedded in the $100 final price and is not counted separately (to avoid double-counting). Component: C (personal consumption of a service).</p>
+  </div>
+</div>
+
+<div class="exam-problem">
+  <div class="exam-problem-header" onclick="toggleExam(this)">
+    <span class="exam-prob-num">5b-ii</span>
+    <span class="exam-prob-q">A U.S. coffee shop buys $10,000 in coffee machines directly from an Italian manufacturer. GDP impact?</span>
+    <span class="exam-chevron">▶</span>
+  </div>
+  <div class="exam-answer">
+    <div class="exam-answer-label">Solution</div>
+    <div class="exam-final">GDP does not change ($\Delta$GDP = 0).</div>
+    <div class="formula-box">
+      $\Delta I = +\$10{,}000$ (coffee machines are capital goods)<br>
+      $\Delta NX = -\$10{,}000$ (machines are imported from Italy)<br>
+      Net: $\Delta C + \Delta I + \Delta G + \Delta NX = 0$
+    </div>
+    <p>The two effects cancel exactly. U.S. GDP only counts goods produced in the U.S. — since these machines were made in Italy, they add nothing to U.S. output.</p>
+  </div>
+</div>
+
+<div class="exam-problem">
+  <div class="exam-problem-header" onclick="toggleExam(this)">
+    <span class="exam-prob-num">5b-iii</span>
+    <span class="exam-prob-q">A Canadian pays a U.S. professional $5,000 to restore a car originally produced in the U.S. (originally sold for $35,000). GDP impact?</span>
+    <span class="exam-chevron">▶</span>
+  </div>
+  <div class="exam-answer">
+    <div class="exam-answer-label">Solution</div>
+    <div class="exam-final">GDP rises by <strong>$5,000</strong> (counted as Net Exports, NX).</div>
+    <p>The original $35,000 sale price is irrelevant — that was counted in GDP when the car was first produced. What matters now is the current-period restoration service worth $5,000. Because the buyer is Canadian, this is a U.S. export, so NX rises by $5,000.</p>
+  </div>
+</div>
+
+</div><!-- end Q5 -->
+</div><!-- end exam-mt1 -->
+</div><!-- end exams-view -->
+
+</div><!-- end app-wrapper -->
 <script src="app.js"></script>
 </body>
 </html>
